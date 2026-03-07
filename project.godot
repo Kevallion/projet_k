@@ -11,8 +11,19 @@ config_version=5
 [application]
 
 config/name="projet_k"
+run/main_scene="uid://vtaxerp088yh"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+
+[editor]
+
+movie_writer/movie_file="D:/Zimages/Graphisme/assets/Slimy Game Jam 9/demo_move.avi"
 
 [physics]
 
