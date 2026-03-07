@@ -24,6 +24,7 @@ window/stretch/mode="canvas_items"
 [editor]
 
 movie_writer/movie_file="D:/Zimages/Graphisme/assets/Slimy Game Jam 9/demo_move.avi"
+movie_writer/stretch/mode="canvas_items"
 
 [physics]
 
