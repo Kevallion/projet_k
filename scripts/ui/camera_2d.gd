@@ -1,7 +1,5 @@
 extends Camera2D
 
-@export var characterToFollow : Node2D
-
 var zoom_speed = 100
 var zoom_margin = 0.3
 
@@ -16,13 +14,12 @@ var hauteur
 var move_power
 
 func _physics_process(_delta: float) -> void:
-	global_position = characterToFollow.global_position
 	screensize = get_viewport().size
 	largeur = screensize.x/zoom.x
 	hauteur = screensize.y/zoom.y
 	move_power = 20 /zoom.x
 	
-	#move_camera()
+	move_camera()
 	
 	zooming_process()
 
