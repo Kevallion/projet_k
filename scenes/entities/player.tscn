@@ -1,62 +1,66 @@
 [gd_scene format=3 uid="uid://dpb45y2nb8djb"]
 
-[ext_resource type="Script" uid="uid://bxc2lkir37bx5" path="res://scripts/entities/player.gd" id="1_08t41"]
-[ext_resource type="Texture2D" uid="uid://mggivdi1fixx" path="res://assets/sprites/playerShip1_orange.png" id="2_1ie0h"]
-[ext_resource type="Script" uid="uid://feoxhxw56kpq" path="res://scripts/entities/engine_visual.gd" id="3_42nxq"]
-[ext_resource type="Texture2D" uid="uid://uc6uh2lhcnlq" path="res://assets/sprites/spaceEffects_003.png" id="4_42nxq"]
+[ext_resource type="PackedScene" uid="uid://ugfkvsnsgpb6" path="res://scenes/entities/camera_2d.tscn" id="1_42nxq"]
+[ext_resource type="Texture2D" path="res://assets/sprites/space_background.png" id="2_5u6hq"]
+[ext_resource type="PackedScene" uid="uid://dhpmc6rc1ento" path="res://scenes/entities/asteroid.tscn" id="3_d4qa6"]
+[ext_resource type="PackedScene" uid="uid://dpb45y2nb8djb" path="res://scenes/entities/player.tscn" id="4_ss7kx"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_x42e6"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_1ie0h")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[node name="Level1" type="Node2D" unique_id=708747007]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6761a"]
-radius = 8.0
+[node name="Camera2D" parent="." unique_id=1051863844 node_paths=PackedStringArray("characterToFollow") instance=ExtResource("1_42nxq")]
+position = Vector2(644, 361)
+limit_enabled = true
+limit_left = -282
+limit_top = 0
+limit_right = 2198
+limit_bottom = 1185
+limit_smoothed = true
+characterToFollow = NodePath("../Player")
 
-[node name="Player" type="CharacterBody2D" unique_id=632786190]
-script = ExtResource("1_08t41")
-maxSpeed = 600.0
-space_acceleration = 2000
-space_deceleration = 100.0
+[node name="Player" parent="." unique_id=632786190 instance=ExtResource("4_ss7kx")]
+position = Vector2(-99, 679)
+maxSpeed = 200.0
+space_deceleration = 50.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=286898136]
+[node name="ParallaxNode" type="Node2D" parent="." unique_id=1992718094]
+z_index = -1000
+position = Vector2(640, 0)
+
+[node name="Parallax2D" type="Parallax2D" parent="ParallaxNode" unique_id=214604991]
+repeat_size = Vector2(620, 620)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxNode/Parallax2D" unique_id=1257558360]
 texture_filter = 1
+texture = ExtResource("2_5u6hq")
+
+[node name="Asteroid" parent="." unique_id=578255622 instance=ExtResource("3_d4qa6")]
+position = Vector2(367, 453)
+
+[node name="Sprite2D" parent="Asteroid" index="0" unique_id=712797905]
 scale = Vector2(0.2, 0.2)
-sprite_frames = SubResource("SpriteFrames_x42e6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1511500289]
-shape = SubResource("CircleShape2D_6761a")
+[node name="CollisionShape2D" parent="Asteroid" index="1" unique_id=421428141]
+scale = Vector2(0.2, 0.2)
 
-[node name="Direction" type="Marker2D" parent="." unique_id=391048836]
-position = Vector2(0, -100)
+[node name="Asteroid2" parent="." unique_id=899858769 instance=ExtResource("3_d4qa6")]
+position = Vector2(1233, 829)
 
-[node name="EngineVisual" type="Node2D" parent="." unique_id=363333054]
-unique_name_in_owner = true
-position = Vector2(5.0000014, 12.999999)
-rotation = 3.1415925
-scale = Vector2(0.565, 0.565)
-script = ExtResource("3_42nxq")
+[node name="Sprite2D" parent="Asteroid2" index="0" unique_id=712797905]
+scale = Vector2(0.2, 0.2)
 
-[node name="reactor_front" type="Sprite2D" parent="EngineVisual" unique_id=836542002]
-unique_name_in_owner = true
-position = Vector2(8.849555, 51.327435)
-rotation = 3.1415026
-scale = Vector2(1.0000002, 1.0000002)
-texture = ExtResource("4_42nxq")
+[node name="CollisionShape2D" parent="Asteroid2" index="1" unique_id=421428141]
+scale = Vector2(0.2, 0.2)
 
-[node name="reactor_right" type="Sprite2D" parent="EngineVisual" unique_id=1431611655]
-unique_name_in_owner = true
-position = Vector2(17.699118, 0)
-scale = Vector2(1.0000001, 1.0000001)
-texture = ExtResource("4_42nxq")
+[node name="Asteroid3" parent="." unique_id=1224857379 instance=ExtResource("3_d4qa6")]
+position = Vector2(1396, -196)
 
-[node name="reactor_left" type="Sprite2D" parent="EngineVisual" unique_id=1918545333]
-unique_name_in_owner = true
-scale = Vector2(1.0000001, 1.0000001)
-texture = ExtResource("4_42nxq")
+[node name="Sprite2D" parent="Asteroid3" index="0" unique_id=712797905]
+scale = Vector2(0.2, 0.2)
+
+[node name="CollisionShape2D" parent="Asteroid3" index="1" unique_id=421428141]
+scale = Vector2(0.2, 0.2)
+
+[editable path="Asteroid"]
+[editable path="Asteroid2"]
+[editable path="Asteroid3"]
