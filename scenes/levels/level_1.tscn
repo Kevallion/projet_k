@@ -14,11 +14,12 @@ limit_left = -279
 limit_top = 0
 limit_right = 2191
 limit_bottom = 999
+limit_smoothed = true
 position_smoothing_enabled = true
 entitiesFollow = NodePath("../Player")
 
 [node name="Player" parent="." unique_id=632786190 instance=ExtResource("1_6iamk")]
-position = Vector2(-130, 437)
+position = Vector2(586, 453)
 space_acceleration = 1500
 space_deceleration = 100.0
 

@@ -5,6 +5,8 @@
 [ext_resource type="Script" uid="uid://feoxhxw56kpq" path="res://scripts/entities/engine_visual.gd" id="4_5u6hq"]
 [ext_resource type="Texture2D" uid="uid://uc6uh2lhcnlq" path="res://assets/sprites/spaceEffects_003.png" id="5_d4qa6"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_42nxq"]
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_x42e6"]
 animations = [{
 "frames": [{
@@ -16,19 +18,17 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6761a"]
-radius = 8.0
-
 [node name="Player" type="CharacterBody2D" unique_id=632786190]
 script = ExtResource("1_1ie0h")
+mass = 0.795
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=953626048]
+shape = SubResource("CircleShape2D_42nxq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=286898136]
 texture_filter = 1
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_x42e6")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1511500289]
-shape = SubResource("CircleShape2D_6761a")
 
 [node name="Direction" type="Marker2D" parent="." unique_id=391048836]
 position = Vector2(0, -100)
