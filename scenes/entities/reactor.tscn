@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c16mqp5kaj4nf"]
+
+[ext_resource type="Script" uid="uid://4n3bbiipeova" path="res://scripts/entities/reactor.gd" id="1_pgnc4"]
+
+[node name="reactor" type="Sprite2D" unique_id=1123659125]
+script = ExtResource("1_pgnc4")
