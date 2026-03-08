@@ -3,13 +3,14 @@
 [ext_resource type="Texture2D" uid="uid://dg11lsifd4w4j" path="res://assets/sprites/spaceMeteors_001.png" id="1_xwv53"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s0ge7"]
-radius = 204.5605
+radius = 40.311287
 
 [node name="Asteroid" type="RigidBody2D" unique_id=578255622]
 mass = 0.076
 gravity_scale = 0.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=712797905]
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_xwv53")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=421428141]

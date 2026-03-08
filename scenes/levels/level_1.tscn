@@ -1,11 +1,26 @@
 [gd_scene format=3 uid="uid://vtaxerp088yh"]
 
-[ext_resource type="PackedScene" uid="uid://dpb45y2nb8djb" path="res://scenes/entities/player.tscn" id="1_6iamk"]
+[ext_resource type="PackedScene" uid="uid://c7dtjtg2csmjr" path="res://scenes/entities/player.tscn" id="1_6iamk"]
+[ext_resource type="PackedScene" uid="uid://ugfkvsnsgpb6" path="res://scenes/entities/camera_2d.tscn" id="1_nsrm0"]
 [ext_resource type="Texture2D" uid="uid://dys4vx6k52lko" path="res://assets/sprites/space_background.png" id="3_nsrm0"]
+[ext_resource type="PackedScene" uid="uid://dhpmc6rc1ento" path="res://scenes/entities/asteroid.tscn" id="4_x42e6"]
 
 [node name="Level1" type="Node2D" unique_id=708747007]
 
+[node name="Camera2D2" parent="." unique_id=1051863844 node_paths=PackedStringArray("entitiesFollow") instance=ExtResource("1_nsrm0")]
+position = Vector2(432, 271)
+limit_enabled = true
+limit_left = -279
+limit_top = 0
+limit_right = 2191
+limit_bottom = 999
+position_smoothing_enabled = true
+entitiesFollow = NodePath("../Player")
+
 [node name="Player" parent="." unique_id=632786190 instance=ExtResource("1_6iamk")]
+position = Vector2(-130, 437)
+space_acceleration = 1500
+space_deceleration = 100.0
 
 [node name="ParallaxNode" type="Node2D" parent="." unique_id=1992718094]
 z_index = -1000
@@ -18,3 +33,21 @@ repeat_times = 3
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxNode/Parallax2D" unique_id=1257558360]
 texture_filter = 1
 texture = ExtResource("3_nsrm0")
+
+[node name="Asteroid" parent="." unique_id=578255622 instance=ExtResource("4_x42e6")]
+position = Vector2(100, 610)
+
+[node name="Asteroid2" parent="." unique_id=1223188872 instance=ExtResource("4_x42e6")]
+position = Vector2(6, 438)
+
+[node name="Asteroid3" parent="." unique_id=488388529 instance=ExtResource("4_x42e6")]
+position = Vector2(-16, 548)
+
+[node name="Asteroid4" parent="." unique_id=1971695044 instance=ExtResource("4_x42e6")]
+position = Vector2(-78, 260)
+
+[node name="Asteroid5" parent="." unique_id=484928967 instance=ExtResource("4_x42e6")]
+position = Vector2(47, 164)
+
+[node name="Asteroid6" parent="." unique_id=898511254 instance=ExtResource("4_x42e6")]
+position = Vector2(140, 224)

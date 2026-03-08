@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://c7dtjtg2csmjr"]
+
+[ext_resource type="Script" uid="uid://bgejkyms5fngg" path="res://scenes/entities/player.gd" id="1_1ie0h"]
+[ext_resource type="Texture2D" uid="uid://mggivdi1fixx" path="res://assets/sprites/playerShip1_orange.png" id="2_1ie0h"]
+[ext_resource type="Script" uid="uid://feoxhxw56kpq" path="res://scripts/entities/engine_visual.gd" id="4_5u6hq"]
+[ext_resource type="Texture2D" uid="uid://uc6uh2lhcnlq" path="res://assets/sprites/spaceEffects_003.png" id="5_d4qa6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x42e6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1ie0h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6761a"]
+radius = 8.0
+
+[node name="Player" type="CharacterBody2D" unique_id=632786190]
+script = ExtResource("1_1ie0h")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=286898136]
+texture_filter = 1
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_x42e6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1511500289]
+shape = SubResource("CircleShape2D_6761a")
+
+[node name="Direction" type="Marker2D" parent="." unique_id=391048836]
+position = Vector2(0, -100)
+
+[node name="EngineVisuals" type="Node2D" parent="." unique_id=1350368553]
+unique_name_in_owner = true
+script = ExtResource("4_5u6hq")
+
+[node name="reactor_left" type="Sprite2D" parent="EngineVisuals" unique_id=999291042]
+unique_name_in_owner = true
+position = Vector2(-5, 18)
+rotation = 3.1415927
+scale = Vector2(0.79, 0.79)
+texture = ExtResource("5_d4qa6")
+
+[node name="reactor_right" type="Sprite2D" parent="EngineVisuals" unique_id=1467499132]
+unique_name_in_owner = true
+position = Vector2(6.0000005, 18)
+rotation = 3.1415927
+scale = Vector2(0.79, 0.79)
+texture = ExtResource("5_d4qa6")
+
+[node name="reactor_front" type="Sprite2D" parent="EngineVisuals" unique_id=338021469]
+unique_name_in_owner = true
+position = Vector2(1.1368684e-13, -20)
+rotation = 3.1415927
+scale = Vector2(0.79, 0.79)
+texture = ExtResource("5_d4qa6")
+flip_v = true
