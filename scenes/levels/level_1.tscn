@@ -1,7 +1,14 @@
 [gd_scene format=3 uid="uid://vtaxerp088yh"]
 
-[ext_resource type="PackedScene" uid="uid://dpb45y2nb8djb" path="res://scenes/entities/player.tscn" id="1_6iamk"]
+[ext_resource type="PackedScene" uid="uid://c7dtjtg2csmjr" path="res://scenes/entities/player.tscn" id="1_6iamk"]
 [ext_resource type="Texture2D" uid="uid://dys4vx6k52lko" path="res://assets/sprites/space_background.png" id="3_nsrm0"]
+[ext_resource type="Script" uid="uid://bmppbil7kx440" path="res://scripts/ui/camera_area_2d.gd" id="3_x42e6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6761a"]
+size = Vector2(1400, 1000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nsrm0"]
+size = Vector2(1400, 1000)
 
 [node name="Level1" type="Node2D" unique_id=708747007]
 
@@ -18,3 +25,23 @@ repeat_times = 3
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxNode/Parallax2D" unique_id=1257558360]
 texture_filter = 1
 texture = ExtResource("3_nsrm0")
+
+[node name="CameraAreaNode" type="Node2D" parent="." unique_id=145603353]
+
+[node name="CameraArea2D" type="Area2D" parent="CameraAreaNode" unique_id=1353500360]
+script = ExtResource("3_x42e6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraAreaNode/CameraArea2D" unique_id=1471810508]
+shape = SubResource("RectangleShape2D_6761a")
+
+[node name="CameraArea2D2" type="Area2D" parent="CameraAreaNode" unique_id=1705359594]
+script = ExtResource("3_x42e6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraAreaNode/CameraArea2D2" unique_id=1630562140]
+position = Vector2(0, -1020)
+shape = SubResource("RectangleShape2D_nsrm0")
+
+[connection signal="body_entered" from="CameraAreaNode/CameraArea2D" to="CameraAreaNode/CameraArea2D" method="_on_body_entered"]
+[connection signal="body_exited" from="CameraAreaNode/CameraArea2D" to="CameraAreaNode/CameraArea2D" method="_on_body_exited"]
+[connection signal="body_entered" from="CameraAreaNode/CameraArea2D2" to="CameraAreaNode/CameraArea2D2" method="_on_body_entered"]
+[connection signal="body_exited" from="CameraAreaNode/CameraArea2D2" to="CameraAreaNode/CameraArea2D2" method="_on_body_exited"]

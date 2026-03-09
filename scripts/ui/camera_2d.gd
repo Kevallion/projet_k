@@ -1,8 +1,5 @@
 extends Camera2D
 
-var zoom_speed = 100
-var zoom_margin = 0.3
-
 var zoom_factor = Vector2(0.15, 0.15)
 
 var zoom_in
@@ -14,6 +11,9 @@ var hauteur
 var move_power
 
 func _physics_process(_delta: float) -> void:
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().paused = !get_tree().paused
+		
 	screensize = get_viewport().size
 	largeur = screensize.x/zoom.x
 	hauteur = screensize.y/zoom.y
@@ -47,30 +47,25 @@ func zooming_process():
 
 func move_camera():
 	if get_tree().paused:
-		if Input.is_action_pressed("RightJoypad_down"):
+		if Input.is_action_pressed("ui_down"):
 			if (global_position.y + (hauteur/2)) < limit_bottom:
 				position.y+=move_power
-		if Input.is_action_pressed("RightJoypad_up"):
+		if Input.is_action_pressed("ui_up"):
 			if (global_position.y - (hauteur/2)) > limit_top:
 				position.y-=move_power
-		if Input.is_action_pressed("RightJoypad_left"):
+		if Input.is_action_pressed("ui_left"):
 			if (global_position.x - (largeur/2)) > limit_left:
 				position.x-=move_power
-		if Input.is_action_pressed("RightJoypad_right"):
+		if Input.is_action_pressed("ui_right"):
 			if (global_position.x + (largeur/2)) < limit_right:
 				position.x+=move_power
 	else:
 		position.x = 0
 		position.y = 0
-
-func defineCameraLimits(left: int,top: int,right: int,bottom: int):
-	limit_top = top
-	limit_bottom = bottom
-	limit_left = left
-	limit_right = right
 	
 func _on_camera_area_changed(areaShape: CollisionShape2D):
-	limit_left = (areaShape.global_position.x - areaShape.shape.size.x / 2) - 40
-	limit_right = (areaShape.global_position.x + areaShape.shape.size.x / 2) + 40
-	limit_bottom = (areaShape.global_position.y + areaShape.shape.size.y / 2) + 40
-	limit_top = (areaShape.global_position.y - areaShape.shape.size.y / 2) - 40
+	var marge = 40
+	limit_left = (areaShape.global_position.x - areaShape.shape.size.x / 2) - marge
+	limit_right = (areaShape.global_position.x + areaShape.shape.size.x / 2) + marge
+	limit_bottom = (areaShape.global_position.y + areaShape.shape.size.y / 2) + marge
+	limit_top = (areaShape.global_position.y - areaShape.shape.size.y / 2) - marge

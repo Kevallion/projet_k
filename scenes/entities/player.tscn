@@ -1,8 +1,11 @@
-[gd_scene format=3 uid="uid://dpb45y2nb8djb"]
+[gd_scene format=3 uid="uid://c7dtjtg2csmjr"]
 
 [ext_resource type="Script" uid="uid://bxc2lkir37bx5" path="res://scripts/entities/player.gd" id="1_08t41"]
-[ext_resource type="Texture2D" uid="uid://mggivdi1fixx" path="res://assets/sprites/playerShip1_orange.png" id="2_1ie0h"]
+[ext_resource type="Texture2D" uid="uid://b15sah8sml0lp" path="res://assets/sprites/ship_modele.png" id="2_1ie0h"]
 [ext_resource type="Script" uid="uid://cm4fodup6wn1m" path="res://scripts/ui/camera_2d.gd" id="3_1ie0h"]
+[ext_resource type="Texture2D" uid="uid://bgykt0nr7vqcm" path="res://assets/sprites/reactor_anim1.png" id="3_d4qa6"]
+[ext_resource type="Texture2D" uid="uid://ck76jflr3pr3x" path="res://assets/sprites/reactor_anim2.png" id="4_ss7kx"]
+[ext_resource type="Texture2D" uid="uid://dy1c75gh5ft5c" path="res://assets/sprites/reactor_anim3.png" id="5_dnykm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_x42e6"]
 animations = [{
@@ -15,22 +18,120 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_c5rqy"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": ExtResource("3_d4qa6")
+}, {
+"duration": 0.5,
+"texture": ExtResource("4_ss7kx")
+}, {
+"duration": 0.5,
+"texture": ExtResource("5_dnykm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d4qa6"]
+animations = [{
+"frames": [{
+"duration": 0.4,
+"texture": ExtResource("3_d4qa6")
+}, {
+"duration": 0.3,
+"texture": ExtResource("4_ss7kx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ss7kx"]
+animations = [{
+"frames": [{
+"duration": 0.4,
+"texture": ExtResource("3_d4qa6")
+}, {
+"duration": 0.3,
+"texture": ExtResource("4_ss7kx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_6761a"]
 radius = 8.0
 
-[node name="Player" type="CharacterBody2D" unique_id=632786190]
+[node name="Player" type="CharacterBody2D" unique_id=632786190 groups=["player"]]
 script = ExtResource("1_08t41")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=286898136]
 texture_filter = 1
-scale = Vector2(0.2, 0.2)
+position = Vector2(0, -1)
+scale = Vector2(0.041763343, 0.041763343)
 sprite_frames = SubResource("SpriteFrames_x42e6")
+
+[node name="ReactorCenterSprite" type="AnimatedSprite2D" parent="AnimatedSprite2D" unique_id=1418739909]
+position = Vector2(0, 430.99997)
+scale = Vector2(1.5962962, 1.4810998)
+sprite_frames = SubResource("SpriteFrames_c5rqy")
+autoplay = "default"
+frame_progress = 0.64759505
+
+[node name="ReactorLeftSprite" type="AnimatedSprite2D" parent="AnimatedSprite2D" unique_id=2144913014]
+position = Vector2(0, 23.944427)
+rotation = 0.6165861
+scale = Vector2(1.5962962, 1.4810998)
+sprite_frames = SubResource("SpriteFrames_c5rqy")
+autoplay = "default"
+frame = 2
+frame_progress = 0.20424303
+offset = Vector2(0, 274.83328)
+
+[node name="ReactorRightSprite" type="AnimatedSprite2D" parent="AnimatedSprite2D" unique_id=370119906]
+position = Vector2(0, 23.944427)
+rotation = -0.6107521
+scale = Vector2(1.5962962, 1.4810998)
+sprite_frames = SubResource("SpriteFrames_c5rqy")
+autoplay = "default"
+frame = 1
+frame_progress = 0.072116725
+offset = Vector2(0, 274.83328)
+
+[node name="ReactorFrontLeftSprite" type="AnimatedSprite2D" parent="AnimatedSprite2D" unique_id=1290123244]
+position = Vector2(-164.18066, -119.72221)
+rotation = 3.1415927
+scale = Vector2(1.5200614, 0.8940159)
+sprite_frames = SubResource("SpriteFrames_d4qa6")
+autoplay = "default"
+
+[node name="ReactorFrontRightSprite" type="AnimatedSprite2D" parent="AnimatedSprite2D" unique_id=586215503]
+position = Vector2(160, -119.722)
+rotation = 3.1415927
+scale = Vector2(-1.52, 0.894)
+sprite_frames = SubResource("SpriteFrames_ss7kx")
+autoplay = "default"
+frame = 1
+frame_progress = 0.83219194
+
+[node name="Direction" type="Marker2D" parent="AnimatedSprite2D" unique_id=391048836]
+position = Vector2(0, -2370.5)
+scale = Vector2(23.944443, 23.944443)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1511500289]
 shape = SubResource("CircleShape2D_6761a")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1364328052]
+process_mode = 3
+limit_smoothed = true
+position_smoothing_enabled = true
 script = ExtResource("3_1ie0h")
 
-[node name="Direction" type="Marker2D" parent="." unique_id=391048836]
-position = Vector2(0, -100)
+[node name="OutOfBound" type="Timer" parent="." unique_id=1972936815]
+one_shot = true
+
+[connection signal="timeout" from="OutOfBound" to="." method="_on_out_of_bound_timeout"]
