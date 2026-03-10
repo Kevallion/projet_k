@@ -10,6 +10,9 @@ extends CharacterBody2D
 @onready var reactorFrontRightSprite = $AnimatedSprite2D/ReactorFrontRightSprite
 @onready var outOfBound = $OutOfBound
 
+## vitesse maximal du vaisseau
+@export var maxSpeed := 300.0
+
 var gas = 1000.0;
 var maxGas = 1000.0;
 var gasExpense = 1;
@@ -23,6 +26,7 @@ var rightReactorActif = false
 
 var respawnPosition = Vector2.ZERO
 var respawnRotation
+var holdingTime = 0
 
 func _physics_process(_delta: float) -> void:
 	basic_mouvements()
@@ -40,6 +44,8 @@ func basic_mouvements():
 	
 	## Facteur de puissance. + 1 par moteur actif
 	var reactorPower = 0
+	## Facteur de rotation
+	rotationForce = 0.01
 	
 	## définition du facteur de rotation, de la vitesse et de la dépense de carburant
 	if leftReactorActif:
@@ -56,8 +62,11 @@ func basic_mouvements():
 	reactorLeftSprite.visible = rightReactorActif
 	reactorFrontRightSprite.visible = rightReactorActif
 	
-	## Frein / Stabilisateur ##
+	### Frein / Stabilisateur ##
 	if Input.is_action_pressed("ui_down"):
+		## Permet de se retourner plus rapidement
+		if leftReactorActif or rightReactorActif:
+			rotationForce = 0.03
 		# afficher les sprites
 		reactorFrontLeftSprite.visible = true
 		reactorFrontRightSprite.visible = true
@@ -72,9 +81,16 @@ func basic_mouvements():
 		reactorPower = 0
 		velocity *= 0.9
 		consume_gas(gasExpense)
-
+	
+	if Input.is_action_just_pressed("ui_up"):
+		holdingTime = 0
 	if centerReactorActif:
+		holdingTime += 1
 		reactorPower += speed
+		if holdingTime > 75:
+			reactorPower += speed * 2
+			reactorLeftSprite.visible = true
+			reactorRightSprite.visible = true
 		reactorCenterSprite.visible = true
 		consume_gas(gasExpense)
 	else:
@@ -89,6 +105,10 @@ func basic_mouvements():
 	sprite.rotate(rotationForce * rotationDirection)
 	# Applique la vélocité
 	velocity += normalized_vector * reactorPower
+	
+	##clamp la vitesse maximal
+	velocity.x = clampf(velocity.x, -maxSpeed, maxSpeed)
+	velocity.y = clampf(velocity.y, -maxSpeed, maxSpeed)
 	
 func consume_gas(spent):
 	gas -= spent

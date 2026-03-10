@@ -5,6 +5,9 @@ var zoom_factor = Vector2(0.15, 0.15)
 var zoom_in
 var zoom_out
 
+const zoom_max = 10.0
+const zoom_min = 0.6
+
 var screensize
 var largeur
 var hauteur
@@ -20,7 +23,6 @@ func _physics_process(_delta: float) -> void:
 	move_power = 20 /zoom.x
 	
 	move_camera()
-	
 	zooming_process()
 
 func zooming_process():
@@ -36,14 +38,18 @@ func zooming_process():
 	elif zoom_in:
 		set_zoom(zoom * (Vector2.ONE + zoom_factor))
 		
-	if (global_position.x - (largeur/2)) < limit_left:
-		global_position.x=limit_left+(largeur/2)
-	if (global_position.x + (largeur/2)) > limit_right:
-		global_position.x=limit_right-(largeur/2)
-	if (global_position.y - (hauteur/2)) < limit_top:
-		global_position.y=limit_top+(hauteur/2)
-	if (global_position.y + (hauteur/2)) > limit_bottom:
-		global_position.y=limit_bottom-(hauteur/2)
+		
+	zoom.x = clampf(zoom.x, zoom_min, zoom_max)
+	zoom.y = clampf(zoom.y, zoom_min, zoom_max)
+		
+	#if (global_position.x - (largeur/2)) < limit_left:
+		#global_position.x=limit_left+(largeur/2)
+	#if (global_position.x + (largeur/2)) > limit_right:
+		#global_position.x=limit_right-(largeur/2)
+	#if (global_position.y - (hauteur/2)) < limit_top:
+		#global_position.y=limit_top+(hauteur/2)
+	#if (global_position.y + (hauteur/2)) > limit_bottom:
+		#global_position.y=limit_bottom-(hauteur/2)
 
 func move_camera():
 	if get_tree().paused:

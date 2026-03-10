@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c7dtjtg2csmjr"]
+[gd_scene format=3 uid="uid://dpb45y2nb8djb"]
 
 [ext_resource type="Script" uid="uid://bxc2lkir37bx5" path="res://scripts/entities/player.gd" id="1_08t41"]
 [ext_resource type="Texture2D" uid="uid://b15sah8sml0lp" path="res://assets/sprites/ship_modele.png" id="2_1ie0h"]
@@ -131,7 +131,6 @@ position_smoothing_enabled = true
 script = ExtResource("3_1ie0h")
 
 [node name="OutOfBound" type="Timer" parent="." unique_id=1972936815]
-wait_time = 3.0
 one_shot = true
 
 [connection signal="timeout" from="OutOfBound" to="." method="_on_out_of_bound_timeout"]
