@@ -22,7 +22,7 @@ var centerReactorActif = false
 var rightReactorActif = false
 
 var respawnPosition = Vector2.ZERO
-var orientation
+var respawnRotation
 
 func _physics_process(_delta: float) -> void:
 	basic_mouvements()
@@ -40,56 +40,51 @@ func basic_mouvements():
 	
 	## Facteur de puissance. + 1 par moteur actif
 	var reactorPower = 0
+	
 	## définition du facteur de rotation, de la vitesse et de la dépense de carburant
 	if leftReactorActif:
 		rotationDirection -= 0.1
 		reactorPower += speed
-		reactorRightSprite.visible = true
-		reactorFrontLeftSprite.visible = true
 		consume_gas(gasExpense)
-	else:
-		reactorRightSprite.visible = false
-		reactorFrontLeftSprite.visible = false
 	if rightReactorActif:
 		rotationDirection += 0.1
 		reactorPower += speed
-		reactorLeftSprite.visible = true
-		reactorFrontRightSprite.visible = true
 		consume_gas(gasExpense)
-	else:
-		reactorLeftSprite.visible = false
-		reactorFrontRightSprite.visible = false
-	if centerReactorActif:
-		reactorPower += speed
-		reactorCenterSprite.visible = true
-		consume_gas(gasExpense)
-	else:
-		reactorCenterSprite.visible = false
-	if rightReactorActif and leftReactorActif:
-		reactorLeftSprite.visible = true
-		reactorRightSprite.visible = true
-		reactorCenterSprite.visible = true
-		reactorFrontLeftSprite.visible = false
-		reactorFrontRightSprite.visible = false
-		consume_gas(gasExpense)
+	# Affichage des sprite
+	reactorRightSprite.visible = leftReactorActif
+	reactorFrontLeftSprite.visible = leftReactorActif
+	reactorLeftSprite.visible = rightReactorActif
+	reactorFrontRightSprite.visible = rightReactorActif
 	
 	## Frein / Stabilisateur ##
 	if Input.is_action_pressed("ui_down"):
-		# Désactive tous les moteurs
-		leftReactorActif = false
-		centerReactorActif = false
-		rightReactorActif = false
 		# afficher les sprites
 		reactorFrontLeftSprite.visible = true
 		reactorFrontRightSprite.visible = true
-		reactorRightSprite.visible = true
-		reactorLeftSprite.visible = true
+		if !rightReactorActif:
+			reactorRightSprite.visible = true
+		if !leftReactorActif:
+			reactorLeftSprite.visible = true
+		rightReactorActif = false
+		leftReactorActif = false
 		# Stabilisation #
 		rotationDirection *= 0.9
 		reactorPower = 0
 		velocity *= 0.9
 		consume_gas(gasExpense)
 
+	if centerReactorActif:
+		reactorPower += speed
+		reactorCenterSprite.visible = true
+		consume_gas(gasExpense)
+	else:
+		reactorCenterSprite.visible = false
+	
+	if rightReactorActif and leftReactorActif:
+		reactorCenterSprite.visible = true
+		reactorFrontLeftSprite.visible = false
+		reactorFrontRightSprite.visible = false
+		
 	# Applique la rotation
 	sprite.rotate(rotationForce * rotationDirection)
 	# Applique la vélocité
@@ -100,7 +95,7 @@ func consume_gas(spent):
 	
 func death():
 	position = respawnPosition
-	sprite.rotation = orientation
+	sprite.rotation = respawnRotation
 	velocity = Vector2.ZERO
 	rotationDirection = 0
 

@@ -64,7 +64,7 @@ func move_camera():
 		position.y = 0
 	
 func _on_camera_area_changed(areaShape: CollisionShape2D):
-	var marge = 40
+	var marge = 10
 	limit_left = (areaShape.global_position.x - areaShape.shape.size.x / 2) - marge
 	limit_right = (areaShape.global_position.x + areaShape.shape.size.x / 2) + marge
 	limit_bottom = (areaShape.global_position.y + areaShape.shape.size.y / 2) + marge

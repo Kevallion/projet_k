@@ -119,8 +119,7 @@ frame = 1
 frame_progress = 0.83219194
 
 [node name="Direction" type="Marker2D" parent="AnimatedSprite2D" unique_id=391048836]
-position = Vector2(0, -2370.5)
-scale = Vector2(23.944443, 23.944443)
+position = Vector2(0, -1000)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1511500289]
 shape = SubResource("CircleShape2D_6761a")
@@ -132,6 +131,7 @@ position_smoothing_enabled = true
 script = ExtResource("3_1ie0h")
 
 [node name="OutOfBound" type="Timer" parent="." unique_id=1972936815]
+wait_time = 3.0
 one_shot = true
 
 [connection signal="timeout" from="OutOfBound" to="." method="_on_out_of_bound_timeout"]
