@@ -44,7 +44,7 @@ func add_force(force: Vector2) -> void:
 func orbitAround(target: Node2D, speed: float, gravityStrength: float) -> void:
 	isOrbitAround = true
 	orbitTarget = target
-	orbitalSpeed = speed
+	orbitalSpeed = sqrt(gravityStrength * (global_position.distance_to(orbitTarget.global_position)))
 	orbitalGravityStrength = gravityStrength
 	orbitalDirectionGravity = global_position.direction_to(orbitTarget.global_position)
 	orbitalDirectionTengente =  orbitalDirectionGravity.rotated(PI/2).normalized()

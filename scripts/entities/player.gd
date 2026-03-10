@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 @onready var sprite = $AnimatedSprite2D
 @onready var forward = $AnimatedSprite2D/Direction
@@ -9,6 +9,12 @@ extends CharacterBody2D
 @onready var reactorFrontLeftSprite = $AnimatedSprite2D/ReactorFrontLeftSprite
 @onready var reactorFrontRightSprite = $AnimatedSprite2D/ReactorFrontRightSprite
 @onready var outOfBound = $OutOfBound
+
+@export_group("custom physique")
+@export var mass := 1.0
+@export var forceDrag := 5.0
+var externalForce := Vector2.ZERO
+
 
 ## vitesse maximal du vaisseau
 @export var maxSpeed := 300.0
@@ -29,7 +35,10 @@ var respawnRotation
 var holdingTime = 0
 
 func _physics_process(_delta: float) -> void:
+	#on réduit les forces externe
+	externalForce = externalForce.lerp(Vector2.ZERO, forceDrag * _delta)
 	basic_mouvements()
+	velocity += externalForce * _delta
 	move_and_slide()
 	
 func basic_mouvements():
@@ -109,7 +118,12 @@ func basic_mouvements():
 	##clamp la vitesse maximal
 	velocity.x = clampf(velocity.x, -maxSpeed, maxSpeed)
 	velocity.y = clampf(velocity.y, -maxSpeed, maxSpeed)
-	
+
+
+
+func add_force(force: Vector2) -> void:
+	externalForce = force / mass
+
 func consume_gas(spent):
 	gas -= spent
 	
@@ -118,6 +132,7 @@ func death():
 	sprite.rotation = respawnRotation
 	velocity = Vector2.ZERO
 	rotationDirection = 0
-
+	externalForce = Vector2.ZERO
+	
 func _on_out_of_bound_timeout() -> void:
 	death()
