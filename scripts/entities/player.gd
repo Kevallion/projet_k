@@ -122,7 +122,7 @@ func basic_mouvements():
 
 
 func add_force(force: Vector2) -> void:
-	externalForce = force / mass
+	externalForce += force / mass
 
 func consume_gas(spent):
 	gas -= spent

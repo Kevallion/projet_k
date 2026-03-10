@@ -16,16 +16,20 @@ shader_parameter/smallStarAmount = 0.002
 shader_parameter/mediumStarAmount = 0.01
 shader_parameter/bigStarAmount = 0.02
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_oos21"]
+blend_mode = 1
+
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xcwg7"]
 blend_mode = 1
 
 [sub_resource type="Gradient" id="Gradient_oos21"]
 interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.36239782, 0.70299727)
+offsets = PackedFloat32Array(0, 0.35694823, 0.70299727)
 colors = PackedColorArray(0, 0, 0, 1, 0.28485027, 0.28485027, 0.28485027, 1, 1, 1, 1, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_jajyj"]
-noise_type = 3
+noise_type = 5
+frequency = 0.0095
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xcwg7"]
 noise = SubResource("FastNoiseLite_jajyj")
@@ -41,14 +45,25 @@ offset_right = 1285.0
 offset_bottom = 719.0
 texture = ExtResource("2_g8ihl")
 
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1665050988]
+material = SubResource("CanvasItemMaterial_oos21")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.04832934, 0.006887799, 0.10196481, 1)
+
 [node name="TextureRect2" type="TextureRect" parent="." unique_id=910510482]
+visible = false
 self_modulate = Color(0.1498462, 0.036372792, 0.256386, 1)
 material = SubResource("CanvasItemMaterial_xcwg7")
 offset_right = 1283.0
 offset_bottom = 723.0
 texture = ExtResource("4_jajyj")
 
-[node name="TextureRect3" type="TextureRect" parent="." unique_id=617799213]
+[node name="space_background" type="TextureRect" parent="." unique_id=617799213]
+unique_name_in_owner = true
 self_modulate = Color(0.048227124, 0.0069504054, 0.101905875, 1)
 material = SubResource("CanvasItemMaterial_xcwg7")
 offset_right = 1283.0

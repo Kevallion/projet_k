@@ -69,7 +69,7 @@ func _physics_process(delta: float) -> void:
 			if body is Player:
 				body = body as Player
 				var attractedDirection := body.global_position.direction_to(global_position)
-				var attractedForce := attractedDirection * 20.0
+				var attractedForce := attractedDirection * 2.5
 				body.add_force(attractedForce)
 	
 #fonction appeler pour faire tourner un objet spatial autour d'un astre

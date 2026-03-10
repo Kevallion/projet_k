@@ -93,7 +93,7 @@ func animate_turn_meteor() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.has_method("add_force") and body is Player:
 		var push_direction := global_position.direction_to(body.global_position)
-		var impact_power := 1000.0
+		var impact_power := 3000.0
 		body.add_force(push_direction * impact_power)
 		
 		#on peu faire mourrir le joueur après
