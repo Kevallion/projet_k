@@ -5,6 +5,10 @@
 [ext_resource type="Script" uid="uid://bmppbil7kx440" path="res://scripts/ui/camera_area_2d.gd" id="3_x42e6"]
 [ext_resource type="AudioStream" uid="uid://drm1str7chls" path="res://assets/audio/music/Space 1.mp3" id="4_x42e6"]
 [ext_resource type="Texture2D" uid="uid://cffjnt6mm0lu4" path="res://assets/sprites/3261219552.png" id="5_6761a"]
+[ext_resource type="Script" uid="uid://jgxd8lob1aub" path="res://scripts/entities/asteroid.gd" id="5_oc4kc"]
+[ext_resource type="Texture2D" uid="uid://dt4jkuu2luw2b" path="res://assets/sprites/meteors/meteorGrey_small2.png" id="6_s8va5"]
+[ext_resource type="Script" uid="uid://c2sl5dggvfeu5" path="res://scripts/entities/planet.gd" id="8_dga24"]
+[ext_resource type="PackedScene" uid="uid://cbus4r2vum2hc" path="res://scenes/entities/spatial_station.tscn" id="10_qxy0u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6761a"]
 size = Vector2(1400, 1000)
@@ -1770,10 +1774,13 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_excbq"]
+radius = 964.0021
+
 [node name="Level1" type="Node2D" unique_id=708747007]
 
 [node name="Player" parent="." unique_id=632786190 instance=ExtResource("1_6iamk")]
-position = Vector2(922, 464)
+position = Vector2(511, 571)
 
 [node name="ParallaxNode" type="Node2D" parent="." unique_id=1992718094]
 z_index = -1000
@@ -1808,12 +1815,48 @@ stream = ExtResource("4_x42e6")
 autoplay = true
 parameters/looping = true
 
+[node name="Asteroid" type="CharacterBody2D" parent="." unique_id=467215900 groups=["space_object"]]
+position = Vector2(523, -95.04974)
+collision_layer = 2
+script = ExtResource("5_oc4kc")
+metadata/_custom_type_script = "uid://jgxd8lob1aub"
+
+[node name="Asteroid2" type="CharacterBody2D" parent="." unique_id=2047042607 groups=["space_object"]]
+position = Vector2(1351, -478)
+collision_layer = 2
+script = ExtResource("5_oc4kc")
+metadata/_custom_type_script = "uid://jgxd8lob1aub"
+
+[node name="Asteroid3" type="CharacterBody2D" parent="." unique_id=1676775816 groups=["space_object"]]
+position = Vector2(645, 310)
+collision_layer = 2
+platform_on_leave = 2
+script = ExtResource("5_oc4kc")
+asteroidTexture = ExtResource("6_s8va5")
+metadata/_custom_type_script = "uid://jgxd8lob1aub"
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1055201885]
 texture_filter = 1
 position = Vector2(933, -944)
 sprite_frames = SubResource("SpriteFrames_r601b")
 autoplay = "default"
 frame_progress = 0.09672816
+
+[node name="Planet" type="CharacterBody2D" parent="." unique_id=1163074045]
+position = Vector2(1330, 244)
+collision_layer = 0
+script = ExtResource("8_dga24")
+metadata/_custom_type_script = "uid://c2sl5dggvfeu5"
+
+[node name="Area2D" type="Area2D" parent="Planet" unique_id=544011959]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planet/Area2D" unique_id=335339867]
+shape = SubResource("CircleShape2D_excbq")
+
+[node name="Spatial_Station" parent="." unique_id=708156702 instance=ExtResource("10_qxy0u")]
+position = Vector2(552, 124)
+collision_layer = 2
 
 [connection signal="body_entered" from="CameraAreaNode/CameraArea2D" to="CameraAreaNode/CameraArea2D" method="_on_body_entered"]
 [connection signal="body_exited" from="CameraAreaNode/CameraArea2D" to="CameraAreaNode/CameraArea2D" method="_on_body_exited"]

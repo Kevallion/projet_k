@@ -2,11 +2,11 @@
 class_name Planet extends CharacterBody2D
 
 ## la texture de la planet
-@export var planetTexture : Texture2D = preload("uid://blx2yg2hr7ojl") : set = set_sprite_planet
+@export var planetTexture : Texture2D = preload("res://assets/sprites/planets/planet00.png") : set = set_sprite_planet
 
 ##la shape de colision de l'asterpod
 @export_range(0.0,2000.0) var collisionRange := 46.5 : set = set_collision_range
-@onready var attraction_area: Area2D = %attraction_area
+@onready var attraction_area: Area2D = $Area2D
 
 ##veiller à bien definir la taille de collision en fonctin [br]
 ##de la taille du sprite
