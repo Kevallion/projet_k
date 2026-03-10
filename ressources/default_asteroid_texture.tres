@@ -1,0 +1,6 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://5644qsbdcpmu"]
+
+[ext_resource type="Texture2D" path="res://assets/sprites/meteors/meteorBrown_small.png" id="1_7iyxg"]
+
+[resource]
+atlas = ExtResource("1_7iyxg")
