@@ -1,27 +1,21 @@
 [gd_scene format=3 uid="uid://vtaxerp088yh"]
 
-[ext_resource type="PackedScene" uid="uid://c7dtjtg2csmjr" path="res://scenes/entities/player.tscn" id="1_6iamk"]
-[ext_resource type="PackedScene" uid="uid://ugfkvsnsgpb6" path="res://scenes/entities/camera_2d.tscn" id="1_nsrm0"]
+[ext_resource type="PackedScene" uid="uid://dpb45y2nb8djb" path="res://scenes/entities/player.tscn" id="1_6iamk"]
 [ext_resource type="Texture2D" uid="uid://dys4vx6k52lko" path="res://assets/sprites/space_background.png" id="3_nsrm0"]
-[ext_resource type="PackedScene" uid="uid://dhpmc6rc1ento" path="res://scenes/entities/asteroid.tscn" id="4_x42e6"]
+[ext_resource type="Script" uid="uid://jgxd8lob1aub" path="res://scripts/entities/asteroid.gd" id="3_x42e6"]
+[ext_resource type="Texture2D" uid="uid://cu5ru3h6yv3ag" path="res://assets/sprites/meteors/meteorBrown_small2.png" id="6_qxy0u"]
+[ext_resource type="Script" uid="uid://c2sl5dggvfeu5" path="res://scripts/entities/planet.gd" id="6_s8va5"]
+[ext_resource type="Texture2D" uid="uid://dt4jkuu2luw2b" path="res://assets/sprites/meteors/meteorGrey_small2.png" id="7_excbq"]
+[ext_resource type="Texture2D" uid="uid://wktrh5qw37px" path="res://assets/sprites/planets/planet03.png" id="7_oc4kc"]
+[ext_resource type="PackedScene" uid="uid://cbus4r2vum2hc" path="res://scenes/entities/spatial_station.tscn" id="8_s8va5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oc4kc"]
+radius = 1175.5314
 
 [node name="Level1" type="Node2D" unique_id=708747007]
 
-[node name="Camera2D2" parent="." unique_id=1051863844 node_paths=PackedStringArray("entitiesFollow") instance=ExtResource("1_nsrm0")]
-position = Vector2(432, 271)
-limit_enabled = true
-limit_left = -279
-limit_top = 0
-limit_right = 2191
-limit_bottom = 999
-limit_smoothed = true
-position_smoothing_enabled = true
-entitiesFollow = NodePath("../Player")
-
 [node name="Player" parent="." unique_id=632786190 instance=ExtResource("1_6iamk")]
-position = Vector2(586, 453)
-space_acceleration = 1500
-space_deceleration = 100.0
+position = Vector2(1033, 1005)
 
 [node name="ParallaxNode" type="Node2D" parent="." unique_id=1992718094]
 z_index = -1000
@@ -35,20 +29,55 @@ repeat_times = 3
 texture_filter = 1
 texture = ExtResource("3_nsrm0")
 
-[node name="Asteroid" parent="." unique_id=578255622 instance=ExtResource("4_x42e6")]
-position = Vector2(100, 610)
+[node name="Planet" type="CharacterBody2D" parent="." unique_id=549974763]
+position = Vector2(915, 353)
+script = ExtResource("6_s8va5")
+planetTexture = ExtResource("7_oc4kc")
+collisionRange = 500.0
 
-[node name="Asteroid2" parent="." unique_id=1223188872 instance=ExtResource("4_x42e6")]
-position = Vector2(6, 438)
+[node name="attraction_area" type="Area2D" parent="Planet" unique_id=302046169 groups=["attraction_area"]]
+unique_name_in_owner = true
 
-[node name="Asteroid3" parent="." unique_id=488388529 instance=ExtResource("4_x42e6")]
-position = Vector2(-16, 548)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planet/attraction_area" unique_id=220281545]
+shape = SubResource("CircleShape2D_oc4kc")
 
-[node name="Asteroid4" parent="." unique_id=1971695044 instance=ExtResource("4_x42e6")]
-position = Vector2(-78, 260)
+[node name="Asteroid" type="CharacterBody2D" parent="." unique_id=1080605935 groups=["space_object"]]
+position = Vector2(408, -316)
+script = ExtResource("3_x42e6")
+collisionRange = 46.601
+metadata/_custom_type_script = "uid://jgxd8lob1aub"
 
-[node name="Asteroid5" parent="." unique_id=484928967 instance=ExtResource("4_x42e6")]
-position = Vector2(47, 164)
+[node name="Asteroid2" type="CharacterBody2D" parent="." unique_id=572756413 groups=["space_object"]]
+position = Vector2(1033.1322, -473.68027)
+script = ExtResource("3_x42e6")
+collisionRange = 46.601
+metadata/_custom_type_script = "uid://jgxd8lob1aub"
 
-[node name="Asteroid6" parent="." unique_id=898511254 instance=ExtResource("4_x42e6")]
-position = Vector2(140, 224)
+[node name="Asteroid3" type="CharacterBody2D" parent="." unique_id=1747471966 groups=["space_object"]]
+position = Vector2(458, 903)
+script = ExtResource("3_x42e6")
+asteroidTexture = ExtResource("6_qxy0u")
+collisionRange = 46.601
+metadata/_custom_type_script = "uid://jgxd8lob1aub"
+
+[node name="Asteroid4" type="CharacterBody2D" parent="." unique_id=176433640 groups=["space_object"]]
+position = Vector2(1559, 886)
+script = ExtResource("3_x42e6")
+collisionRange = 46.601
+metadata/_custom_type_script = "uid://jgxd8lob1aub"
+
+[node name="Asteroid5" type="CharacterBody2D" parent="." unique_id=2009104836 groups=["space_object"]]
+position = Vector2(1556, 669)
+script = ExtResource("3_x42e6")
+collisionRange = 46.601
+metadata/_custom_type_script = "uid://jgxd8lob1aub"
+
+[node name="Asteroid6" type="CharacterBody2D" parent="." unique_id=1707929969 groups=["space_object"]]
+position = Vector2(1755.3563, -311.22723)
+script = ExtResource("3_x42e6")
+asteroidTexture = ExtResource("7_excbq")
+collisionRange = 46.601
+metadata/_custom_type_script = "uid://jgxd8lob1aub"
+
+[node name="Spatial_Station" parent="." unique_id=708156702 instance=ExtResource("8_s8va5")]
+position = Vector2(298, -64)

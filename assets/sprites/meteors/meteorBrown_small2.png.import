@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://uc6uh2lhcnlq"
-path="res://.godot/imported/spaceEffects_003.png-7f2ec22d5d474e150e169bd1113d682a.ctex"
+uid="uid://cu5ru3h6yv3ag"
+path="res://.godot/imported/meteorBrown_small2.png-8603afd28def5bab3ddcc3a85915f1c5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/spaceEffects_003.png"
-dest_files=["res://.godot/imported/spaceEffects_003.png-7f2ec22d5d474e150e169bd1113d682a.ctex"]
+source_file="res://assets/sprites/meteors/meteorBrown_small2.png"
+dest_files=["res://.godot/imported/meteorBrown_small2.png-8603afd28def5bab3ddcc3a85915f1c5.ctex"]
 
 [params]
 
