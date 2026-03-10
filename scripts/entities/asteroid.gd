@@ -3,7 +3,7 @@
 class_name Asteroid extends SpaceObject
 
 ## la texture de l'asterpod
-@export var asteroidTexture : Texture2D = preload("uid://blx2yg2hr7ojl") : set = set_sprite_asteroid
+@export var asteroidTexture : Texture2D = preload("res://ressources/default_asteroid_texture.tres") : set = set_sprite_asteroid
 
 ##la shape de colision de l'asterpod
 @export_range(0.0,200.0) var collisionRange := 46.5 : set = set_collision_range
