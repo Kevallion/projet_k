@@ -11,11 +11,13 @@ signal isInteracteChanged(bool)
 
 ##la shape de colision de l'asterpod
 @export_range(0.0,200.0) var collisionRange := 46.5 : set = set_collision_range
+@export var visualShowKey : VisualShowKey
 
 ##veiller à bien definir la taille de collision en fonctin [br]
 ##de la taille du sprite
 @onready var colisionShape := _create_colisionShape_2d()
 
+##variable pour savoir si on peu intéragir
 var canInteract := false
 
 func _create_colisionShape_2d() -> CollisionShape2D:
@@ -37,16 +39,28 @@ func _ready() -> void:
 
 func try_interact() -> void:
 	if canInteract:
+		if visualShowKey:
+			visualShowKey.play_animation_pressed()
 		do_interaction()
 
 func do_interaction() -> void:
 	pass
 	
 func _on_body_entered(body) -> void:
+	print("true")
 	canInteract = true
 	isInteracteChanged.emit(canInteract)
-	
+	if visualShowKey:
+		visualShowKey.show_key()
+		
 func _on_body_exited(body) -> void:
 	canInteract = false
 	isInteracteChanged.emit(canInteract)
-	
+	if visualShowKey:
+		visualShowKey.hide_key()
+		
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("action"):
+		try_interact()
+	elif event.is_action_released("action"):
+		visualShowKey.show_key()

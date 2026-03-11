@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://beogaxp2sglvj"]
+
+[ext_resource type="Texture2D" uid="uid://biy2fis3jb6fp" path="res://assets/sprites/sprite_keys/keyboard_e_outline.png" id="1_ls2q6"]
+[ext_resource type="Script" uid="uid://d1m0ysdp40fsx" path="res://scripts/sprite_key.gd" id="2_8hya0"]
+[ext_resource type="Texture2D" uid="uid://bxvf5i0ict0a3" path="res://assets/sprites/sprite_keys/keyboard_e.png" id="3_qcjgt"]
+
+[sub_resource type="Animation" id="Animation_558gj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1nr7v"]
+resource_name = "popping"
+length = 2.005
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.9666667),
+"transitions": PackedFloat32Array(0.46651655, 1, 2.378414),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 0.8), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qqrmg"]
+_data = {
+&"RESET": SubResource("Animation_558gj"),
+&"popping": SubResource("Animation_1nr7v")
+}
+
+[node name="visualShowKey" type="Sprite2D" unique_id=1251509380]
+modulate = Color(1, 1, 1, 0.62352943)
+texture = ExtResource("1_ls2q6")
+script = ExtResource("2_8hya0")
+defaultTexture = ExtResource("1_ls2q6")
+pressedTexture = ExtResource("3_qcjgt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=347974646]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_qqrmg")
+autoplay = &"popping"

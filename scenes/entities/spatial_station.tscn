@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bl3fyhie1diys" path="res://scripts/entities/spatial_station.gd" id="1_jkaye"]
 [ext_resource type="Texture2D" uid="uid://3bb0nch8o6ry" path="res://assets/sprites/spaceStation_022.png" id="2_648lx"]
-[ext_resource type="Script" uid="uid://5jvxyaiyaxt6" path="res://scripts/entities/interactable_area.gd" id="3_558gj"]
+[ext_resource type="Script" uid="uid://5jvxyaiyaxt6" path="res://scripts/ui/interactable_area.gd" id="3_558gj"]
+[ext_resource type="PackedScene" uid="uid://beogaxp2sglvj" path="res://scenes/ui/visual_show_key.tscn" id="4_648lx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6761a"]
 size = Vector2(172, 40)
@@ -16,6 +17,10 @@ texture = ExtResource("2_648lx")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=713957622]
 shape = SubResource("RectangleShape2D_6761a")
 
-[node name="interactable_area" type="Area2D" parent="." unique_id=634285613]
+[node name="interactable_area" type="Area2D" parent="." unique_id=634285613 node_paths=PackedStringArray("visualShowKey")]
 script = ExtResource("3_558gj")
-collisionRange = 126.5
+collisionRange = 108.199
+visualShowKey = NodePath("visualShowKey")
+
+[node name="visualShowKey" parent="interactable_area" unique_id=1251509380 instance=ExtResource("4_648lx")]
+position = Vector2(0, -56)
