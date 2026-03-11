@@ -6,7 +6,7 @@ var zoom_in
 var zoom_out
 
 const zoom_max = 10.0
-const zoom_min = 0.6
+const zoom_min = 0.7
 
 var screensize
 var largeur

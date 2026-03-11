@@ -8,13 +8,20 @@
 [ext_resource type="Script" uid="uid://jgxd8lob1aub" path="res://scripts/entities/asteroid.gd" id="5_oc4kc"]
 [ext_resource type="Texture2D" uid="uid://dt4jkuu2luw2b" path="res://assets/sprites/meteors/meteorGrey_small2.png" id="6_s8va5"]
 [ext_resource type="Script" uid="uid://c2sl5dggvfeu5" path="res://scripts/entities/planet.gd" id="8_dga24"]
-[ext_resource type="PackedScene" uid="uid://cbus4r2vum2hc" path="res://scenes/entities/spatial_station.tscn" id="10_qxy0u"]
+[ext_resource type="PackedScene" uid="uid://6n732bofyslr" path="res://scenes/ui/interface.tscn" id="10_excbq"]
+[ext_resource type="PackedScene" path="res://scenes/entities/spatial_station.tscn" id="10_qxy0u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6761a"]
-size = Vector2(1400, 1000)
+size = Vector2(2407, 1879)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nsrm0"]
-size = Vector2(1400, 1000)
+size = Vector2(2407, 1648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dga24"]
+size = Vector2(2407, 1927)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxy0u"]
+size = Vector2(2407, 1919.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sk5k4"]
 atlas = ExtResource("5_6761a")
@@ -1801,14 +1808,29 @@ position = Vector2(952, 226)
 script = ExtResource("3_x42e6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraAreaNode/CameraArea2D" unique_id=1471810508]
+position = Vector2(-503.5, 439.5)
 shape = SubResource("RectangleShape2D_6761a")
 
 [node name="CameraArea2D2" type="Area2D" parent="CameraAreaNode" unique_id=1705359594]
 script = ExtResource("3_x42e6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraAreaNode/CameraArea2D2" unique_id=1630562140]
-position = Vector2(0, -1020)
+position = Vector2(-503.5, -1344)
 shape = SubResource("RectangleShape2D_nsrm0")
+
+[node name="CameraArea2D3" type="Area2D" parent="CameraAreaNode" unique_id=1305078903]
+script = ExtResource("3_x42e6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraAreaNode/CameraArea2D3" unique_id=1176985881]
+position = Vector2(1925, -512.5)
+shape = SubResource("RectangleShape2D_dga24")
+
+[node name="CameraArea2D4" type="Area2D" parent="CameraAreaNode" unique_id=1035258892]
+script = ExtResource("3_x42e6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraAreaNode/CameraArea2D4" unique_id=1454922901]
+position = Vector2(1925, 1436.75)
+shape = SubResource("RectangleShape2D_qxy0u")
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=327953179]
 stream = ExtResource("4_x42e6")
@@ -1818,24 +1840,30 @@ parameters/looping = true
 [node name="Asteroid" type="CharacterBody2D" parent="." unique_id=467215900 groups=["space_object"]]
 position = Vector2(523, -95.04974)
 collision_layer = 2
+motion_mode = 1
+platform_on_leave = 2
+platform_floor_layers = 4294967040
 script = ExtResource("5_oc4kc")
 metadata/_custom_type_script = "uid://jgxd8lob1aub"
 
 [node name="Asteroid2" type="CharacterBody2D" parent="." unique_id=2047042607 groups=["space_object"]]
 position = Vector2(1351, -478)
 collision_layer = 2
+motion_mode = 1
 script = ExtResource("5_oc4kc")
 metadata/_custom_type_script = "uid://jgxd8lob1aub"
 
 [node name="Asteroid3" type="CharacterBody2D" parent="." unique_id=1676775816 groups=["space_object"]]
 position = Vector2(645, 310)
 collision_layer = 2
+motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("5_oc4kc")
 asteroidTexture = ExtResource("6_s8va5")
 metadata/_custom_type_script = "uid://jgxd8lob1aub"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1055201885]
+[node name="SunSprite" type="AnimatedSprite2D" parent="." unique_id=1055201885]
+z_index = -2
 texture_filter = 1
 position = Vector2(933, -944)
 sprite_frames = SubResource("SpriteFrames_r601b")
@@ -1843,6 +1871,7 @@ autoplay = "default"
 frame_progress = 0.09672816
 
 [node name="Planet" type="CharacterBody2D" parent="." unique_id=1163074045]
+z_index = -1
 position = Vector2(1330, 244)
 collision_layer = 0
 script = ExtResource("8_dga24")
@@ -1858,7 +1887,22 @@ shape = SubResource("CircleShape2D_excbq")
 position = Vector2(552, 124)
 collision_layer = 2
 
+[node name="Interface" parent="." unique_id=1016790414 instance=ExtResource("10_excbq")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 140.0
+offset_top = 389.0
+offset_right = 815.0
+offset_bottom = 852.0
+grow_horizontal = 1
+grow_vertical = 1
+
 [connection signal="body_entered" from="CameraAreaNode/CameraArea2D" to="CameraAreaNode/CameraArea2D" method="_on_body_entered"]
 [connection signal="body_exited" from="CameraAreaNode/CameraArea2D" to="CameraAreaNode/CameraArea2D" method="_on_body_exited"]
 [connection signal="body_entered" from="CameraAreaNode/CameraArea2D2" to="CameraAreaNode/CameraArea2D2" method="_on_body_entered"]
 [connection signal="body_exited" from="CameraAreaNode/CameraArea2D2" to="CameraAreaNode/CameraArea2D2" method="_on_body_exited"]
+[connection signal="body_entered" from="CameraAreaNode/CameraArea2D3" to="CameraAreaNode/CameraArea2D3" method="_on_body_entered"]
+[connection signal="body_exited" from="CameraAreaNode/CameraArea2D3" to="CameraAreaNode/CameraArea2D3" method="_on_body_exited"]
+[connection signal="body_entered" from="CameraAreaNode/CameraArea2D4" to="CameraAreaNode/CameraArea2D4" method="_on_body_entered"]
+[connection signal="body_exited" from="CameraAreaNode/CameraArea2D4" to="CameraAreaNode/CameraArea2D4" method="_on_body_exited"]
