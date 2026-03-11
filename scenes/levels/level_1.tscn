@@ -1846,6 +1846,22 @@ script = ExtResource("3_x42e6")
 position = Vector2(0, -1020)
 shape = SubResource("RectangleShape2D_nsrm0")
 
+[node name="CameraArea2D3" type="Area2D" parent="CameraAreaNode" unique_id=1519536886]
+position = Vector2(-1419, 0)
+script = ExtResource("3_x42e6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraAreaNode/CameraArea2D3" unique_id=1244124639]
+position = Vector2(0, -1020)
+shape = SubResource("RectangleShape2D_nsrm0")
+
+[node name="CameraArea2D4" type="Area2D" parent="CameraAreaNode" unique_id=242141584]
+position = Vector2(-1419, 1015)
+script = ExtResource("3_x42e6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraAreaNode/CameraArea2D4" unique_id=705450235]
+position = Vector2(0, -1020)
+shape = SubResource("RectangleShape2D_nsrm0")
+
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=327953179]
 stream = ExtResource("4_x42e6")
 autoplay = true
@@ -1923,17 +1939,6 @@ shape = SubResource("CircleShape2D_dnkej")
 [node name="Planet" parent="." unique_id=1040834349 instance=ExtResource("9_dga24")]
 position = Vector2(1373, 310)
 attractionRange = 873.832
-
-[node name="Interface" parent="." unique_id=1016790414 instance=ExtResource("10_excbq")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 140.0
-offset_top = 389.0
-offset_right = 815.0
-offset_bottom = 852.0
-grow_horizontal = 1
-grow_vertical = 1
 
 [connection signal="body_entered" from="CameraAreaNode/CameraArea2D" to="CameraAreaNode/CameraArea2D" method="_on_body_entered"]
 [connection signal="body_exited" from="CameraAreaNode/CameraArea2D" to="CameraAreaNode/CameraArea2D" method="_on_body_exited"]
