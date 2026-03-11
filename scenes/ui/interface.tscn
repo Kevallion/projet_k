@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://6n732bofyslr"]
+
+[ext_resource type="Script" uid="uid://drh7r68clxrjb" path="res://scripts/ui/interface.gd" id="1_nv1a2"]
+[ext_resource type="PackedScene" uid="uid://dpb45y2nb8djb" path="res://scenes/entities/player.tscn" id="2_vexwb"]
+[ext_resource type="Texture2D" uid="uid://b15sah8sml0lp" path="res://assets/sprites/ship_modele.png" id="3_p2ypj"]
+[ext_resource type="Shader" uid="uid://itavaovhyogu" path="res://shaders/hologram.gdshader" id="3_rmlgn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rmlgn"]
+shader = ExtResource("3_rmlgn")
+shader_parameter/color = Color(0.51, 0.77950007, 1, 0.43529412)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p2ypj"]
+shader = ExtResource("3_rmlgn")
+shader_parameter/color = Color(0.62352943, 0.88235295, 1, 1)
+
+[node name="Interface" type="Control" unique_id=1016790414]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 6.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nv1a2")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1734603017]
+
+[node name="FuelBar" type="ProgressBar" parent="CanvasLayer" unique_id=47588709]
+modulate = Color(0.56318444, 0.3366921, 0.98882896, 1)
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = 688.0
+offset_right = -967.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1000.0
+value = 500.0
+show_percentage = false
+
+[node name="LifeBar" type="ProgressBar" parent="CanvasLayer" unique_id=1068024868]
+modulate = Color(0.09320182, 0.93670046, 0.050708726, 1)
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = 676.0
+offset_right = -967.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1000.0
+value = 1000.0
+show_percentage = false
+
+[node name="Ghost" type="Sprite2D" parent="CanvasLayer" unique_id=1765988736]
+visible = false
+material = SubResource("ShaderMaterial_rmlgn")
+position = Vector2(80, 600)
+scale = Vector2(0.19025522, 0.15061295)
+texture = ExtResource("3_p2ypj")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="CanvasLayer" unique_id=273823413]
+position = Vector2(277, 540)
+
+[node name="Player" parent="CanvasLayer" unique_id=632786190 instance=ExtResource("2_vexwb")]
+modulate = Color(0.6745098, 0.84705883, 0.827451, 1)
+z_index = -1
+material = SubResource("ShaderMaterial_p2ypj")
+position = Vector2(80, 600)
+scale = Vector2(2.9999998, 3)

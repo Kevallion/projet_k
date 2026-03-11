@@ -1,13 +1,13 @@
 class_name Player extends CharacterBody2D
 
-@onready var sprite = $AnimatedSprite2D
-@onready var forward = $AnimatedSprite2D/Direction
+@onready var sprite = $Sprite2D
+@onready var forward = $Sprite2D/Direction
 @onready var camera =  $Camera2D
-@onready var reactorCenterSprite = $AnimatedSprite2D/ReactorCenterSprite
-@onready var reactorLeftSprite = $AnimatedSprite2D/ReactorLeftSprite
-@onready var reactorRightSprite = $AnimatedSprite2D/ReactorRightSprite
-@onready var reactorFrontLeftSprite = $AnimatedSprite2D/ReactorFrontLeftSprite
-@onready var reactorFrontRightSprite = $AnimatedSprite2D/ReactorFrontRightSprite
+@onready var reactorCenterSprite = $Sprite2D/ReactorCenterSprite
+@onready var reactorLeftSprite = $Sprite2D/ReactorLeftSprite
+@onready var reactorRightSprite = $Sprite2D/ReactorRightSprite
+@onready var reactorFrontLeftSprite = $Sprite2D/ReactorFrontLeftSprite
+@onready var reactorFrontRightSprite = $Sprite2D/ReactorFrontRightSprite
 @onready var outOfBound = $OutOfBound
 
 @export_group("custom physique")
@@ -19,9 +19,11 @@ var externalForce := Vector2.ZERO
 ## vitesse maximal du vaisseau
 @export var maxSpeed := 300.0
 
-var gas = 1000.0;
-var maxGas = 1000.0;
+var gas = 5000.0;
+var maxGas = 5000.0;
 var gasExpense = 1;
+var maxHealth = 1000
+var health = 1000
 
 var speed = 1
 var rotationForce = 0.01
@@ -40,6 +42,16 @@ func _physics_process(_delta: float) -> void:
 	basic_mouvements()
 	velocity += externalForce * _delta
 	move_and_slide()
+	
+	# Dégats de collision #
+	var collision_info = move_and_collide(velocity * _delta)
+	if collision_info and $InvulFrames.is_stopped():
+		health -= 100
+		velocity = velocity.bounce(collision_info.get_normal())*0.3
+		$InvulFrames.start()
+		
+	if health <= 0 or gas <= 0:
+		death()
 	
 func basic_mouvements():
 	## Vecteur de direction en face du Player
