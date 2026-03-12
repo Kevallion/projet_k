@@ -7,17 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://ck76jflr3pr3x" path="res://assets/sprites/reactor_anim2.png" id="4_ss7kx"]
 [ext_resource type="Texture2D" uid="uid://dy1c75gh5ft5c" path="res://assets/sprites/reactor_anim3.png" id="5_dnykm"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_x42e6"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_1ie0h")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_c5rqy"]
 animations = [{
 "frames": [{
@@ -64,25 +53,27 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6761a"]
-radius = 10.049875
+radius = 16.03122
 
 [node name="Player" type="CharacterBody2D" unique_id=632786190 groups=["player"]]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_08t41")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=286898136]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1203606169]
 texture_filter = 1
 position = Vector2(0, -1)
-scale = Vector2(0.08, 0.08)
-sprite_frames = SubResource("SpriteFrames_x42e6")
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_1ie0h")
 
-[node name="ReactorCenterSprite" type="AnimatedSprite2D" parent="AnimatedSprite2D" unique_id=1418739909]
+[node name="ReactorCenterSprite" type="AnimatedSprite2D" parent="Sprite2D" unique_id=1418739909]
 position = Vector2(0, 430.99997)
 scale = Vector2(1.5962962, 1.4810998)
 sprite_frames = SubResource("SpriteFrames_c5rqy")
 autoplay = "default"
 frame_progress = 0.64759505
 
-[node name="ReactorLeftSprite" type="AnimatedSprite2D" parent="AnimatedSprite2D" unique_id=2144913014]
+[node name="ReactorLeftSprite" type="AnimatedSprite2D" parent="Sprite2D" unique_id=2144913014]
 position = Vector2(0, 23.944427)
 rotation = 0.6165861
 scale = Vector2(1.5962962, 1.4810998)
@@ -92,33 +83,32 @@ frame = 2
 frame_progress = 0.20424303
 offset = Vector2(0, 274.83328)
 
-[node name="ReactorRightSprite" type="AnimatedSprite2D" parent="AnimatedSprite2D" unique_id=370119906]
+[node name="ReactorRightSprite" type="AnimatedSprite2D" parent="Sprite2D" unique_id=370119906]
 position = Vector2(0, 23.944427)
-rotation = -0.6107521
-scale = Vector2(1.5962962, 1.4810998)
+rotation = -0.61075217
+scale = Vector2(1.5962961, 1.4810998)
 sprite_frames = SubResource("SpriteFrames_c5rqy")
 autoplay = "default"
 frame = 1
 frame_progress = 0.072116725
 offset = Vector2(0, 274.83328)
 
-[node name="ReactorFrontLeftSprite" type="AnimatedSprite2D" parent="AnimatedSprite2D" unique_id=1290123244]
+[node name="ReactorFrontLeftSprite" type="AnimatedSprite2D" parent="Sprite2D" unique_id=1290123244]
 position = Vector2(-164.18066, -119.72221)
-rotation = 3.1415927
+rotation = -3.1415925
 scale = Vector2(1.5200614, 0.8940159)
 sprite_frames = SubResource("SpriteFrames_d4qa6")
 autoplay = "default"
 
-[node name="ReactorFrontRightSprite" type="AnimatedSprite2D" parent="AnimatedSprite2D" unique_id=586215503]
+[node name="ReactorFrontRightSprite" type="AnimatedSprite2D" parent="Sprite2D" unique_id=586215503]
 position = Vector2(160, -119.722)
-rotation = 3.1415927
-scale = Vector2(-1.52, 0.894)
+scale = Vector2(1.52, -0.894)
 sprite_frames = SubResource("SpriteFrames_ss7kx")
 autoplay = "default"
 frame = 1
 frame_progress = 0.83219194
 
-[node name="Direction" type="Marker2D" parent="AnimatedSprite2D" unique_id=391048836]
+[node name="Direction" type="Marker2D" parent="Sprite2D" unique_id=391048836]
 position = Vector2(0, -1000)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1511500289]
@@ -131,6 +121,11 @@ position_smoothing_enabled = true
 script = ExtResource("3_1ie0h")
 
 [node name="OutOfBound" type="Timer" parent="." unique_id=1972936815]
+wait_time = 3.0
+one_shot = true
+
+[node name="InvulFrames" type="Timer" parent="." unique_id=1518472067]
+wait_time = 2.0
 one_shot = true
 
 [connection signal="timeout" from="OutOfBound" to="." method="_on_out_of_bound_timeout"]
