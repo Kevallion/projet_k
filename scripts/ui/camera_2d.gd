@@ -38,18 +38,18 @@ func zooming_process():
 	elif zoom_in:
 		set_zoom(zoom * (Vector2.ONE + zoom_factor))
 		
-		
 	zoom.x = clampf(zoom.x, zoom_min, zoom_max)
 	zoom.y = clampf(zoom.y, zoom_min, zoom_max)
 		
-	#if (global_position.x - (largeur/2)) < limit_left:
-		#global_position.x=limit_left+(largeur/2)
-	#if (global_position.x + (largeur/2)) > limit_right:
-		#global_position.x=limit_right-(largeur/2)
-	#if (global_position.y - (hauteur/2)) < limit_top:
-		#global_position.y=limit_top+(hauteur/2)
-	#if (global_position.y + (hauteur/2)) > limit_bottom:
-		#global_position.y=limit_bottom-(hauteur/2)
+	# Permet de positionner la caméra en bord d'écran
+	if (global_position.x - (largeur/2)) < limit_left:
+		global_position.x=limit_left+(largeur/2)
+	if (global_position.x + (largeur/2)) > limit_right:
+		global_position.x=limit_right-(largeur/2)
+	if (global_position.y - (hauteur/2)) < limit_top:
+		global_position.y=limit_top+(hauteur/2)
+	if (global_position.y + (hauteur/2)) > limit_bottom:
+		global_position.y=limit_bottom-(hauteur/2)
 
 func move_camera():
 	if get_tree().paused:
@@ -70,7 +70,7 @@ func move_camera():
 		position.y = 0
 	
 func _on_camera_area_changed(areaShape: CollisionShape2D):
-	var marge = 10
+	var marge = 20
 	limit_left = (areaShape.global_position.x - areaShape.shape.size.x / 2) - marge
 	limit_right = (areaShape.global_position.x + areaShape.shape.size.x / 2) + marge
 	limit_bottom = (areaShape.global_position.y + areaShape.shape.size.y / 2) + marge

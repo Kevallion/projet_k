@@ -53,7 +53,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6761a"]
-radius = 8.0
+radius = 16.03122
 
 [node name="Player" type="CharacterBody2D" unique_id=632786190 groups=["player"]]
 collision_layer = 3
@@ -63,7 +63,7 @@ script = ExtResource("1_08t41")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1203606169]
 texture_filter = 1
 position = Vector2(0, -1)
-scale = Vector2(0.041763343, 0.041763343)
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_1ie0h")
 
 [node name="ReactorCenterSprite" type="AnimatedSprite2D" parent="Sprite2D" unique_id=1418739909]
@@ -121,6 +121,7 @@ position_smoothing_enabled = true
 script = ExtResource("3_1ie0h")
 
 [node name="OutOfBound" type="Timer" parent="." unique_id=1972936815]
+wait_time = 3.0
 one_shot = true
 
 [node name="InvulFrames" type="Timer" parent="." unique_id=1518472067]

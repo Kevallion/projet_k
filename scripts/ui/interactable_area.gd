@@ -25,7 +25,6 @@ func _create_colisionShape_2d() -> CollisionShape2D:
 	collisionShape.shape = CircleShape2D.new()
 	collisionShape.shape.radius = collisionRange
 	return collisionShape
-
 	
 func set_collision_range(new_value) -> void:
 	collisionRange = new_value
@@ -44,16 +43,17 @@ func try_interact() -> void:
 		do_interaction()
 
 func do_interaction() -> void:
+	print("Interract area")
 	pass
 	
-func _on_body_entered(body) -> void:
+func _on_body_entered(_body) -> void:
 	print("true")
 	canInteract = true
 	isInteracteChanged.emit(canInteract)
 	if visualShowKey:
 		visualShowKey.show_key()
 		
-func _on_body_exited(body) -> void:
+func _on_body_exited(_body) -> void:
 	canInteract = false
 	isInteracteChanged.emit(canInteract)
 	if visualShowKey:

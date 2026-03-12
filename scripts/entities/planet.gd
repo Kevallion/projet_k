@@ -63,7 +63,7 @@ func _ready() -> void:
 		return
 	attraction_area.body_entered.connect(_on_body_entered)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if attraction_area.has_overlapping_bodies():
 		for body in attraction_area.get_overlapping_bodies():
 			if body is Player:

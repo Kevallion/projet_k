@@ -18,8 +18,8 @@ var externalForce := Vector2.ZERO
 ## vitesse maximal du vaisseau
 @export var maxSpeed := 300.0
 
-var gas = 5000.0;
-var maxGas = 5000.0;
+var gas = 2000.0;
+var maxGas = 2000.0;
 var gasExpense = 1;
 var maxHealth = 1000
 var health = 1000
@@ -32,7 +32,7 @@ var centerReactorActif = false
 var rightReactorActif = false
 
 var respawnPosition = Vector2.ZERO
-var respawnRotation
+var respawnRotation = 0
 var holdingTime = 0
 
 func _physics_process(_delta: float) -> void:
@@ -48,9 +48,8 @@ func _physics_process(_delta: float) -> void:
 		health -= 100
 		velocity = velocity.bounce(collision_info.get_normal())*0.3
 		$InvulFrames.start()
-		
-	if health <= 0 or gas <= 0:
-		death()
+	
+	checkVitals()
 	
 func basic_mouvements():
 	## Vecteur de direction en face du Player
@@ -130,17 +129,24 @@ func basic_mouvements():
 	velocity.x = clampf(velocity.x, -maxSpeed, maxSpeed)
 	velocity.y = clampf(velocity.y, -maxSpeed, maxSpeed)
 
-
-
 func add_force(force: Vector2) -> void:
 	externalForce += force / mass
 
 func consume_gas(spent):
 	gas -= spent
 	
+func checkVitals():
+	if health <= 0 or gas <= 0:
+		death()
+	var marge = 50
+	if position.x + marge < camera.limit_left or position.x - marge > camera.limit_right or position.y - marge > camera.limit_bottom or position.y + marge < camera.limit_top:
+		if outOfBound.is_stopped():
+			outOfBound.start()
+	
 func death():
 	position = respawnPosition
-	sprite.rotation = respawnRotation
+	if sprite:
+		sprite.rotation = respawnRotation
 	velocity = Vector2.ZERO
 	rotationDirection = 0
 	health = maxHealth
@@ -149,3 +155,9 @@ func death():
 	
 func _on_out_of_bound_timeout() -> void:
 	death()
+
+func refillGas():
+	gas = maxGas
+	
+func getSpriteTween():
+	return sprite.create_tween()
