@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bgykt0nr7vqcm" path="res://assets/sprites/reactor_anim1.png" id="4_ivwlv"]
 [ext_resource type="Texture2D" uid="uid://ck76jflr3pr3x" path="res://assets/sprites/reactor_anim2.png" id="5_erumi"]
 [ext_resource type="Texture2D" uid="uid://dy1c75gh5ft5c" path="res://assets/sprites/reactor_anim3.png" id="6_7q06a"]
-[ext_resource type="Shader" path="res://ressources/hologram.tres" id="7_erumi"]
+[ext_resource type="Shader" uid="uid://hf21dtn8ifor" path="res://ressources/hologram.tres" id="7_erumi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rmlgn"]
 shader = ExtResource("3_rmlgn")
@@ -107,6 +107,22 @@ max_value = 1000.0
 value = 1000.0
 show_percentage = false
 
+[node name="EnergieBar" type="ProgressBar" parent="CanvasLayer" unique_id=388513115]
+modulate = Color(1, 0.9607843, 0.06666667, 1)
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = 663.0
+offset_right = -967.0
+offset_bottom = -45.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1000.0
+value = 1000.0
+show_percentage = false
+
 [node name="Ghost" type="Sprite2D" parent="CanvasLayer" unique_id=1765988736]
 material = SubResource("ShaderMaterial_rmlgn")
 position = Vector2(170, 570)
@@ -159,6 +175,7 @@ sprite_frames = SubResource("SpriteFrames_u45sw")
 autoplay = "default"
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer" unique_id=2086320060]
+visible = false
 material = SubResource("ShaderMaterial_7q06a")
 position = Vector2(636, 408)
 texture = ExtResource("3_p2ypj")

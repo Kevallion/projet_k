@@ -2,6 +2,7 @@ extends Control
 
 @onready var fuel = $CanvasLayer/FuelBar
 @onready var life = $CanvasLayer/LifeBar
+@onready var energy = $CanvasLayer/EnergieBar
 @onready var player = get_parent().get_node("Player")
 
 @onready var ghost = $CanvasLayer/Ghost

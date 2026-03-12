@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://dpb45y2nb8djb" path="res://scenes/entities/player.tscn" id="1_6iamk"]
 [ext_resource type="PackedScene" uid="uid://cadr3m84lh1ya" path="res://scenes/entities/background.tscn" id="2_dga24"]
-[ext_resource type="Texture2D" uid="uid://dys4vx6k52lko" path="res://assets/sprites/space_background.png" id="3_nsrm0"]
 [ext_resource type="Script" uid="uid://bmppbil7kx440" path="res://scripts/ui/camera_area_2d.gd" id="3_x42e6"]
+[ext_resource type="PackedScene" uid="uid://bg2epnmep8od2" path="res://scenes/levels/parallax_node.tscn" id="4_mm8aj"]
 [ext_resource type="AudioStream" uid="uid://drm1str7chls" path="res://assets/audio/music/Space 1.mp3" id="4_x42e6"]
 [ext_resource type="Texture2D" uid="uid://cffjnt6mm0lu4" path="res://assets/sprites/3261219552.png" id="5_6761a"]
 [ext_resource type="PackedScene" uid="uid://dhpmc6rc1ento" path="res://scenes/entities/asteroid.tscn" id="5_s8va5"]
@@ -1779,7 +1779,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_mm8aj"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_dnkej"]
 resource_local_to_scene = true
 radius = 61.765
 
@@ -1793,20 +1793,6 @@ motion_mode = 1
 [node name="backGround" parent="." unique_id=1670201285 node_paths=PackedStringArray("target_node") instance=ExtResource("2_dga24")]
 layer = -1
 target_node = NodePath("../Player")
-
-[node name="ParallaxNode" type="Node2D" parent="." unique_id=1992718094]
-visible = false
-z_index = -1000
-position = Vector2(625, 103)
-
-[node name="Parallax2D" type="Parallax2D" parent="ParallaxNode" unique_id=214604991]
-repeat_size = Vector2(620, 620)
-repeat_times = 3
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxNode/Parallax2D" unique_id=1257558360]
-visible = false
-texture_filter = 1
-texture = ExtResource("3_nsrm0")
 
 [node name="CameraAreaNode" type="Node2D" parent="." unique_id=145603353]
 position = Vector2(952, 226)
@@ -1832,6 +1818,10 @@ script = ExtResource("3_x42e6")
 position = Vector2(-1429, -1020)
 shape = SubResource("RectangleShape2D_nsrm0")
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CameraAreaNode/CameraArea2D3" unique_id=2068504671]
+position = Vector2(0, -1020)
+shape = SubResource("RectangleShape2D_nsrm0")
+
 [node name="CameraArea2D4" type="Area2D" parent="CameraAreaNode" unique_id=242141584]
 script = ExtResource("3_x42e6")
 
@@ -1839,21 +1829,19 @@ script = ExtResource("3_x42e6")
 position = Vector2(-1429, 7)
 shape = SubResource("RectangleShape2D_nsrm0")
 
-[node name="CameraArea2D3" type="Area2D" parent="CameraAreaNode" unique_id=1519536886]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CameraAreaNode/CameraArea2D4" unique_id=2057257909]
+position = Vector2(0, -1020)
+shape = SubResource("RectangleShape2D_nsrm0")
+
+[node name="CameraArea2D5" type="Area2D" parent="CameraAreaNode" unique_id=876760332]
 position = Vector2(-1419, 0)
 script = ExtResource("3_x42e6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraAreaNode/CameraArea2D3" unique_id=1244124639]
-position = Vector2(0, -1020)
-shape = SubResource("RectangleShape2D_nsrm0")
-
-[node name="CameraArea2D4" type="Area2D" parent="CameraAreaNode" unique_id=242141584]
+[node name="CameraArea2D6" type="Area2D" parent="CameraAreaNode" unique_id=2044253329]
 position = Vector2(-1419, 1015)
 script = ExtResource("3_x42e6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraAreaNode/CameraArea2D4" unique_id=705450235]
-position = Vector2(0, -1020)
-shape = SubResource("RectangleShape2D_nsrm0")
+[node name="ParallaxNode" parent="." unique_id=1626307729 instance=ExtResource("4_mm8aj")]
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=327953179]
 stream = ExtResource("4_x42e6")
@@ -1927,7 +1915,7 @@ collisionRange = 30.864
 pushZoneRange = 61.765
 
 [node name="CollisionShape2D" parent="Asteroid4/pushZone" parent_id_path=PackedInt32Array(956945604, 1457056112) index="0" unique_id=575047982]
-shape = SubResource("CircleShape2D_mm8aj")
+shape = SubResource("CircleShape2D_dnkej")
 
 [node name="Planet" parent="." unique_id=1040834349 instance=ExtResource("9_dga24")]
 z_index = -2
