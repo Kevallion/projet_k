@@ -15,6 +15,7 @@ class_name Player extends CharacterBody2D
 @export var forceDrag := 5.0
 var externalForce := Vector2.ZERO
 
+
 ## vitesse maximal du vaisseau
 @export var maxSpeed := 300.0
 
@@ -149,8 +150,6 @@ func death():
 		sprite.rotation = respawnRotation
 	velocity = Vector2.ZERO
 	rotationDirection = 0
-	health = maxHealth
-	gas = maxGas
 	externalForce = Vector2.ZERO
 	
 func _on_out_of_bound_timeout() -> void:
