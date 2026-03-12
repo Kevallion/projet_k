@@ -134,6 +134,9 @@ func _on_body_exited(body) -> void:
 ## Gestion de l'input global pour déclencher l'interaction
 func _unhandled_input(event: InputEvent) -> void:
 	
+	if not canInteract:
+		return
+	
 	## touche d'action pressée
 	if event.is_action_pressed("action"):
 		try_interact()
@@ -141,3 +144,5 @@ func _unhandled_input(event: InputEvent) -> void:
 	## touche relâchée
 	elif event.is_action_released("action"):
 		visualShowKey.show_key()
+		get_viewport().set_input_as_handled()
+	

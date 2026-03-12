@@ -33,7 +33,7 @@ var rightReactorActif = false
 var respawnPosition = Vector2.ZERO
 var respawnRotation
 var holdingTime = 0
-
+var energie := 20000.0
 func _physics_process(_delta: float) -> void:
 	#on réduit les forces externe
 	externalForce = externalForce.lerp(Vector2.ZERO, forceDrag * _delta)
