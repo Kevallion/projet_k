@@ -137,26 +137,35 @@ func consume_gas(spent):
 	gas -= spent
 	
 func checkVitals():
-	if health <= 0 or gas <= 0:
-		death()
+	if health <= 0:
+		gameOver()
+	if gas <= 0:
+		respawn()
 	var marge = 50
 	if position.x + marge < camera.limit_left or position.x - marge > camera.limit_right or position.y - marge > camera.limit_bottom or position.y + marge < camera.limit_top:
 		if outOfBound.is_stopped():
 			outOfBound.start()
 	
-func death():
+func respawn():
 	position = respawnPosition
 	if sprite:
 		sprite.rotation = respawnRotation
 	velocity = Vector2.ZERO
 	rotationDirection = 0
 	externalForce = Vector2.ZERO
+	gas = maxGas
 	
 func _on_out_of_bound_timeout() -> void:
-	death()
+	respawn()
 
 func refillGas():
 	gas = maxGas
+	respawnPosition = position
 	
 func getSpriteTween():
 	return sprite.create_tween()
+	
+func gameOver():
+	respawnPosition = Vector2.ZERO
+	health = maxHealth
+	respawn()

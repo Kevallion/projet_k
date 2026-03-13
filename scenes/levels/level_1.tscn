@@ -13,13 +13,22 @@
 [ext_resource type="Texture2D" uid="uid://5dg8cngrcht3" path="res://assets/sprites/meteors/spaceMeteors_Big.png" id="10_mm8aj"]
 [ext_resource type="PackedScene" uid="uid://cbus4r2vum2hc" path="res://scenes/entities/spatial_station.tscn" id="10_qxy0u"]
 [ext_resource type="Texture2D" uid="uid://cu5ru3h6yv3ag" path="res://assets/sprites/meteors/meteorBrown_small2.png" id="11_wtwp4"]
-[ext_resource type="PackedScene" uid="uid://b6tp2j17iwkym" path="res://scenes/ui/interface.tscn" id="14_mm8aj"]
+[ext_resource type="PackedScene" uid="uid://6n732bofyslr" path="res://scenes/ui/interface.tscn" id="14_mm8aj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6761a"]
 size = Vector2(2600, 1800)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nsrm0"]
 size = Vector2(1400, 1000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mm8aj"]
+size = Vector2(3051, 2273)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wtwp4"]
+size = Vector2(3039, 2384)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iwr0g"]
+size = Vector2(2817, 994)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sk5k4"]
 atlas = ExtResource("5_6761a")
@@ -1786,7 +1795,7 @@ radius = 61.765
 [node name="Level1" type="Node2D" unique_id=708747007]
 
 [node name="Player" parent="." unique_id=632786190 instance=ExtResource("1_6iamk")]
-position = Vector2(149, -340)
+position = Vector2(-59, 149)
 collision_mask = 5
 motion_mode = 1
 
@@ -1829,38 +1838,37 @@ shape = SubResource("RectangleShape2D_nsrm0")
 script = ExtResource("3_x42e6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraAreaNode/CameraArea2D3" unique_id=1244124639]
-position = Vector2(-1429, -1020)
-shape = SubResource("RectangleShape2D_nsrm0")
+position = Vector2(-2254.5, -1656.5)
+shape = SubResource("RectangleShape2D_mm8aj")
 
 [node name="CameraArea2D4" type="Area2D" parent="CameraAreaNode" unique_id=242141584]
 script = ExtResource("3_x42e6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraAreaNode/CameraArea2D4" unique_id=705450235]
-position = Vector2(-1429, 7)
-shape = SubResource("RectangleShape2D_nsrm0")
+position = Vector2(-2248.5, 699)
+shape = SubResource("RectangleShape2D_wtwp4")
 
-[node name="CameraArea2D3" type="Area2D" parent="CameraAreaNode" unique_id=1519536886]
-position = Vector2(-1419, 0)
+[node name="CameraArea2D5" type="Area2D" parent="CameraAreaNode" unique_id=1202078]
 script = ExtResource("3_x42e6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraAreaNode/CameraArea2D3" unique_id=1244124639]
-position = Vector2(0, -1020)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraAreaNode/CameraArea2D5" unique_id=859362096]
+position = Vector2(1419, -1020)
 shape = SubResource("RectangleShape2D_nsrm0")
 
-[node name="CameraArea2D4" type="Area2D" parent="CameraAreaNode" unique_id=242141584]
-position = Vector2(-1419, 1015)
+[node name="CameraArea2D6" type="Area2D" parent="CameraAreaNode" unique_id=1877209156]
 script = ExtResource("3_x42e6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraAreaNode/CameraArea2D4" unique_id=705450235]
-position = Vector2(0, -1020)
-shape = SubResource("RectangleShape2D_nsrm0")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraAreaNode/CameraArea2D6" unique_id=851632574]
+position = Vector2(710.5, -2038)
+shape = SubResource("RectangleShape2D_iwr0g")
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=327953179]
 stream = ExtResource("4_x42e6")
 autoplay = true
 parameters/looping = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1055201885]
+[node name="SunSprite" type="AnimatedSprite2D" parent="." unique_id=1055201885]
+z_index = -2
 texture_filter = 1
 position = Vector2(933, -944)
 sprite_frames = SubResource("SpriteFrames_r601b")
@@ -1938,10 +1946,9 @@ attractionRange = 873.832
 
 [connection signal="body_entered" from="CameraAreaNode/CameraArea2D" to="CameraAreaNode/CameraArea2D" method="_on_body_entered"]
 [connection signal="body_entered" from="CameraAreaNode/CameraArea2D2" to="CameraAreaNode/CameraArea2D2" method="_on_body_entered"]
-[connection signal="body_exited" from="CameraAreaNode/CameraArea2D2" to="CameraAreaNode/CameraArea2D2" method="_on_body_exited"]
 [connection signal="body_entered" from="CameraAreaNode/CameraArea2D3" to="CameraAreaNode/CameraArea2D3" method="_on_body_entered"]
-[connection signal="body_exited" from="CameraAreaNode/CameraArea2D3" to="CameraAreaNode/CameraArea2D3" method="_on_body_exited"]
 [connection signal="body_entered" from="CameraAreaNode/CameraArea2D4" to="CameraAreaNode/CameraArea2D4" method="_on_body_entered"]
-[connection signal="body_exited" from="CameraAreaNode/CameraArea2D4" to="CameraAreaNode/CameraArea2D4" method="_on_body_exited"]
+[connection signal="body_entered" from="CameraAreaNode/CameraArea2D5" to="CameraAreaNode/CameraArea2D5" method="_on_body_entered"]
+[connection signal="body_entered" from="CameraAreaNode/CameraArea2D6" to="CameraAreaNode/CameraArea2D6" method="_on_body_entered"]
 
 [editable path="Asteroid4"]

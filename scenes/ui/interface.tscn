@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://b6tp2j17iwkym"]
+[gd_scene format=3 uid="uid://6n732bofyslr"]
 
 [ext_resource type="Script" uid="uid://drh7r68clxrjb" path="res://scripts/ui/interface.gd" id="1_nv1a2"]
 [ext_resource type="Texture2D" uid="uid://b15sah8sml0lp" path="res://assets/sprites/ship_modele.png" id="3_p2ypj"]
@@ -6,11 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://bgykt0nr7vqcm" path="res://assets/sprites/reactor_anim1.png" id="4_ivwlv"]
 [ext_resource type="Texture2D" uid="uid://ck76jflr3pr3x" path="res://assets/sprites/reactor_anim2.png" id="5_erumi"]
 [ext_resource type="Texture2D" uid="uid://dy1c75gh5ft5c" path="res://assets/sprites/reactor_anim3.png" id="6_7q06a"]
-[ext_resource type="Shader" path="res://ressources/hologram.tres" id="7_erumi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rmlgn"]
 shader = ExtResource("3_rmlgn")
-shader_parameter/color = Color(0.45533067, 0.6302477, 1, 0.48200002)
+shader_parameter/color = Color(0.47000003, 0.91166663, 1, 0.627451)
+shader_parameter/glow_color = Color(0.17542034, 0.8650532, 1, 1)
+shader_parameter/scan_position = 0.7890000137275
+shader_parameter/scan_width = 0.05
+shader_parameter/glow_strength = 10.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ivwlv"]
 
@@ -59,9 +62,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7q06a"]
-shader = ExtResource("7_erumi")
-
 [node name="Interface" type="Control" unique_id=1016790414]
 layout_mode = 3
 anchors_preset = 15
@@ -107,22 +107,23 @@ max_value = 1000.0
 value = 1000.0
 show_percentage = false
 
-[node name="Ghost" type="Sprite2D" parent="CanvasLayer" unique_id=1765988736]
+[node name="Ghost" type="Sprite2D" parent="CanvasLayer" unique_id=473116313]
 material = SubResource("ShaderMaterial_rmlgn")
 position = Vector2(170, 570)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("3_p2ypj")
 
-[node name="ReactorCenterSprite" type="AnimatedSprite2D" parent="CanvasLayer/Ghost" unique_id=815611938]
-self_modulate = Color(1, 1, 1, 0.446)
+[node name="ReactorCenterSprite" type="AnimatedSprite2D" parent="CanvasLayer/Ghost" unique_id=637843830]
+self_modulate = Color(0.6398616, 0.9247982, 1, 0.44705883)
 material = SubResource("ShaderMaterial_ivwlv")
-position = Vector2(0, 430.99997)
+position = Vector2(-5.00002, 89.99988)
 scale = Vector2(1.5962962, 1.4810998)
 sprite_frames = SubResource("SpriteFrames_gt0ke")
 autoplay = "default"
+offset = Vector2(3.1322632, 230.23438)
 
-[node name="ReactorLeftSprite" type="AnimatedSprite2D" parent="CanvasLayer/Ghost" unique_id=805661476]
-self_modulate = Color(1, 1, 1, 0.446)
+[node name="ReactorLeftSprite" type="AnimatedSprite2D" parent="CanvasLayer/Ghost" unique_id=1004972322]
+self_modulate = Color(0.6398616, 0.9247982, 1, 0.44705883)
 material = SubResource("ShaderMaterial_ivwlv")
 position = Vector2(0, 23.944427)
 rotation = 0.6165861
@@ -131,8 +132,8 @@ sprite_frames = SubResource("SpriteFrames_gt0ke")
 autoplay = "default"
 offset = Vector2(0, 274.83328)
 
-[node name="ReactorRightSprite" type="AnimatedSprite2D" parent="CanvasLayer/Ghost" unique_id=1818797576]
-self_modulate = Color(1, 1, 1, 0.446)
+[node name="ReactorRightSprite" type="AnimatedSprite2D" parent="CanvasLayer/Ghost" unique_id=477002697]
+self_modulate = Color(0.6398616, 0.9247982, 1, 0.44705883)
 material = SubResource("ShaderMaterial_ivwlv")
 position = Vector2(0, 23.944427)
 rotation = -0.61075217
@@ -141,8 +142,8 @@ sprite_frames = SubResource("SpriteFrames_gt0ke")
 autoplay = "default"
 offset = Vector2(0, 274.83328)
 
-[node name="ReactorFrontLeftSprite" type="AnimatedSprite2D" parent="CanvasLayer/Ghost" unique_id=848633426]
-self_modulate = Color(1, 1, 1, 0.446)
+[node name="ReactorFrontLeftSprite" type="AnimatedSprite2D" parent="CanvasLayer/Ghost" unique_id=1031447992]
+self_modulate = Color(0.6398616, 0.9247982, 1, 0.44705883)
 material = SubResource("ShaderMaterial_ivwlv")
 position = Vector2(-164.18066, -119.72221)
 rotation = -3.1415925
@@ -150,15 +151,10 @@ scale = Vector2(1.5200614, 0.8940159)
 sprite_frames = SubResource("SpriteFrames_x2xi5")
 autoplay = "default"
 
-[node name="ReactorFrontRightSprite" type="AnimatedSprite2D" parent="CanvasLayer/Ghost" unique_id=1467516795]
-self_modulate = Color(1, 1, 1, 0.446)
+[node name="ReactorFrontRightSprite" type="AnimatedSprite2D" parent="CanvasLayer/Ghost" unique_id=1175625537]
+self_modulate = Color(0.6398616, 0.9247982, 1, 0.44705883)
 material = SubResource("ShaderMaterial_ivwlv")
 position = Vector2(160, -119.722)
 scale = Vector2(1.52, -0.894)
 sprite_frames = SubResource("SpriteFrames_u45sw")
 autoplay = "default"
-
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer" unique_id=2086320060]
-material = SubResource("ShaderMaterial_7q06a")
-position = Vector2(636, 408)
-texture = ExtResource("3_p2ypj")
