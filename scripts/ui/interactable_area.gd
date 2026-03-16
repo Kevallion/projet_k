@@ -23,21 +23,25 @@ extends Area2D
 ## false -> le joueur ne peut plus interagir
 signal isInteracteChanged(bool)
 
+signal interaction(body: Player)
+
 
 
 ## Rayon de la zone d'interaction
 ## Correspond à la taille du cercle de collision utilisé pour détecter
 ## si le joueur est dans la zone.
-@export_range(0.0, 200.0) var collisionRange := 46.5 : set = set_collision_range
+@export_range(0.0, 2200.0) var collisionRange := 46.5 : set = set_collision_range
 
 ## Référence vers le composant visuel affichant la touche d'interaction
 ## (par exemple : "Press E")
 @export var visualShowKey : VisualShowKey
-
+@export var ownerObject : Node2D
 
 ## CollisionShape2D générée automatiquement pour la zone
 ## La taille dépend de collisionRange
 @onready var colisionShape := _create_colisionShape_2d()
+
+var bodyInside : CharacterBody2D
 
 ## Indique si le joueur est actuellement dans la zone d'interaction
 var canInteract := false
@@ -95,8 +99,7 @@ func try_interact() -> void:
 ## - ouvrir une porte
 ## - afficher une information
 func do_interaction() -> void:
-	pass
-
+	interaction.emit(bodyInside)
 
 
 ## DÉTECTION DE PRÉSENCE DANS LA ZONE
@@ -106,7 +109,9 @@ func _on_body_entered(body) -> void:
 	
 	## notifier les autres systèmes
 	isInteracteChanged.emit(canInteract)
-
+	if body is Player:
+		bodyInside = body
+		
 	## afficher l'indication visuelle d'interaction
 	if visualShowKey:
 		visualShowKey.show_key()
@@ -118,7 +123,7 @@ func _on_body_exited(body) -> void:
 	
 	## notifier les autres systèmes
 	isInteracteChanged.emit(canInteract)
-
+	bodyInside = null
 	## cacher l'indication visuelle
 	if visualShowKey:
 		visualShowKey.hide_key()

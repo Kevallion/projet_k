@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://d3cvovvvadgbf"]
+
+[ext_resource type="PackedScene" uid="uid://cbus4r2vum2hc" path="res://scenes/entities/DefaultSpatial_Station.tscn" id="1_y4v4s"]
+[ext_resource type="Texture2D" uid="uid://c6bhia8li0cqt" path="res://assets/sprites/station_spatial/station_spatial3.png" id="2_ls8sp"]
+
+[node name="Carburant Spatial" unique_id=708156702 instance=ExtResource("1_y4v4s")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=1722980194]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_ls8sp")
+
+[node name="InteractionArea" parent="." index="2" unique_id=634285613]
+collisionRange = 177.193
+
+[node name="visualShowKey" parent="InteractionArea" index="0" unique_id=1251509380]
+position = Vector2(-81, -66)
+
+[connection signal="interaction" from="InteractionArea" to="." method="_on_interaction_area_interaction"]
