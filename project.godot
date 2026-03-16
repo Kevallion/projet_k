@@ -27,13 +27,14 @@ window/stretch/mode="canvas_items"
 
 [editor]
 
-movie_writer/movie_file="D:/Zimages/Graphisme/assets/Slimy Game Jam 9/demo_move_2.avi"
+movie_writer/movie_file="D:/Zimages/Graphisme/assets/Slimy Game Jam 9/demo_inventory.avi"
 movie_writer/stretch/mode="canvas_items"
 
 [global_group]
 
 player="joueur"
 space_object=""
+radar_detection=""
 
 [input]
 
