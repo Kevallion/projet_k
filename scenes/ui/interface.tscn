@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://ck76jflr3pr3x" path="res://assets/sprites/reactor_anim2.png" id="5_erumi"]
 [ext_resource type="Texture2D" uid="uid://dy1c75gh5ft5c" path="res://assets/sprites/reactor_anim3.png" id="6_7q06a"]
 [ext_resource type="PackedScene" uid="uid://b3jqpwdawi1nh" path="res://ressources/inventory/inventory_slot.tscn" id="7_erumi"]
+[ext_resource type="Shader" uid="uid://hf21dtn8ifor" path="res://ressources/hologram.tres" id="7_erumi"]
+[ext_resource type="PackedScene" uid="uid://bi2avqn73r00q" path="res://scenes/ui/gadget_ui.tscn" id="8_7q06a"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rmlgn"]
 shader = ExtResource("3_rmlgn")
@@ -117,6 +119,24 @@ offset_bottom = 674.0
 text = "Distance"
 
 [node name="Ghost" type="Sprite2D" parent="CanvasLayer" unique_id=473116313]
+[node name="EnergyBar" type="ProgressBar" parent="CanvasLayer" unique_id=388513115]
+unique_name_in_owner = true
+modulate = Color(1, 0.9607843, 0.06666667, 1)
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = 663.0
+offset_right = -967.0
+offset_bottom = -45.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1000.0
+value = 1000.0
+show_percentage = false
+
+[node name="Ghost" type="Sprite2D" parent="CanvasLayer" unique_id=1765988736]
 material = SubResource("ShaderMaterial_rmlgn")
 position = Vector2(170, 570)
 scale = Vector2(0.2, 0.2)
@@ -177,6 +197,27 @@ offset_bottom = 730.0
 color = Color(1, 1, 1, 0.101960786)
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/ColorRect" unique_id=91420537]
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer" unique_id=2086320060]
+visible = false
+material = SubResource("ShaderMaterial_7q06a")
+position = Vector2(636, 408)
+texture = ExtResource("3_p2ypj")
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1927089970]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -17.0
+offset_top = -96.0
+offset_right = 23.0
+offset_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=259141222]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -233,4 +274,19 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="InventorySlot12" parent="CanvasLayer/ColorRect/MarginContainer/NinePatchRect/GridContainer" unique_id=987546130 instance=ExtResource("7_erumi")]
+offset_left = -225.0
+offset_top = -32.0
+offset_right = 225.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="GadgetUI" parent="CanvasLayer/Control/HBoxContainer" unique_id=1994935377 instance=ExtResource("8_7q06a")]
+layout_mode = 2
+
+[node name="GadgetUI2" parent="CanvasLayer/Control/HBoxContainer" unique_id=524093753 instance=ExtResource("8_7q06a")]
+layout_mode = 2
+
+[node name="GadgetUI3" parent="CanvasLayer/Control/HBoxContainer" unique_id=746976135 instance=ExtResource("8_7q06a")]
 layout_mode = 2

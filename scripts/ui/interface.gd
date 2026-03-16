@@ -5,6 +5,7 @@ extends Control
 @onready var radarLabel = $CanvasLayer/RadarLabel
 @onready var player = get_parent().get_node("Player")
 
+@onready var energy_bar: ProgressBar = %EnergyBar
 @onready var ghost = $CanvasLayer/Ghost
 
 var distance: int = 0
@@ -30,6 +31,8 @@ func _physics_process(_delta: float) -> void:
 	set_interface_values()
 	
 	set_hologram_property(Vector2(170, 600), Vector2(0.15, 0.15), player)
+	energy_bar.value = player.energy
+	energy_bar.max_value = player.maxEnergy
 	
 func set_hologram_property(tx_pos, tx_scale, model):
 	ghost.position = tx_pos

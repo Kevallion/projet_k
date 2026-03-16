@@ -8,7 +8,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6761a"]
 size = Vector2(172, 40)
 
-[node name="Spatial_Station" type="CharacterBody2D" unique_id=708156702 groups=["space_object"]]
+[node name="DefaultSpatial_Station" type="CharacterBody2D" unique_id=708156702 groups=["space_object"]]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_jkaye")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1722980194]
@@ -17,10 +19,11 @@ texture = ExtResource("2_648lx")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=713957622]
 shape = SubResource("RectangleShape2D_6761a")
 
-[node name="interactable_area" type="Area2D" parent="." unique_id=634285613 node_paths=PackedStringArray("visualShowKey")]
+[node name="InteractionArea" type="Area2D" parent="." unique_id=634285613 node_paths=PackedStringArray("visualShowKey")]
+unique_name_in_owner = true
 script = ExtResource("3_558gj")
 collisionRange = 108.199
 visualShowKey = NodePath("visualShowKey")
 
-[node name="visualShowKey" parent="interactable_area" unique_id=1251509380 instance=ExtResource("4_648lx")]
+[node name="visualShowKey" parent="InteractionArea" unique_id=1251509380 instance=ExtResource("4_648lx")]
 position = Vector2(0, -56)

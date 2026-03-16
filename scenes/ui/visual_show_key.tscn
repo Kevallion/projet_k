@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://beogaxp2sglvj"]
 
 [ext_resource type="Texture2D" uid="uid://biy2fis3jb6fp" path="res://assets/sprites/sprite_keys/keyboard_e_outline.png" id="1_ls2q6"]
-[ext_resource type="Script" uid="uid://d1m0ysdp40fsx" path="res://scripts/sprite_key.gd" id="2_8hya0"]
+[ext_resource type="Script" uid="uid://d1m0ysdp40fsx" path="res://scripts/ui/visual_show_key.gd" id="2_8hya0"]
 [ext_resource type="Texture2D" uid="uid://bxvf5i0ict0a3" path="res://assets/sprites/sprite_keys/keyboard_e.png" id="3_qcjgt"]
 
 [sub_resource type="Animation" id="Animation_558gj"]

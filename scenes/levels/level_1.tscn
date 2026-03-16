@@ -2,8 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://dpb45y2nb8djb" path="res://scenes/entities/player.tscn" id="1_6iamk"]
 [ext_resource type="PackedScene" uid="uid://cadr3m84lh1ya" path="res://scenes/entities/background.tscn" id="2_dga24"]
-[ext_resource type="Texture2D" uid="uid://dys4vx6k52lko" path="res://assets/sprites/space_background.png" id="3_nsrm0"]
-[ext_resource type="Script" uid="uid://bmppbil7kx440" path="res://scripts/ui/camera_area_2d.gd" id="3_x42e6"]
 [ext_resource type="AudioStream" uid="uid://drm1str7chls" path="res://assets/audio/music/Space 1.mp3" id="4_x42e6"]
 [ext_resource type="Texture2D" uid="uid://cffjnt6mm0lu4" path="res://assets/sprites/3261219552.png" id="5_6761a"]
 [ext_resource type="PackedScene" uid="uid://dhpmc6rc1ento" path="res://scenes/entities/asteroid.tscn" id="5_s8va5"]
@@ -11,10 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://661k42qrblte" path="res://scenes/entities/planet.tscn" id="9_dga24"]
 [ext_resource type="Texture2D" uid="uid://veqmftlc41j8" path="res://assets/sprites/meteors/spaceMeteors_Big2.png" id="9_dnkej"]
 [ext_resource type="Texture2D" uid="uid://5dg8cngrcht3" path="res://assets/sprites/meteors/spaceMeteors_Big.png" id="10_mm8aj"]
-[ext_resource type="PackedScene" uid="uid://cbus4r2vum2hc" path="res://scenes/entities/spatial_station.tscn" id="10_qxy0u"]
 [ext_resource type="Texture2D" uid="uid://cu5ru3h6yv3ag" path="res://assets/sprites/meteors/meteorBrown_small2.png" id="11_wtwp4"]
 [ext_resource type="PackedScene" uid="uid://6n732bofyslr" path="res://scenes/ui/interface.tscn" id="14_mm8aj"]
 [ext_resource type="PackedScene" uid="uid://cwu644erkv8sn" path="res://scenes/entities/fragment.tscn" id="15_wtwp4"]
+[ext_resource type="PackedScene" uid="uid://d3cvovvvadgbf" path="res://scenes/entities/carburant_spatial.tscn" id="12_iav0o"]
+[ext_resource type="PackedScene" uid="uid://b6tp2j17iwkym" path="res://scenes/ui/interface.tscn" id="14_mm8aj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sk5k4"]
 atlas = ExtResource("5_6761a")
@@ -1799,6 +1798,7 @@ radius = 61.765
 position = Vector2(-2059, 1531)
 collision_mask = 5
 motion_mode = 1
+[node name="Interface" parent="." unique_id=1016790414 instance=ExtResource("14_mm8aj")]
 
 [node name="backGround" parent="." unique_id=1670201285 node_paths=PackedStringArray("target_node") instance=ExtResource("2_dga24")]
 layer = -1
@@ -1878,6 +1878,12 @@ parameters/looping = true
 position = Vector2(20, 2)
 collision_layer = 2
 motion_mode = 1
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1055201885]
+texture_filter = 1
+position = Vector2(933, -944)
+sprite_frames = SubResource("SpriteFrames_r601b")
+autoplay = "default"
+frame_progress = 0.09672816
 
 [node name="Asteroid" parent="." unique_id=595955600 instance=ExtResource("5_s8va5")]
 position = Vector2(604, 412)
@@ -1934,7 +1940,7 @@ collisionRange = 30.864
 pushZoneRange = 61.765
 
 [node name="CollisionShape2D" parent="Asteroid4/pushZone" parent_id_path=PackedInt32Array(956945604, 1457056112) index="0" unique_id=575047982]
-shape = SubResource("CircleShape2D_wtwp4")
+shape = SubResource("CircleShape2D_excbq")
 
 [node name="Planet" parent="." unique_id=1040834349 groups=["planet", "radar_detection"] instance=ExtResource("9_dga24")]
 z_index = -2
@@ -1966,5 +1972,13 @@ position = Vector2(-1949, 1392)
 [connection signal="body_entered" from="CameraAreaNode/CameraArea2D4" to="CameraAreaNode/CameraArea2D4" method="_on_body_entered"]
 [connection signal="body_entered" from="CameraAreaNode/CameraArea2D5" to="CameraAreaNode/CameraArea2D5" method="_on_body_entered"]
 [connection signal="body_entered" from="CameraAreaNode/CameraArea2D6" to="CameraAreaNode/CameraArea2D6" method="_on_body_entered"]
+[node name="Player" parent="." unique_id=632786190 instance=ExtResource("1_6iamk")]
+position = Vector2(254, 306)
+collision_mask = 5
+motion_mode = 1
 
+[node name="Carburant Spatial" parent="." unique_id=708156702 instance=ExtResource("12_iav0o")]
+position = Vector2(-485, -582)
+
+[editable path="Interface"]
 [editable path="Asteroid4"]

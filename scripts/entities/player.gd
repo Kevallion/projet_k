@@ -27,6 +27,10 @@ var maxGas = 2000.0;
 var gasExpense = 1;
 var maxHealth = 1000
 var health = 1000
+var hasShield := false
+
+@export var maxEnergy := 300.0
+var energy := maxEnergy
 
 var speed = 1
 var rotationForce = 0.01
