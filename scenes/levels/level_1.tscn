@@ -10,7 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://veqmftlc41j8" path="res://assets/sprites/meteors/spaceMeteors_Big2.png" id="9_dnkej"]
 [ext_resource type="Texture2D" uid="uid://5dg8cngrcht3" path="res://assets/sprites/meteors/spaceMeteors_Big.png" id="10_mm8aj"]
 [ext_resource type="Texture2D" uid="uid://cu5ru3h6yv3ag" path="res://assets/sprites/meteors/meteorBrown_small2.png" id="11_wtwp4"]
-[ext_resource type="PackedScene" uid="uid://d3cvovvvadgbf" path="res://scenes/entities/carburant_spatial.tscn" id="12_iav0o"]
+[ext_resource type="PackedScene" uid="uid://d3cvovvvadgbf" path="res://scenes/entities/station_spatial_carburant.tscn" id="12_iav0o"]
+[ext_resource type="PackedScene" uid="uid://cbus4r2vum2hc" path="res://scenes/entities/DefaultSpatial_Station.tscn" id="13_dnkej"]
 [ext_resource type="PackedScene" uid="uid://b6tp2j17iwkym" path="res://scenes/ui/interface.tscn" id="14_mm8aj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sk5k4"]
@@ -1771,7 +1772,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_excbq"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_iav0o"]
 resource_local_to_scene = true
 radius = 61.765
 
@@ -1850,7 +1851,7 @@ collisionRange = 30.864
 pushZoneRange = 61.765
 
 [node name="CollisionShape2D" parent="Asteroid4/pushZone" parent_id_path=PackedInt32Array(956945604, 1457056112) index="0" unique_id=575047982]
-shape = SubResource("CircleShape2D_excbq")
+shape = SubResource("CircleShape2D_iav0o")
 
 [node name="Planet" parent="." unique_id=1040834349 instance=ExtResource("9_dga24")]
 z_index = -2
@@ -1864,6 +1865,9 @@ motion_mode = 1
 
 [node name="Carburant Spatial" parent="." unique_id=708156702 instance=ExtResource("12_iav0o")]
 position = Vector2(-485, -582)
+
+[node name="DefaultSpatial_Station" parent="." unique_id=1527624291 instance=ExtResource("13_dnkej")]
+position = Vector2(-1141, 1007)
 
 [editable path="Interface"]
 [editable path="Asteroid4"]
