@@ -92,11 +92,12 @@ func animate_turn_meteor() -> void:
 ##function pour repousser le vaisseau
 func _on_body_entered(body: Node2D) -> void:
 	if body.has_method("add_force") and body is Player:
-		var push_direction := global_position.direction_to(body.global_position)
-		var impact_power := 3000.0
-		body.add_force(push_direction * impact_power)
-		
-		#on peu faire mourrir le joueur après
+		if body.hasShield:
+			var push_direction := global_position.direction_to(body.global_position)
+			var impact_power := 3000.0
+			body.add_force(push_direction * impact_power)
+		else:
+			body.health = 0.0
 		
 func _get_configuration_warnings() -> PackedStringArray:
 	if not asteroidTexture:

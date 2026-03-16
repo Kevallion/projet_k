@@ -105,7 +105,6 @@ func do_interaction() -> void:
 ## Appelé lorsqu'un body entre dans la zone
 func _on_body_entered(body) -> void:
 	
-	print("true")
 
 	canInteract = true
 	

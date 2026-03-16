@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ck76jflr3pr3x" path="res://assets/sprites/reactor_anim2.png" id="5_erumi"]
 [ext_resource type="Texture2D" uid="uid://dy1c75gh5ft5c" path="res://assets/sprites/reactor_anim3.png" id="6_7q06a"]
 [ext_resource type="Shader" uid="uid://hf21dtn8ifor" path="res://ressources/hologram.tres" id="7_erumi"]
+[ext_resource type="PackedScene" uid="uid://bi2avqn73r00q" path="res://scenes/ui/gadget_ui.tscn" id="8_7q06a"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rmlgn"]
 shader = ExtResource("3_rmlgn")
@@ -107,7 +108,8 @@ max_value = 1000.0
 value = 1000.0
 show_percentage = false
 
-[node name="EnergieBar" type="ProgressBar" parent="CanvasLayer" unique_id=388513115]
+[node name="EnergyBar" type="ProgressBar" parent="CanvasLayer" unique_id=388513115]
+unique_name_in_owner = true
 modulate = Color(1, 0.9607843, 0.06666667, 1)
 z_index = 1
 anchors_preset = 15
@@ -179,3 +181,41 @@ visible = false
 material = SubResource("ShaderMaterial_7q06a")
 position = Vector2(636, 408)
 texture = ExtResource("3_p2ypj")
+
+[node name="Control" type="Control" parent="." unique_id=1927089970]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -97.0
+offset_right = 20.0
+offset_bottom = -57.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=259141222]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -32.0
+offset_right = 225.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="GadgetUI" parent="Control/HBoxContainer" unique_id=1994935377 instance=ExtResource("8_7q06a")]
+layout_mode = 2
+
+[node name="GadgetUI2" parent="Control/HBoxContainer" unique_id=524093753 instance=ExtResource("8_7q06a")]
+layout_mode = 2
+
+[node name="GadgetUI3" parent="Control/HBoxContainer" unique_id=746976135 instance=ExtResource("8_7q06a")]
+layout_mode = 2

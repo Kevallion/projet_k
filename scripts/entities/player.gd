@@ -24,6 +24,10 @@ var maxGas = 2000.0;
 var gasExpense = 1;
 var maxHealth = 1000
 var health = 1000
+var hasShield := false
+
+@export var maxEnergy := 300.0
+var energy := maxEnergy
 
 var speed = 1
 var rotationForce = 0.01
@@ -35,7 +39,7 @@ var rightReactorActif = false
 var respawnPosition = Vector2.ZERO
 var respawnRotation = 0
 var holdingTime = 0
-var energie := 20000.0
+
 func _physics_process(_delta: float) -> void:
 	#on réduit les forces externe
 	externalForce = externalForce.lerp(Vector2.ZERO, forceDrag * _delta)

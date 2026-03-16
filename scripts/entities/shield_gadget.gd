@@ -15,11 +15,13 @@ func stop_gadget() -> void:
 	area_2d.monitorable = false
 	area_2d.monitoring = false
 	shieldStateChanged.emit(false)
-
+	ship.hasShield = false
+	
 ## Logique de démarrage (ex: instancier un projectile, appliquer un buff)
 func start_gadget() -> void:
 	animation_player.play("on_shield")
 	area_2d.monitorable = true
 	area_2d.monitoring = true
 	shieldStateChanged.emit(true)
+	ship.hasShield = true
 	
