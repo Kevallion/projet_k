@@ -15,9 +15,12 @@ class_name Player extends CharacterBody2D
 @export var forceDrag := 5.0
 var externalForce := Vector2.ZERO
 
-
 ## vitesse maximal du vaisseau
 @export var maxSpeed := 300.0
+
+## Inventaire
+@export var inventory: Inv
+
 
 var gas = 2000.0;
 var maxGas = 2000.0;
@@ -45,12 +48,11 @@ func _physics_process(_delta: float) -> void:
 	
 	# Dégats de collision #
 	var collision_info = move_and_collide(velocity * _delta)
-	if collision_info and $InvulFrames.is_stopped():
-		health -= 100
-		velocity = velocity.bounce(collision_info.get_normal())*0.3
-		$InvulFrames.start()
+	if collision_info:
+		velocity = velocity.bounce(collision_info.get_normal())*0.6
+		take_hit()
 	
-	checkVitals()
+	check_vitals()
 	
 func basic_mouvements():
 	## Vecteur de direction en face du Player
@@ -136,9 +138,9 @@ func add_force(force: Vector2) -> void:
 func consume_gas(spent):
 	gas -= spent
 	
-func checkVitals():
+func check_vitals():
 	if health <= 0:
-		gameOver()
+		game_over()
 	if gas <= 0:
 		respawn()
 	var marge = 50
@@ -158,14 +160,23 @@ func respawn():
 func _on_out_of_bound_timeout() -> void:
 	respawn()
 
-func refillGas():
+func refill_gas():
 	gas = maxGas
 	respawnPosition = position
 	
-func getSpriteTween():
+func get_sprite_tween():
 	return sprite.create_tween()
 	
-func gameOver():
+func take_hit():
+	if $InvulFrames.is_stopped():
+		health -= 100
+		$Sprite2D/HitFrames.play("hit")
+		$InvulFrames.start()
+	
+func game_over():
 	respawnPosition = Vector2.ZERO
 	health = maxHealth
 	respawn()
+	
+func collect(item):
+	inventory.insert(item)

@@ -4,7 +4,7 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s8va5"]
 resource_local_to_scene = true
-radius = 61.765
+radius = 0.0
 
 [node name="Asteroid" type="CharacterBody2D" unique_id=595955600 groups=["space_object"]]
 collision_layer = 2
@@ -12,7 +12,6 @@ motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("1_xwv53")
 collisionRange = 33.428
-pushZoneRange = null
 mass = 10.0
 metadata/_custom_type_script = "uid://jgxd8lob1aub"
 

@@ -7,17 +7,13 @@ uniform float scan_position : hint_range(0.5, 1.0);
 uniform float scan_width = 0.05;
 uniform float glow_strength = 10;
 
-void vertex() {
-	
-}
-
 void fragment() {
 	
 	vec4 texture_color = texture(TEXTURE, UV);
 	COLOR = mix(texture_color, color, texture_color + (sin(TIME)*0.4) + vec4(0.5));
 	
 	vec4 scanColor = texture(TEXTURE, UV);
-	float distance = abs(SCREEN_UV.y - scan_position + sin(-TIME)*0.3);
+	float distance = abs(SCREEN_UV.y - scan_position + sin(-TIME)*0.15);
 	float glow = smoothstep(scan_width*0.1, 0.0, distance);
 	
 	scanColor.rgb += glow * glow_strength * glow_color;
