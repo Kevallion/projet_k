@@ -42,7 +42,7 @@ func _initialised_gadget() -> void:
 	
 	# on limite le nombre de gadgets au nombre d'inputs disponibles
 	var max_slots : int = min(gadgetActives.size(), input_names.size())
-	var keySlots := ["A", "z", "E"]
+	var keySlots := ["Q", "S", "D"]
 	
 	for index in max_slots:
 		var slot := Slot.new()

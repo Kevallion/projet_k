@@ -68,11 +68,12 @@ func _ready() -> void:
 	set_pushZone_range(pushZoneRange)
 	set_collision_range(collisionRange)
 	
-	animate_turn_meteor()
+	
 	
 	if Engine.is_editor_hint():
 		return
 		
+	animate_turn_meteor()	
 	pushZone.body_entered.connect(_on_body_entered)
 	
 func animate_turn_meteor() -> void:

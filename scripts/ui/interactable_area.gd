@@ -12,8 +12,6 @@
 ##
 ## Cette classe est pensée pour être héritée.
 ## La fonction `do_interaction()` doit être surchargée dans les classes enfants.
-
-
 class_name InteractionArea
 extends Area2D
 
@@ -104,8 +102,6 @@ func do_interaction() -> void:
 ## DÉTECTION DE PRÉSENCE DANS LA ZONE
 ## Appelé lorsqu'un body entre dans la zone
 func _on_body_entered(body) -> void:
-	
-
 	canInteract = true
 	
 	## notifier les autres systèmes
@@ -118,7 +114,6 @@ func _on_body_entered(body) -> void:
 
 ## Appelé lorsqu'un body quitte la zone
 func _on_body_exited(body) -> void:
-	
 	canInteract = false
 	
 	## notifier les autres systèmes
@@ -139,7 +134,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	## touche d'action pressée
 	if event.is_action_pressed("action"):
 		try_interact()
-	
+		get_viewport().set_input_as_handled()
 	## touche relâchée
 	elif event.is_action_released("action"):
 		visualShowKey.show_key()

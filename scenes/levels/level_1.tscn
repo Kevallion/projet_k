@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://661k42qrblte" path="res://scenes/entities/planet.tscn" id="9_dga24"]
 [ext_resource type="Texture2D" uid="uid://veqmftlc41j8" path="res://assets/sprites/meteors/spaceMeteors_Big2.png" id="9_dnkej"]
 [ext_resource type="Texture2D" uid="uid://5dg8cngrcht3" path="res://assets/sprites/meteors/spaceMeteors_Big.png" id="10_mm8aj"]
-[ext_resource type="PackedScene" uid="uid://cbus4r2vum2hc" path="res://scenes/entities/spatial_station.tscn" id="10_qxy0u"]
+[ext_resource type="PackedScene" uid="uid://cbus4r2vum2hc" path="res://scenes/entities/DefaultSpatial_Station.tscn" id="10_qxy0u"]
 [ext_resource type="Texture2D" uid="uid://cu5ru3h6yv3ag" path="res://assets/sprites/meteors/meteorBrown_small2.png" id="11_wtwp4"]
 [ext_resource type="PackedScene" uid="uid://b6tp2j17iwkym" path="res://scenes/ui/interface.tscn" id="14_mm8aj"]
 
