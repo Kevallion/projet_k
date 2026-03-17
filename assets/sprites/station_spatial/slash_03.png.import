@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnov6i55bmpl0"
-path="res://.godot/imported/star_07.png-8a6db56ce595aa02f2bfa1542b8376d9.ctex"
+uid="uid://c5ay2cb2l5ii8"
+path="res://.godot/imported/slash_03.png-bca8da678af3e819fa809364190ad54d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/star_07.png"
-dest_files=["res://.godot/imported/star_07.png-8a6db56ce595aa02f2bfa1542b8376d9.ctex"]
+source_file="res://assets/sprites/station_spatial/slash_03.png"
+dest_files=["res://.godot/imported/slash_03.png-bca8da678af3e819fa809364190ad54d.ctex"]
 
 [params]
 

@@ -2,8 +2,8 @@
 
 [ext_resource type="Shader" uid="uid://drhae51gqxdvn" path="res://shaders/stars.gdshader" id="1_i27nk"]
 [ext_resource type="Script" uid="uid://dnkowpcixlp1w" path="res://scripts/entities/background.gd" id="1_oos21"]
-[ext_resource type="Texture2D" uid="uid://bnov6i55bmpl0" path="res://assets/sprites/star_07.png" id="2_g8ihl"]
-[ext_resource type="Texture2D" uid="uid://djk42i1euu8j1" path="res://assets/sprites/perlin-noise.png" id="4_jajyj"]
+[ext_resource type="Texture2D" uid="uid://bnov6i55bmpl0" path="res://assets/sprites/particles/star_07.png" id="2_g8ihl"]
+[ext_resource type="Texture2D" uid="uid://djk42i1euu8j1" path="res://assets/sprites/particles/perlin-noise.png" id="4_jajyj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y4xo8"]
 shader = ExtResource("1_i27nk")
@@ -36,6 +36,7 @@ noise = SubResource("FastNoiseLite_jajyj")
 color_ramp = SubResource("Gradient_oos21")
 
 [node name="backGround" type="CanvasLayer" unique_id=1670201285]
+layer = -1
 script = ExtResource("1_oos21")
 
 [node name="startTexture" type="TextureRect" parent="." unique_id=1453360494]

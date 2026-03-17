@@ -13,7 +13,8 @@ signal used
 
 ## Icône du gadget (utilisée par l'UI)
 @export var icon : Texture2D
-
+@export var name_label : String = ""
+@export_multiline var description : String
 ## Indique si le gadget est actuellement actif
 var is_active := false
 

@@ -2,6 +2,8 @@
 ## UI représentant un slot de gadget.
 ## Affiche l'icône du gadget, son cooldown et la touche associée.
 class_name GadgetUI extends PanelContainer
+var tooltip_scene := preload("res://scenes/ui/skills_tooltip.tscn")
+var tooltip: SkillsTooltip
 
 ## Valeur interne utilisée pour l'animation du cooldown
 var value: float
@@ -64,6 +66,8 @@ func _ready() -> void:
 	texture_progress_bar.value = 0.0
 	texture_progress_bar.max_value = maxValue
 
+func _process(delta: float) -> void:
+	_update_tooltip_position()
 
 ## Lance l'animation du cooldown dans l'UI
 func use_ability() -> void:
@@ -100,3 +104,19 @@ func _on_gadget_assigned(index: int, gadget: Gadget, key: String) -> void:
 		
 		# affiche la touche associée dans l'UI
 		label.text = key
+
+func _update_tooltip_position():
+	if tooltip:
+		tooltip.global_position = get_global_mouse_position()
+
+
+func _on_mouse_entered() -> void:
+	tooltip = tooltip_scene.instantiate()
+	get_tree().current_scene.find_child("Interface").get_node("CanvasLayer").add_child(tooltip)
+	tooltip.set_gadget(linkedGadget)
+	_update_tooltip_position()
+
+func _on_mouse_exited() -> void:
+	if tooltip:
+		tooltip.queue_free()
+		tooltip = null

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://btxlutifsr8me"]
+
+[ext_resource type="Script" uid="uid://c2cw61jdlrqnw" path="res://scripts/entities/portal_gadget.gd" id="1_ypd57"]
+[ext_resource type="Texture2D" uid="uid://dcktqwwsqmlc6" path="res://assets/sprites/icons/shied_icon.png" id="2_ipmhy"]
+
+[node name="PortalGadget" type="Node2D" unique_id=448128883]
+script = ExtResource("1_ypd57")
+icon = ExtResource("2_ipmhy")
+description = "Ce gadget permet de poser des portails, pour placer un portails appuyer sur espace, puis viser la zone du deuxieme portail."
+metadata/_custom_type_script = "uid://jspowy8i15iu"
