@@ -5,4 +5,4 @@ extends SpatialStation
 
 
 func _on_interaction_area_interaction(body: Player) -> void:
-	body.refillGas()
+	body.refill_gas()
