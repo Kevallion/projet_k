@@ -26,7 +26,7 @@ var gas = 2000.0;
 var maxGas = 2000.0;
 var gasExpense = 1;
 var maxHealth = 1000
-var health = 1000
+var health = 900
 var hasShield := false
 
 @export var maxEnergy := 300.0
@@ -184,3 +184,22 @@ func game_over():
 	
 func collect(item):
 	inventory.insert(item)
+
+func can_repair():
+	if !health < maxHealth:
+		return false
+	for slot in inventory.slots:
+		if slot.item:
+			if slot.item.name == "fragment":
+				return true
+	return false
+	
+func repair():
+	for slot in inventory.slots:
+		if slot.item:
+			if slot.item.name == "fragment":
+				health += 50
+				slot.amount -= 1
+				if slot.amount == 0:
+					slot.item = null
+				return

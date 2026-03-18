@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://d3cvovvvadgbf"]
+[gd_scene format=3 uid="uid://doekmlt7u24rd"]
 
 [ext_resource type="PackedScene" uid="uid://cbus4r2vum2hc" path="res://scenes/entities/DefaultSpatial_Station.tscn" id="1_y4v4s"]
 [ext_resource type="Texture2D" uid="uid://c6bhia8li0cqt" path="res://assets/sprites/station_spatial/station_spatial3.png" id="2_ls8sp"]

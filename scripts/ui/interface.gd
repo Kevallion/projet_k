@@ -2,10 +2,10 @@ extends Control
 
 @onready var fuel = $CanvasLayer/FuelBar
 @onready var life = $CanvasLayer/LifeBar
+@onready var energy_bar = $CanvasLayer/EnergyBar
 @onready var radarLabel = $CanvasLayer/RadarLabel
 @onready var player = get_parent().get_node("Player")
 
-@onready var energy_bar: ProgressBar = %EnergyBar
 @onready var ghost = $CanvasLayer/Ghost
 
 var distance: int = 0
@@ -14,6 +14,8 @@ var distance: int = 0
 @onready var slots: Array = $CanvasLayer/ColorRect/MarginContainer/NinePatchRect/GridContainer.get_children()
 
 var inventory_is_open = false
+
+@onready var repairButton = $CanvasLayer/ColorRect/RepairButton
 
 func _ready() -> void:
 	inv.update.connect(update_slots)
@@ -31,8 +33,6 @@ func _physics_process(_delta: float) -> void:
 	set_interface_values()
 	
 	set_hologram_property(Vector2(170, 600), Vector2(0.15, 0.15), player)
-	energy_bar.value = player.energy
-	energy_bar.max_value = player.maxEnergy
 	
 func set_hologram_property(tx_pos, tx_scale, model):
 	ghost.position = tx_pos
@@ -54,12 +54,21 @@ func set_interface_values():
 	life.value = player.health
 	life.max_value = player.maxHealth
 	
+	## Barre d'energie ##
+	energy_bar.value = player.energy
+	energy_bar.max_value = player.maxEnergy
+	
 	## Radar ##
 	distance = 999999999999
 	for planet in get_tree().get_nodes_in_group("radar_detection"):
 		if distance > player.global_position.distance_to(planet.global_position):
 			distance = player.global_position.distance_to(planet.global_position)
 	radarLabel.text = str(distance)
+		
+	if player.can_repair():
+		repairButton.disabled = false
+	else:
+		repairButton.disabled = true
 	
 func close_inventory():
 	$CanvasLayer/ColorRect.visible = false
@@ -72,3 +81,8 @@ func open_inventory():
 func update_slots():
 	for i in range(min(inv.slots.size(), slots.size())):
 		slots[i].update(inv.slots[i])
+
+func _on_repair_button_pressed() -> void:
+	player.repair()
+	update_slots()
+	
