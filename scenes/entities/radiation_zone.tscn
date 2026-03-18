@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://cyb55ayfak0xx"]
+
+[ext_resource type="Script" uid="uid://67qtvteir22x" path="res://scripts/entities/radiation_zone.gd" id="1_iw628"]
+[ext_resource type="Texture2D" uid="uid://ypj1r0yk5y32" path="res://assets/sprites/particles/smoke_04.png" id="2_uhvar"]
+
+[sub_resource type="Curve" id="Curve_qp85u"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.49318182, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_uhvar"]
+curve = SubResource("Curve_qp85u")
+
+[sub_resource type="Gradient" id="Gradient_qp85u"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.5072464, 0.9227053)
+colors = PackedColorArray(0.81960785, 0.42745098, 0.5254902, 1, 0.85882354, 0.43137255, 0.11764706, 1, 0.488496, 0.2697644, 0.666568, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_uhvar"]
+gradient = SubResource("Gradient_qp85u")
+
+[sub_resource type="Curve" id="Curve_lyd52"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_pduk5"]
+curve = SubResource("Curve_lyd52")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lyd52"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(8.9, 6.965, 1)
+emission_shape = 3
+emission_box_extents = Vector3(38.32, 28.105, 1)
+direction = Vector3(1, 1, 0)
+initial_velocity_min = -20.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.19999999
+scale_max = 1.8
+color = Color(0.81960785, 0.42745098, 0.5254902, 0.8901961)
+color_ramp = SubResource("GradientTexture1D_uhvar")
+alpha_curve = SubResource("CurveTexture_uhvar")
+hue_variation_min = -0.29000002
+hue_variation_max = -0.04000002
+hue_variation_curve = SubResource("CurveTexture_pduk5")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_425dn"]
+blend_mode = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_qp85u"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uhvar"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(8.9, 6.965, 1)
+emission_shape = 3
+emission_box_extents = Vector3(38.32, 28.105, 1)
+direction = Vector3(1, 1, 0)
+initial_velocity_min = -20.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.19999999
+color = Color(0.81960785, 0.42745098, 0.5254902, 0.8901961)
+color_ramp = SubResource("GradientTexture1D_uhvar")
+alpha_curve = SubResource("CurveTexture_uhvar")
+emission_curve = SubResource("CurveTexture_qp85u")
+hue_variation_min = -0.29000002
+hue_variation_max = -0.04000002
+hue_variation_curve = SubResource("CurveTexture_pduk5")
+
+[node name="RadiationZone" type="Area2D" unique_id=1273611784 node_paths=PackedStringArray("collisionShapeScene")]
+script = ExtResource("1_iw628")
+collisionShapeScene = NodePath("CollisionPolygon2D")
+metadata/_custom_type_script = "uid://567xhyifle5h"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1937313196]
+modulate = Color(1, 1, 1, 0.83137256)
+position = Vector2(4, 38)
+amount = 50
+texture = ExtResource("2_uhvar")
+lifetime = 8.0
+randomness = 0.15
+process_material = SubResource("ParticleProcessMaterial_lyd52")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="." unique_id=1664842488]
+material = SubResource("CanvasItemMaterial_425dn")
+amount = 25
+texture = ExtResource("2_uhvar")
+lifetime = 5.0
+process_material = SubResource("ParticleProcessMaterial_uhvar")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=330361728]
+visible = false
+position = Vector2(-3396, -5918)
+polygon = PackedVector2Array(3035, 5754, 3768, 5758, 3749, 6168, 3039, 6176)

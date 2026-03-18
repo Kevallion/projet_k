@@ -1,0 +1,17 @@
+[gd_resource type="AnimatedTexture" format=3 uid="uid://i03fcqidddxe"]
+
+[ext_resource type="Texture2D" uid="uid://deskelkyoutk" path="res://assets/sprites/particles/spark_01.png" id="1_jrpwf"]
+[ext_resource type="Texture2D" uid="uid://ogj2vkckyjsk" path="res://assets/sprites/particles/spark_02.png" id="2_do7tb"]
+[ext_resource type="Texture2D" uid="uid://b5qvkl1vuar6o" path="res://assets/sprites/particles/spark_03.png" id="3_orarr"]
+[ext_resource type="Texture2D" uid="uid://bw8a2pptr6kft" path="res://assets/sprites/particles/spark_04.png" id="4_1bd87"]
+
+[resource]
+frames = 4
+speed_scale = 10.0
+frame_0/texture = ExtResource("1_jrpwf")
+frame_1/texture = ExtResource("2_do7tb")
+frame_1/duration = 2.14
+frame_2/texture = ExtResource("3_orarr")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("4_1bd87")
+frame_3/duration = 1.0

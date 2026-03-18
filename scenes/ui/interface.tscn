@@ -94,9 +94,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 28.0
-offset_top = 688.0
+offset_top = 675.0
 offset_right = -967.0
-offset_bottom = -23.0
+offset_bottom = -36.0
 grow_horizontal = 2
 grow_vertical = 2
 max_value = 1000.0
@@ -137,15 +137,15 @@ show_percentage = false
 
 [node name="RadarLabel" type="Label" parent="CanvasLayer" unique_id=939570195]
 offset_left = 31.0
-offset_top = 651.0
+offset_top = 638.0
 offset_right = 98.0
-offset_bottom = 674.0
+offset_bottom = 661.0
 text = "Distance"
 
 [node name="Ghost" type="Sprite2D" parent="CanvasLayer" unique_id=473116313]
 material = SubResource("ShaderMaterial_rmlgn")
-position = Vector2(170, 570)
-scale = Vector2(0.2, 0.2)
+position = Vector2(112, 540.00006)
+scale = Vector2(0.175, 0.175)
 texture = ExtResource("3_p2ypj")
 
 [node name="ReactorCenterSprite" type="AnimatedSprite2D" parent="CanvasLayer/Ghost" unique_id=637843830]

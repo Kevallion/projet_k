@@ -5,6 +5,7 @@ extends Control
 @onready var energy_bar = $CanvasLayer/EnergyBar
 @onready var radarLabel = $CanvasLayer/RadarLabel
 @onready var player = get_parent().get_node("Player")
+@onready var energyBar: ProgressBar = %EnergyBar
 
 @onready var ghost = $CanvasLayer/Ghost
 
@@ -49,6 +50,8 @@ func set_interface_values():
 	## Barre de carburant ##
 	fuel.max_value = player.maxGas
 	fuel.value = player.gas
+	energyBar.value = player.energy
+	energyBar.max_value = player.maxEnergy
 	
 	## Barre de vie ##
 	life.value = player.health
