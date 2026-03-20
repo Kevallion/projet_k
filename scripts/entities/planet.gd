@@ -16,6 +16,8 @@ class_name Planet extends CharacterBody2D
 @onready var sprite2d := create_sprite_2d()
 @onready var attraction_area: Area2D = %AttractionArea
 
+##Force d'attraction vers la planet
+@export_range(1.0,10.0) var forceAttraction := 2.5
 
 
 
@@ -69,7 +71,7 @@ func _physics_process(_delta: float) -> void:
 			if body is Player:
 				body = body as Player
 				var attractedDirection := body.global_position.direction_to(global_position)
-				var attractedForce := attractedDirection * 2.5
+				var attractedForce := attractedDirection * forceAttraction
 				body.add_force(attractedForce)
 	
 #fonction appeler pour faire tourner un objet spatial autour d'un astre

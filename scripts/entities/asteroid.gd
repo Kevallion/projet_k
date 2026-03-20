@@ -98,6 +98,7 @@ func _on_body_entered(body: Node2D) -> void:
 			var impact_power := 3000.0
 			body.add_force(push_direction * impact_power)
 		else:
+			print("hit")
 			body.health = 0.0
 		
 func _get_configuration_warnings() -> PackedStringArray:

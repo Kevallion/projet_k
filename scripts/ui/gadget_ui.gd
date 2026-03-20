@@ -66,6 +66,7 @@ func _ready() -> void:
 	texture_progress_bar.value = 0.0
 	texture_progress_bar.max_value = maxValue
 
+@warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
 	_update_tooltip_position()
 

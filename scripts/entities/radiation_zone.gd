@@ -14,10 +14,7 @@ func _apply_effect(body: Node2D, delta: float) -> void:
 	if "health" in body:
 		if body.hasShield:
 			return
-			
-		body.health -= damage_per_second * delta
-		
+
 		# déclenche l'effet de hit visuel si disponible
 		if body.has_method("take_hit") and Engine.get_frames_drawn() % 10 == 0:
-			var sprite_hit = body.get_node_or_null("Sprite2D/HitFrames")
-			if sprite_hit: sprite_hit.play("hit")
+			body.take_hit(damage_per_second * delta)

@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://vtaxerp088yh"]
 
 [ext_resource type="PackedScene" uid="uid://dpb45y2nb8djb" path="res://scenes/entities/player.tscn" id="1_6iamk"]
+[ext_resource type="Script" uid="uid://fxmu73x67x0u" path="res://scripts/entities/level.gd" id="1_v6ha0"]
 [ext_resource type="PackedScene" uid="uid://cadr3m84lh1ya" path="res://scenes/entities/background.tscn" id="2_dga24"]
+[ext_resource type="AudioStream" uid="uid://cbfrifpoq30t" path="res://assets/audio/music/jci21-spaceship-ambient-sfx-164114.mp3" id="3_mkypq"]
 [ext_resource type="Texture2D" uid="uid://dys4vx6k52lko" path="res://assets/sprites/space_background.png" id="3_nsrm0"]
 [ext_resource type="Script" uid="uid://bmppbil7kx440" path="res://scripts/ui/camera_area_2d.gd" id="3_x42e6"]
-[ext_resource type="AudioStream" uid="uid://drm1str7chls" path="res://assets/audio/music/Space 1.mp3" id="4_x42e6"]
+[ext_resource type="AudioStream" uid="uid://dcwdnnbjgxqtd" path="res://assets/audio/music/Space 1.mp3" id="4_x42e6"]
 [ext_resource type="Texture2D" uid="uid://cffjnt6mm0lu4" path="res://assets/sprites/3261219552.png" id="5_6761a"]
 [ext_resource type="PackedScene" uid="uid://dhpmc6rc1ento" path="res://scenes/entities/asteroid.tscn" id="5_s8va5"]
 [ext_resource type="Texture2D" uid="uid://8m186mven6fv" path="res://assets/sprites/meteors/meteorGrey_big2.png" id="6_dga24"]
@@ -13,10 +15,12 @@
 [ext_resource type="Texture2D" uid="uid://5dg8cngrcht3" path="res://assets/sprites/meteors/spaceMeteors_Big.png" id="10_mm8aj"]
 [ext_resource type="Texture2D" uid="uid://cu5ru3h6yv3ag" path="res://assets/sprites/meteors/meteorBrown_small2.png" id="11_wtwp4"]
 [ext_resource type="PackedScene" uid="uid://6n732bofyslr" path="res://scenes/ui/interface.tscn" id="14_mm8aj"]
+[ext_resource type="Texture2D" uid="uid://dn6rai33xyy2k" path="res://assets/sprites/planets/planet02.png" id="14_v6ha0"]
 [ext_resource type="PackedScene" uid="uid://d3cvovvvadgbf" path="res://scenes/entities/station_spatial_carburant.tscn" id="15_iwr0g"]
 [ext_resource type="PackedScene" uid="uid://cwu644erkv8sn" path="res://scenes/entities/fragment.tscn" id="15_wtwp4"]
 [ext_resource type="PackedScene" uid="uid://cyb55ayfak0xx" path="res://scenes/entities/radiation_zone.tscn" id="16_iwr0g"]
 [ext_resource type="PackedScene" uid="uid://drtp4vhvrkgik" path="res://scenes/entities/magnetic_zone.tscn" id="17_bahl2"]
+[ext_resource type="PackedScene" uid="uid://dblor583ax6oj" path="res://scenes/entities/respawn_station.tscn" id="18_np2pn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sk5k4"]
 atlas = ExtResource("5_6761a")
@@ -1791,11 +1795,14 @@ size = Vector2(3039, 2384)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwr0g"]
 size = Vector2(2817, 994)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_bahl2"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_mkypq"]
 resource_local_to_scene = true
 radius = 61.765
 
 [node name="Level1" type="Node2D" unique_id=708747007]
+script = ExtResource("1_v6ha0")
+musicToPlay = ExtResource("4_x42e6")
+ambianceMusicToPlay = ExtResource("3_mkypq")
 
 [node name="Interface" parent="." unique_id=1016790414 instance=ExtResource("14_mm8aj")]
 
@@ -1873,11 +1880,6 @@ script = ExtResource("3_x42e6")
 position = Vector2(710.5, -2038)
 shape = SubResource("RectangleShape2D_iwr0g")
 
-[node name="Music" type="AudioStreamPlayer" parent="." unique_id=327953179]
-stream = ExtResource("4_x42e6")
-autoplay = true
-parameters/looping = true
-
 [node name="Asteroid" parent="." unique_id=595955600 instance=ExtResource("5_s8va5")]
 position = Vector2(604, 412)
 collisionRange = 30.864
@@ -1933,17 +1935,19 @@ collisionRange = 30.864
 pushZoneRange = 61.765
 
 [node name="CollisionShape2D" parent="Asteroid4/pushZone" parent_id_path=PackedInt32Array(956945604, 1457056112) index="0" unique_id=575047982]
-shape = SubResource("CircleShape2D_bahl2")
+shape = SubResource("CircleShape2D_mkypq")
 
 [node name="Planet" parent="." unique_id=1040834349 groups=["planet", "radar_detection"] instance=ExtResource("9_dga24")]
 z_index = -2
 position = Vector2(1373, 310)
 attractionRange = 873.832
 
-[node name="Planet2" parent="." unique_id=1647332511 groups=["planet", "radar_detection"] instance=ExtResource("9_dga24")]
+[node name="Planet3" parent="." unique_id=860546906 groups=["planet", "radar_detection"] instance=ExtResource("9_dga24")]
 z_index = -2
-position = Vector2(-7230, -13268)
-attractionRange = 873.832
+position = Vector2(2484, 2069)
+planetTexture = ExtResource("14_v6ha0")
+collisionRange = 288.341
+attractionRange = 755.5509999999999
 
 [node name="FragmentBody" parent="." unique_id=1391390146 instance=ExtResource("15_wtwp4")]
 position = Vector2(-1790, 1261)
@@ -1958,13 +1962,24 @@ position = Vector2(-1626, 1069)
 position = Vector2(-1949, 1392)
 
 [node name="StationSpatial Carburant" parent="." unique_id=708156702 instance=ExtResource("15_iwr0g")]
+z_index = 0
 position = Vector2(250, 460)
 
 [node name="RadiationZone" parent="." unique_id=1273611784 instance=ExtResource("16_iwr0g")]
-position = Vector2(-2312, -144)
+position = Vector2(399, -390)
 
 [node name="Magnetic_zone" parent="." unique_id=611847379 instance=ExtResource("17_bahl2")]
-position = Vector2(-2213, 1175)
+position = Vector2(-2508, 1172)
+
+[node name="Respawn Station" parent="." unique_id=1265417135 instance=ExtResource("18_np2pn")]
+position = Vector2(-2040, -4)
+
+[node name="Respawn Station2" parent="." unique_id=79322104 instance=ExtResource("18_np2pn")]
+position = Vector2(-2746, -43)
+
+[node name="Planet2" parent="." unique_id=1225106940 instance=ExtResource("9_dga24")]
+position = Vector2(-310, 1827)
+collisionRange = 326.623
 
 [connection signal="body_entered" from="CameraAreaNode/CameraArea2D" to="CameraAreaNode/CameraArea2D" method="_on_body_entered"]
 [connection signal="body_entered" from="CameraAreaNode/CameraArea2D2" to="CameraAreaNode/CameraArea2D2" method="_on_body_entered"]

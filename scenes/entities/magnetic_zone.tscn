@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bi4y6isq0yjke" path="res://scripts/entities/magnetic_zone.gd" id="1_wbe47"]
 [ext_resource type="Texture2D" uid="uid://i03fcqidddxe" path="res://new_animated_texture.tres" id="2_6a5qu"]
+[ext_resource type="AudioStream" uid="uid://c4ypn82xklwa0" path="res://assets/audio/music/forceField.mp3" id="3_kqbba"]
 
 [sub_resource type="Curve" id="Curve_6a5qu"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
@@ -33,6 +34,11 @@ polygon = PackedVector2Array(-928, -600, 992, -600, 1000, 496, -928, 480)
 amount = 50
 texture = ExtResource("2_6a5qu")
 randomness = 0.6
+visibility_rect = Rect2(-5000, -5000, 10000, 10000)
 process_material = SubResource("ParticleProcessMaterial_kqbba")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1183902016]
+stream = ExtResource("3_kqbba")
+volume_db = -10.0
+autoplay = true
+bus = &"SFX"

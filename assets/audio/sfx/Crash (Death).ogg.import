@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ihg6p0c2larx"
+path="res://.godot/imported/Crash (Death).ogg-d5fec765243229b9c5b9f7a2c8b700c4.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/Crash (Death).ogg"
+dest_files=["res://.godot/imported/Crash (Death).ogg-d5fec765243229b9c5b9f7a2c8b700c4.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

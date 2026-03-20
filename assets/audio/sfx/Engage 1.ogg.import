@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://t5wpxkl7xiuc"
+path="res://.godot/imported/Engage 1.ogg-d71114cf6e54ab6d92e2b3b458f737b5.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/Engage 1.ogg"
+dest_files=["res://.godot/imported/Engage 1.ogg-d71114cf6e54ab6d92e2b3b458f737b5.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

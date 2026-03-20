@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bc5npblkvkauu"
+path="res://.godot/imported/Hit Impact 2.ogg-542186b00b02ab4d9054ce169db9739a.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/Hit Impact 2.ogg"
+dest_files=["res://.godot/imported/Hit Impact 2.ogg-542186b00b02ab4d9054ce169db9739a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

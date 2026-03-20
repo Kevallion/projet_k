@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://crvnqdi4bmqdd"
+path="res://.godot/imported/Portal Deploy.ogg-45e04895a12844047f52db3b08ecfc34.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/Portal Deploy.ogg"
+dest_files=["res://.godot/imported/Portal Deploy.ogg-45e04895a12844047f52db3b08ecfc34.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

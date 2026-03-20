@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dqc1q7jilcnkj"
+path="res://.godot/imported/Shield Hit 1.ogg-c8d746176f89eef1cb15ae5a3f4cd4ba.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/Shield Hit 1.ogg"
+dest_files=["res://.godot/imported/Shield Hit 1.ogg-c8d746176f89eef1cb15ae5a3f4cd4ba.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

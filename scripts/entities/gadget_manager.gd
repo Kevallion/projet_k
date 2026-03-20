@@ -72,5 +72,6 @@ func _unhandled_input(event: InputEvent) -> void:
 					gadget.is_active = false
 			# utilise le gadget si présent
 			if slot.gadget:
+				@warning_ignore("unused_variable")
 				var used :=	slot.gadget.try_use(ship)
 			break

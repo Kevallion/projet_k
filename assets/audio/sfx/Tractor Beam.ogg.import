@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bncur71dlbqai"
+path="res://.godot/imported/Tractor Beam.ogg-6d900daddde0e805f1a002798dc31848.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/Tractor Beam.ogg"
+dest_files=["res://.godot/imported/Tractor Beam.ogg-6d900daddde0e805f1a002798dc31848.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

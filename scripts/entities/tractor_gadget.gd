@@ -12,6 +12,7 @@ var cible : Node2D
 enum attractionMode  {TOWARD_TARGET, TOWARD_ME}
 var current_mode := attractionMode.TOWARD_TARGET
 
+@warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
 	if ship:
 		self.rotation = ship.sprite.rotation

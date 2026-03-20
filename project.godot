@@ -15,9 +15,14 @@ run/main_scene="uid://vtaxerp088yh"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://f5t6b5s4mhig"
+
 [autoload]
 
 GameSignals="*uid://c02rx34rjk5ev"
+AudioManager="*uid://ca5lb15c3qfvh"
 
 [display]
 
@@ -35,6 +40,7 @@ movie_writer/stretch/mode="canvas_items"
 player="joueur"
 space_object=""
 radar_detection=""
+Station_spawn=""
 
 [input]
 
