@@ -228,22 +228,20 @@ autoplay = "default"
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=535797406]
 z_index = -1
 offset_left = 13.0
-offset_top = 111.0
-offset_right = 702.0
+offset_top = 182.0
+offset_right = 483.0
 offset_bottom = 718.0
 color = Color(1, 1, 1, 0.101960786)
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/ColorRect" unique_id=91420537]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 13
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -316.5
-offset_top = -275.0
-offset_right = 316.5
-offset_bottom = 69.5
+anchor_bottom = 1.0
+offset_left = -215.0
+offset_top = 21.0
+offset_right = 234.0
 grow_horizontal = 2
 grow_vertical = 2
 tooltip_text = "TooltipTest"
@@ -255,7 +253,7 @@ layout_mode = 2
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-columns = 3
+columns = 4
 
 [node name="InventorySlot" parent="CanvasLayer/ColorRect/MarginContainer/NinePatchRect/GridContainer" unique_id=1065122744 instance=ExtResource("7_erumi")]
 layout_mode = 2
@@ -295,10 +293,9 @@ layout_mode = 2
 
 [node name="GridContainer2" type="GridContainer" parent="CanvasLayer/ColorRect/MarginContainer/NinePatchRect" unique_id=984623230]
 layout_mode = 0
-offset_left = 288.0
-offset_right = 633.0
-offset_bottom = 219.0
-columns = 4
+offset_left = 354.0
+offset_right = 441.0
+offset_bottom = 332.0
 
 [node name="Skill1Panel" type="Panel" parent="CanvasLayer/ColorRect/MarginContainer/NinePatchRect/GridContainer2" unique_id=1009188370]
 custom_minimum_size = Vector2(80, 80)
@@ -328,7 +325,6 @@ unique_name_in_owner = true
 layout_mode = 0
 offset_right = 80.0
 offset_bottom = 80.0
-tooltip_text = "Texte de tooltip dans le bouton Tractor"
 texture_normal = ExtResource("19_5eily")
 texture_hover = ExtResource("17_na2il")
 texture_disabled = ExtResource("17_smmhd")
