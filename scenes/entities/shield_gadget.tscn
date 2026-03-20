@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dxnop65myv3dc"]
 
 [ext_resource type="Script" uid="uid://b8pyc5r3ka0by" path="res://scripts/entities/shield_gadget.gd" id="1_5oe04"]
+[ext_resource type="Texture2D" uid="uid://cu4gmyftykc2k" path="res://assets/sprites/icons/shield_icon.png" id="2_lrxrc"]
 [ext_resource type="Texture2D" uid="uid://chub1ax8x61r8" path="res://assets/sprites/gadgets/shield3.png" id="2_lxht2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mm8aj"]
@@ -110,6 +111,9 @@ _data = {
 
 [node name="ShieldGadget" type="Node2D" unique_id=895922563]
 script = ExtResource("1_5oe04")
+icon = ExtResource("2_lrxrc")
+name_label = "Bouclier"
+description = "C'est pas mal"
 metadata/_custom_type_script = "uid://b8pyc5r3ka0by"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1269669797]

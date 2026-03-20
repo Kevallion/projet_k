@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://22ib65jot3yn"]
 
 [ext_resource type="Script" uid="uid://ny8f1o0yx3ah" path="res://scripts/entities/tractor_gadget.gd" id="1_dfdah"]
-[ext_resource type="Texture2D" uid="uid://c5d4m2qxcqar4" path="res://assets/sprites/icons/tractor_icon.png" id="2_bqx82"]
+[ext_resource type="Texture2D" uid="uid://ds8fyyvuykptp" path="res://assets/sprites/icons/icon_tractor.png" id="2_dfdah"]
 
 [sub_resource type="Curve" id="Curve_73kkf"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
@@ -103,7 +103,8 @@ _data = {
 
 [node name="TractorGadget" type="Node2D" unique_id=1412567860]
 script = ExtResource("1_dfdah")
-icon = ExtResource("2_bqx82")
+icon = ExtResource("2_dfdah")
+name_label = "Rayon Tracteur"
 description = "Un gagdget qui vous permet de vous tracter vers un objet de l'espace ou de tracter l'élément vers vous. appuyé sur espace pour changer le mode"
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1878900324]

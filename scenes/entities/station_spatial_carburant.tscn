@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://d3cvovvvadgbf"]
+[gd_scene format=3 uid="uid://doekmlt7u24rd"]
 
 [ext_resource type="PackedScene" uid="uid://cbus4r2vum2hc" path="res://scenes/entities/DefaultSpatial_Station.tscn" id="1_y4v4s"]
 [ext_resource type="Script" uid="uid://csgcyt7wrvbcn" path="res://scripts/entities/carburant_spatial.gd" id="2_cqywv"]

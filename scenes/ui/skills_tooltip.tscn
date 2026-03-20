@@ -12,24 +12,25 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ryl7l")
 
-[node name="Panel" type="Panel" parent="." unique_id=259621605]
-custom_minimum_size = Vector2(400, 250)
-layout_mode = 0
-offset_top = -251.0
-offset_right = 400.0
-offset_bottom = -1.0
+[node name="Panel" type="PanelContainer" parent="." unique_id=1002695119]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.014
+anchor_top = -0.321
+anchor_right = 0.294
+anchor_bottom = -0.23700002
+offset_left = -17.92
+offset_top = -19.87999
+offset_right = 23.679993
+offset_bottom = 19.640015
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=1969241979]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = 15.0
-offset_right = -20.0
-offset_bottom = -15.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=320321027]
 layout_mode = 2
@@ -38,11 +39,14 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 0
-text = "Bouclier"
+theme_override_colors/font_color = Color(0.8776812, 0.95771605, 0.99999994, 1)
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Panel/MarginContainer/VBoxContainer" unique_id=366393153]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.8784314, 0.95686275, 1, 1)
 bbcode_enabled = true
-text = "Un bouclier qui protège le vaisseau, appuyer de nouveau pour le désactiver."
+fit_content = true

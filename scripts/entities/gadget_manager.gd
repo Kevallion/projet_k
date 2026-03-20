@@ -19,6 +19,8 @@ const input_3 = "gadget_3"
 ## Liste des inputs disponibles pour les gadgets
 var input_names = [input_1, input_2, input_3]
 
+var i = 0
+
 ## Structure représentant un slot de gadget.
 ## Associe un gadget à un input.
 class Slot:
@@ -71,7 +73,12 @@ func _unhandled_input(event: InputEvent) -> void:
 					gadget.stop_gadget()
 					gadget.is_active = false
 			# utilise le gadget si présent
-			if slot.gadget:
-				@warning_ignore("unused_variable")
+			if slot.gadget.unlock == true:
 				var used :=	slot.gadget.try_use(ship)
 			break
+			
+func update_gadget_assigned(gadget):
+	gadgetActives[i] = gadget
+	if i < 2:
+		i += 1
+	else:i = 0

@@ -1,6 +1,6 @@
 extends SpatialStation
 
-@export var carburantToGive := 50.0
+#@export var carburantToGive := 50.0
 
 
 

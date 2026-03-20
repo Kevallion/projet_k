@@ -16,3 +16,12 @@ func insert(item: InvItem):
 			emptySlots[0].item = item
 			emptySlots[0].amount = 1
 	update.emit()
+
+func remove(itemName: String):
+	for slot in slots:
+		if slot.item:
+			if slot.item.name == itemName:
+				slot.amount -= 1
+				if slot.amount == 0:
+					slot.item = null
+				return

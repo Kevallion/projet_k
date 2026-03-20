@@ -1,13 +1,34 @@
-[gd_scene format=3 uid="uid://6n732bofyslr"]
+[gd_scene format=3 uid="uid://b6tp2j17iwkym"]
 
 [ext_resource type="Script" uid="uid://drh7r68clxrjb" path="res://scripts/ui/interface.gd" id="1_nv1a2"]
+[ext_resource type="Texture2D" uid="uid://bd4l0dma2fhgv" path="res://assets/sprites/ui/radar_screen.png" id="3_7c7gm"]
+[ext_resource type="Texture2D" uid="uid://chrtq8egvf6up" path="res://assets/sprites/ui/carburant.png" id="3_j5sa3"]
 [ext_resource type="Texture2D" uid="uid://b15sah8sml0lp" path="res://assets/sprites/ship_modele.png" id="3_p2ypj"]
 [ext_resource type="Shader" uid="uid://itavaovhyogu" path="res://shaders/hologram.gdshader" id="3_rmlgn"]
+[ext_resource type="Texture2D" uid="uid://dk8mdsrqjk5ca" path="res://assets/sprites/ui/demageBar.png" id="4_33044"]
 [ext_resource type="Texture2D" uid="uid://bgykt0nr7vqcm" path="res://assets/sprites/reactor_anim1.png" id="4_ivwlv"]
+[ext_resource type="Texture2D" uid="uid://8yypea3l2ijs" path="res://assets/sprites/ui/OverBars.png" id="5_5eily"]
 [ext_resource type="Texture2D" uid="uid://ck76jflr3pr3x" path="res://assets/sprites/reactor_anim2.png" id="5_erumi"]
 [ext_resource type="Texture2D" uid="uid://dy1c75gh5ft5c" path="res://assets/sprites/reactor_anim3.png" id="6_7q06a"]
+[ext_resource type="Texture2D" uid="uid://c81pe66gsnwlc" path="res://assets/sprites/ui/healthBar.png" id="6_aywjo"]
+[ext_resource type="Texture2D" uid="uid://crwsgussiukes" path="res://assets/sprites/ui/energy_background.png" id="7_5eily"]
 [ext_resource type="PackedScene" uid="uid://b3jqpwdawi1nh" path="res://ressources/inventory/inventory_slot.tscn" id="7_erumi"]
+[ext_resource type="Texture2D" uid="uid://rss1vsx2uvpi" path="res://assets/sprites/icons/Repair_button_valide.png" id="8_1qavc"]
 [ext_resource type="PackedScene" uid="uid://bi2avqn73r00q" path="res://scenes/ui/gadget_ui.tscn" id="8_7q06a"]
+[ext_resource type="Script" uid="uid://brin5v7mixog7" path="res://scripts/ui/skill_1_panel.gd" id="8_8srw3"]
+[ext_resource type="Texture2D" uid="uid://cdxdpnb8ubp52" path="res://assets/sprites/ui/energy_bar.png" id="8_aywjo"]
+[ext_resource type="Texture2D" uid="uid://dbvc26qi67ur" path="res://assets/sprites/icons/Repair_button_hover.png" id="10_3ffix"]
+[ext_resource type="Script" uid="uid://0unhi8x36xcb" path="res://scripts/ui/skill_2_panel.gd" id="10_w8rl8"]
+[ext_resource type="Texture2D" uid="uid://w1gixrtywuvr" path="res://assets/sprites/icons/Repair_button_over.png" id="11_3ffix"]
+[ext_resource type="Texture2D" uid="uid://cj7ybp6a3dyig" path="res://assets/sprites/icons/Repair_button_not_ready.png" id="12_ffug8"]
+[ext_resource type="Texture2D" uid="uid://rcedytbhomsc" path="res://assets/sprites/icons/icon_shield.png" id="16_na2il"]
+[ext_resource type="Texture2D" uid="uid://ifsmmk6vo3wb" path="res://assets/sprites/icons/icon_unlocked.png" id="17_na2il"]
+[ext_resource type="Texture2D" uid="uid://bl0dvr8ur5mov" path="res://assets/sprites/icons/icon_locked.png" id="17_smmhd"]
+[ext_resource type="Texture2D" uid="uid://ds8fyyvuykptp" path="res://assets/sprites/icons/icon_tractor.png" id="19_5eily"]
+[ext_resource type="Script" uid="uid://c0mkvjgf4p25d" path="res://scripts/ui/skill_3_panel.gd" id="20_gerem"]
+[ext_resource type="Script" uid="uid://dpmymcd4gff48" path="res://scripts/ui/skill_4_panel.gd" id="22_na2il"]
+[ext_resource type="Texture2D" uid="uid://odyxys0iec3k" path="res://assets/sprites/icons/icon_portal.png" id="22_v5eec"]
+[ext_resource type="Texture2D" uid="uid://cqo21deymmvqi" path="res://assets/sprites/icons/icon_laser.png" id="24_w8d4y"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rmlgn"]
 shader = ExtResource("3_rmlgn")
@@ -78,65 +99,83 @@ script = ExtResource("1_nv1a2")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1734603017]
 
-[node name="FuelBar" type="ProgressBar" parent="CanvasLayer" unique_id=47588709]
-modulate = Color(0.56318444, 0.3366921, 0.98882896, 1)
+[node name="FuelBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=1674135200]
 z_index = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 28.0
-offset_top = 675.0
-offset_right = -967.0
-offset_bottom = -36.0
+offset_left = 30.0
+offset_top = 500.0
+offset_right = -948.0
+offset_bottom = 82.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+max_value = 1000.0
+value = 500.0
+fill_mode = 4
+radial_initial_angle = 180.0
+radial_fill_degrees = 180.0
+texture_progress = ExtResource("3_j5sa3")
+
+[node name="LifeBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=1270136548]
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = 500.0
+offset_right = -948.0
+offset_bottom = 82.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+max_value = 1000.0
+value = 500.0
+fill_mode = 5
+radial_initial_angle = 180.0
+radial_fill_degrees = 180.0
+texture_under = ExtResource("4_33044")
+texture_over = ExtResource("5_5eily")
+texture_progress = ExtResource("6_aywjo")
+
+[node name="EnergyBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=1099458470]
+modulate = Color(0.9882353, 0.9357019, 0.0010561382, 1)
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 271.0
+offset_top = 613.0
+offset_right = -952.0
+offset_bottom = -26.0
 grow_horizontal = 2
 grow_vertical = 2
 max_value = 1000.0
 value = 500.0
-show_percentage = false
+fill_mode = 3
+texture_under = ExtResource("7_5eily")
+texture_progress = ExtResource("8_aywjo")
 
-[node name="LifeBar" type="ProgressBar" parent="CanvasLayer" unique_id=1068024868]
-modulate = Color(0.09320182, 0.93670046, 0.050708726, 1)
-z_index = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 28.0
-offset_top = 663.0
-offset_right = -967.0
-offset_bottom = -45.0
-grow_horizontal = 2
-grow_vertical = 2
-max_value = 1000.0
-value = 1000.0
-show_percentage = false
-
-[node name="EnergyBar" type="ProgressBar" parent="CanvasLayer" unique_id=1075420693]
-unique_name_in_owner = true
-modulate = Color(0.06742291, 0.673412, 0.8021986, 1)
-z_index = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 28.0
-offset_top = 685.0
-offset_right = -1062.0
-offset_bottom = -23.0
-grow_horizontal = 2
-grow_vertical = 2
-max_value = 1000.0
-value = 1000.0
-show_percentage = false
+[node name="RadarScreen" type="Sprite2D" parent="CanvasLayer" unique_id=83046762]
+z_index = 10
+position = Vector2(136.25, 486.75)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_7c7gm")
 
 [node name="RadarLabel" type="Label" parent="CanvasLayer" unique_id=939570195]
-offset_left = 31.0
-offset_top = 638.0
-offset_right = 98.0
-offset_bottom = 661.0
+z_index = 11
+offset_left = 102.25
+offset_top = 473.75
+offset_right = 169.25
+offset_bottom = 496.75
+theme_override_colors/font_color = Color(0.63, 0.88283336, 1, 1)
 text = "Distance"
+horizontal_alignment = 1
 
 [node name="Ghost" type="Sprite2D" parent="CanvasLayer" unique_id=473116313]
 material = SubResource("ShaderMaterial_rmlgn")
-position = Vector2(112, 540.00006)
+position = Vector2(136, 606)
 scale = Vector2(0.175, 0.175)
 texture = ExtResource("3_p2ypj")
 
@@ -189,24 +228,23 @@ autoplay = "default"
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=535797406]
 z_index = -1
 offset_left = 13.0
-offset_top = 70.0
-offset_right = 702.0
-offset_bottom = 730.0
+offset_top = 182.0
+offset_right = 483.0
+offset_bottom = 718.0
 color = Color(1, 1, 1, 0.101960786)
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/ColorRect" unique_id=91420537]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 13
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -321.5
-offset_top = -312.0
-offset_right = -39.5
-offset_bottom = 87.0
+anchor_bottom = 1.0
+offset_left = -215.0
+offset_top = 21.0
+offset_right = 234.0
 grow_horizontal = 2
 grow_vertical = 2
+tooltip_text = "TooltipTest"
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/ColorRect/MarginContainer" unique_id=999655232]
 layout_mode = 2
@@ -215,7 +253,7 @@ layout_mode = 2
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-columns = 3
+columns = 4
 
 [node name="InventorySlot" parent="CanvasLayer/ColorRect/MarginContainer/NinePatchRect/GridContainer" unique_id=1065122744 instance=ExtResource("7_erumi")]
 layout_mode = 2
@@ -253,39 +291,124 @@ layout_mode = 2
 [node name="InventorySlot12" parent="CanvasLayer/ColorRect/MarginContainer/NinePatchRect/GridContainer" unique_id=987546130 instance=ExtResource("7_erumi")]
 layout_mode = 2
 
-[node name="Control" type="Control" parent="CanvasLayer" unique_id=74610598]
+[node name="GridContainer2" type="GridContainer" parent="CanvasLayer/ColorRect/MarginContainer/NinePatchRect" unique_id=984623230]
+layout_mode = 0
+offset_left = 354.0
+offset_right = 441.0
+offset_bottom = 332.0
+
+[node name="Skill1Panel" type="Panel" parent="CanvasLayer/ColorRect/MarginContainer/NinePatchRect/GridContainer2" unique_id=1009188370]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+tooltip_text = "test"
+script = ExtResource("8_8srw3")
+
+[node name="ShieldButton" type="TextureButton" parent="CanvasLayer/ColorRect/MarginContainer/NinePatchRect/GridContainer2/Skill1Panel" unique_id=152324823]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+accessibility_name = "Bouclier"
+accessibility_description = "desciption bouton shiel"
+texture_normal = ExtResource("16_na2il")
+texture_hover = ExtResource("17_na2il")
+texture_disabled = ExtResource("17_smmhd")
+stretch_mode = 3
+
+[node name="Skill2Panel" type="Panel" parent="CanvasLayer/ColorRect/MarginContainer/NinePatchRect/GridContainer2" unique_id=1974747916]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+script = ExtResource("10_w8rl8")
+
+[node name="TractorButton" type="TextureButton" parent="CanvasLayer/ColorRect/MarginContainer/NinePatchRect/GridContainer2/Skill2Panel" unique_id=1202430257]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+texture_normal = ExtResource("19_5eily")
+texture_hover = ExtResource("17_na2il")
+texture_disabled = ExtResource("17_smmhd")
+stretch_mode = 3
+
+[node name="Skill3Panel" type="Panel" parent="CanvasLayer/ColorRect/MarginContainer/NinePatchRect/GridContainer2" unique_id=1195210928]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+script = ExtResource("20_gerem")
+
+[node name="PortalButton" type="TextureButton" parent="CanvasLayer/ColorRect/MarginContainer/NinePatchRect/GridContainer2/Skill3Panel" unique_id=1491587559]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+texture_normal = ExtResource("22_v5eec")
+texture_hover = ExtResource("17_na2il")
+texture_disabled = ExtResource("17_smmhd")
+stretch_mode = 3
+
+[node name="Skill4Panel" type="Panel" parent="CanvasLayer/ColorRect/MarginContainer/NinePatchRect/GridContainer2" unique_id=1202073199]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+script = ExtResource("22_na2il")
+
+[node name="LaserButton" type="TextureButton" parent="CanvasLayer/ColorRect/MarginContainer/NinePatchRect/GridContainer2/Skill4Panel" unique_id=1857389872]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+texture_normal = ExtResource("24_w8d4y")
+texture_hover = ExtResource("17_na2il")
+texture_disabled = ExtResource("17_smmhd")
+stretch_mode = 3
+
+[node name="RepairButton" type="TextureButton" parent="CanvasLayer/ColorRect" unique_id=2008742752]
+custom_minimum_size = Vector2(180, 171)
+layout_mode = 0
+offset_left = 232.99998
+offset_top = 376.0
+offset_right = 433.0
+offset_bottom = 576.0
+scale = Vector2(0.2, 0.2)
+texture_normal = ExtResource("8_1qavc")
+texture_pressed = ExtResource("10_3ffix")
+texture_hover = ExtResource("11_3ffix")
+texture_disabled = ExtResource("12_ffug8")
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=611689755]
 layout_mode = 3
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -17.0
-offset_top = -39.0
-offset_right = 23.0
-offset_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
+anchors_preset = 0
+offset_left = 500.0
+offset_top = 630.0
+offset_right = 540.0
+offset_bottom = 670.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=1801991471]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -107.0
-offset_right = 100.0
-offset_bottom = -43.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=1330244696]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="GadgetUI3" parent="CanvasLayer/Control/HBoxContainer" unique_id=1994935377 instance=ExtResource("8_7q06a")]
+[node name="GadgetUI" parent="CanvasLayer/Control/HBoxContainer" unique_id=1994935377 instance=ExtResource("8_7q06a")]
+visible = false
 layout_mode = 2
 
-[node name="GadgetUI2" parent="CanvasLayer/Control/HBoxContainer" unique_id=1445853164 instance=ExtResource("8_7q06a")]
+[node name="GadgetUI2" parent="CanvasLayer/Control/HBoxContainer" unique_id=1688933694 instance=ExtResource("8_7q06a")]
+visible = false
 layout_mode = 2
 
-[node name="GadgetUI" parent="CanvasLayer/Control/HBoxContainer" unique_id=1923248670 instance=ExtResource("8_7q06a")]
+[node name="GadgetUI3" parent="CanvasLayer/Control/HBoxContainer" unique_id=1457087812 instance=ExtResource("8_7q06a")]
+visible = false
 layout_mode = 2
+
+[connection signal="mouse_entered" from="CanvasLayer/ColorRect/MarginContainer/NinePatchRect/GridContainer2/Skill1Panel/ShieldButton" to="CanvasLayer/ColorRect/MarginContainer/NinePatchRect/GridContainer2/Skill1Panel" method="_on_texture_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/ColorRect/MarginContainer/NinePatchRect/GridContainer2/Skill1Panel/ShieldButton" to="CanvasLayer/ColorRect/MarginContainer/NinePatchRect/GridContainer2/Skill1Panel" method="_on_texture_button_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/MarginContainer/NinePatchRect/GridContainer2/Skill1Panel/ShieldButton" to="." method="_on_shield_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/MarginContainer/NinePatchRect/GridContainer2/Skill1Panel/ShieldButton" to="CanvasLayer/ColorRect/MarginContainer/NinePatchRect/GridContainer2/Skill1Panel" method="_on_shield_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/ColorRect/MarginContainer/NinePatchRect/GridContainer2/Skill2Panel/TractorButton" to="CanvasLayer/ColorRect/MarginContainer/NinePatchRect/GridContainer2/Skill2Panel" method="_on_tractor_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/ColorRect/MarginContainer/NinePatchRect/GridContainer2/Skill2Panel/TractorButton" to="CanvasLayer/ColorRect/MarginContainer/NinePatchRect/GridContainer2/Skill2Panel" method="_on_tractor_button_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/MarginContainer/NinePatchRect/GridContainer2/Skill2Panel/TractorButton" to="." method="_on_tractor_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/ColorRect/MarginContainer/NinePatchRect/GridContainer2/Skill3Panel/PortalButton" to="CanvasLayer/ColorRect/MarginContainer/NinePatchRect/GridContainer2/Skill3Panel" method="_on_portal_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/ColorRect/MarginContainer/NinePatchRect/GridContainer2/Skill3Panel/PortalButton" to="CanvasLayer/ColorRect/MarginContainer/NinePatchRect/GridContainer2/Skill3Panel" method="_on_portal_button_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/MarginContainer/NinePatchRect/GridContainer2/Skill3Panel/PortalButton" to="." method="_on_portal_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/ColorRect/MarginContainer/NinePatchRect/GridContainer2/Skill4Panel/LaserButton" to="CanvasLayer/ColorRect/MarginContainer/NinePatchRect/GridContainer2/Skill4Panel" method="_on_laser_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/ColorRect/MarginContainer/NinePatchRect/GridContainer2/Skill4Panel/LaserButton" to="CanvasLayer/ColorRect/MarginContainer/NinePatchRect/GridContainer2/Skill4Panel" method="_on_laser_button_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/MarginContainer/NinePatchRect/GridContainer2/Skill4Panel/LaserButton" to="." method="_on_laser_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/RepairButton" to="." method="_on_repair_button_pressed"]
