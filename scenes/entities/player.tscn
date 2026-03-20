@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://dy1c75gh5ft5c" path="res://assets/sprites/reactor_anim3.png" id="5_dnykm"]
 [ext_resource type="PackedScene" uid="uid://bnr4usbqwwjll" path="res://scenes/entities/gadget_manager.tscn" id="7_dnykm"]
 [ext_resource type="PackedScene" uid="uid://dxnop65myv3dc" path="res://scenes/entities/shield_gadget.tscn" id="8_c5rqy"]
-[ext_resource type="Texture2D" uid="uid://dcktqwwsqmlc6" path="res://assets/sprites/icons/shied_icon.png" id="9_c5rqy"]
 [ext_resource type="PackedScene" uid="uid://22ib65jot3yn" path="res://scenes/entities/tractor_gadget.tscn" id="12_5ki56"]
 [ext_resource type="PackedScene" uid="uid://btxlutifsr8me" path="res://scenes/entities/portal_gadget.tscn" id="13_saib0"]
 
@@ -185,14 +184,10 @@ one_shot = true
 gadgetActives = [NodePath("ShieldGadget"), NodePath("TractorGadget"), NodePath("PortalGadget")]
 
 [node name="ShieldGadget" parent="GadgetManager" unique_id=895922563 instance=ExtResource("8_c5rqy")]
-icon = ExtResource("9_c5rqy")
-name_label = "Shield"
-description = "Un bouclier qui protège le vaisseau, appuyer de nouveau pour le désactiver."
+description = "Un bouclier qui protège le vaisseau des chocs et des zones de radiation"
 
 [node name="TractorGadget" parent="GadgetManager" unique_id=1412567860 instance=ExtResource("12_5ki56")]
-name_label = "Rayon tracteur"
 
 [node name="PortalGadget" parent="GadgetManager" unique_id=448128883 instance=ExtResource("13_saib0")]
-name_label = "Portal"
 
 [connection signal="timeout" from="OutOfBound" to="." method="_on_out_of_bound_timeout"]

@@ -11,13 +11,16 @@
 [ext_resource type="PackedScene" uid="uid://661k42qrblte" path="res://scenes/entities/planet.tscn" id="9_dga24"]
 [ext_resource type="Texture2D" uid="uid://veqmftlc41j8" path="res://assets/sprites/meteors/spaceMeteors_Big2.png" id="9_dnkej"]
 [ext_resource type="Texture2D" uid="uid://5dg8cngrcht3" path="res://assets/sprites/meteors/spaceMeteors_Big.png" id="10_mm8aj"]
-[ext_resource type="PackedScene" uid="uid://cyy4uyttc3iy6" path="res://scenes/entities/spatial_station.tscn" id="10_qxy0u"]
 [ext_resource type="Texture2D" uid="uid://cu5ru3h6yv3ag" path="res://assets/sprites/meteors/meteorBrown_small2.png" id="11_wtwp4"]
-[ext_resource type="PackedScene" uid="uid://6n732bofyslr" path="res://scenes/ui/interface.tscn" id="14_mm8aj"]
-[ext_resource type="PackedScene" uid="uid://d3cvovvvadgbf" path="res://scenes/entities/station_spatial_carburant.tscn" id="15_iwr0g"]
-[ext_resource type="PackedScene" uid="uid://cwu644erkv8sn" path="res://scenes/entities/fragment.tscn" id="15_wtwp4"]
+[ext_resource type="PackedScene" uid="uid://b6tp2j17iwkym" path="res://scenes/ui/interface.tscn" id="14_mm8aj"]
+[ext_resource type="PackedScene" uid="uid://doekmlt7u24rd" path="res://scenes/entities/station_spatial_carburant.tscn" id="15_iwr0g"]
+[ext_resource type="PackedScene" uid="uid://bc3im6otglgsc" path="res://scenes/entities/fragment.tscn" id="15_wtwp4"]
 [ext_resource type="PackedScene" uid="uid://cyb55ayfak0xx" path="res://scenes/entities/radiation_zone.tscn" id="16_iwr0g"]
 [ext_resource type="PackedScene" uid="uid://drtp4vhvrkgik" path="res://scenes/entities/magnetic_zone.tscn" id="17_bahl2"]
+[ext_resource type="PackedScene" uid="uid://ui2liquksul2" path="res://scenes/entities/shield_compo1.tscn" id="18_np2pn"]
+[ext_resource type="PackedScene" uid="uid://bq5u5ybwm0wh4" path="res://scenes/entities/shield_compo2.tscn" id="19_v6ha0"]
+[ext_resource type="PackedScene" uid="uid://dsjm8eonkl4sw" path="res://scenes/entities/tractor_compo1.tscn" id="20_mkypq"]
+[ext_resource type="PackedScene" uid="uid://cxs8422c014ie" path="res://scenes/entities/tractor_compo2.tscn" id="21_ndtll"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sk5k4"]
 atlas = ExtResource("5_6761a")
@@ -1792,7 +1795,7 @@ size = Vector2(3039, 2384)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwr0g"]
 size = Vector2(2817, 994)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_bahl2"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_7h2jl"]
 resource_local_to_scene = true
 radius = 61.765
 
@@ -1936,7 +1939,7 @@ collisionRange = 30.864
 pushZoneRange = 61.765
 
 [node name="CollisionShape2D" parent="Asteroid4/pushZone" parent_id_path=PackedInt32Array(956945604, 1457056112) index="0" unique_id=575047982]
-shape = SubResource("CircleShape2D_bahl2")
+shape = SubResource("CircleShape2D_7h2jl")
 
 [node name="Planet" parent="." unique_id=1040834349 groups=["planet", "radar_detection"] instance=ExtResource("9_dga24")]
 z_index = -2
@@ -1972,9 +1975,6 @@ position = Vector2(-2010, 1427)
 [node name="FragmentBody8" parent="." unique_id=238904414 instance=ExtResource("15_wtwp4")]
 position = Vector2(-1811, 1232)
 
-[node name="Carburant Spatial" parent="." unique_id=988273452 instance=ExtResource("12_iav0o")]
-position = Vector2(305, -89)
-
 [node name="StationSpatial Carburant" parent="." unique_id=708156702 instance=ExtResource("15_iwr0g")]
 position = Vector2(250, 460)
 
@@ -1983,6 +1983,18 @@ position = Vector2(-2312, -144)
 
 [node name="Magnetic_zone" parent="." unique_id=611847379 instance=ExtResource("17_bahl2")]
 position = Vector2(-2213, 1175)
+
+[node name="ShieldCompoBody1" parent="." unique_id=1853860111 instance=ExtResource("18_np2pn")]
+position = Vector2(-1194, 1205)
+
+[node name="ShieldCompoBody2" parent="." unique_id=466189786 instance=ExtResource("19_v6ha0")]
+position = Vector2(-1049, 1167)
+
+[node name="ShieldCompoBody3" parent="." unique_id=134285700 instance=ExtResource("20_mkypq")]
+position = Vector2(-764, 921)
+
+[node name="ShieldCompoBody4" parent="." unique_id=1820491364 instance=ExtResource("21_ndtll")]
+position = Vector2(-762, 1013)
 
 [connection signal="body_entered" from="CameraAreaNode/CameraArea2D" to="CameraAreaNode/CameraArea2D" method="_on_body_entered"]
 [connection signal="body_entered" from="CameraAreaNode/CameraArea2D2" to="CameraAreaNode/CameraArea2D2" method="_on_body_entered"]

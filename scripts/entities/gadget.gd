@@ -24,6 +24,8 @@ var ship : Node2D
 ## Timer utilisé pour gérer le cooldown
 @onready var cooldownTimer : Timer = create_cooldownTimer()
 
+## Si la compétence est débloquée ou non ##
+var unlock = false
 
 ## Met à jour dynamiquement le Timer si le cooldown change
 func set_cooldown(new_value) -> void:

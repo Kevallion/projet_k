@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://cwew5b7q2bhrn"]
+
+[ext_resource type="Script" uid="uid://do2722dpinf7q" path="res://ressources/inventory/inventory_item.gd" id="1_08w73"]
+[ext_resource type="Texture2D" uid="uid://xadybcawmdhl" path="res://assets/sprites/items/beam0.png" id="2_08w73"]
+
+[resource]
+script = ExtResource("1_08w73")
+name = "shield_compo2"
+texture = ExtResource("2_08w73")
+metadata/_custom_type_script = "uid://do2722dpinf7q"

@@ -6,5 +6,7 @@
 [resource]
 script = ExtResource("1_oehgo")
 name = "fragment"
+title = "Débris"
+description = "Sert à réparer la coque du vaisseau"
 texture = ExtResource("2_l2rkm")
 metadata/_custom_type_script = "uid://do2722dpinf7q"

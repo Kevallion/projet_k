@@ -22,8 +22,8 @@ var externalForce := Vector2.ZERO
 @export var inventory: Inv
 
 
-var gas = 2000.0;
-var maxGas = 2000.0;
+var gas = 3000.0;
+var maxGas = 3000.0;
 var gasExpense = 1;
 var maxHealth = 1000
 var health = 900
@@ -195,11 +195,41 @@ func can_repair():
 	return false
 	
 func repair():
+	health += 50
+	inventory.remove("fragment")
+				
+func can_craft():
+	var ingredientList = []
 	for slot in inventory.slots:
 		if slot.item:
 			if slot.item.name == "fragment":
-				health += 50
-				slot.amount -= 1
-				if slot.amount == 0:
-					slot.item = null
-				return
+				ingredientList.append(true)
+			else: 
+				ingredientList.append(false)
+	return ingredientList
+	
+func find_compo(compo):
+	for slot in inventory.slots:
+		if slot.item:
+			if slot.item.name == compo:
+				return compo
+	return null
+
+func delete_compo(compo):
+	for slot in inventory.slots:
+		if slot.item:
+			if slot.item.name == compo:
+				slot.item = null
+				return true
+	return false
+	
+func unlock_skill_slot(comp):
+	match comp:
+		"shield":
+			$GadgetManager/ShieldGadget.unlock = true
+		"tractor":
+			$GadgetManager/TractorGadget.unlock = true
+		"portal":
+			$GadgetManager/PortalGadget.unlock = true
+		#"laser":
+			#$GadgetManager/LaserGadget.unlock = true

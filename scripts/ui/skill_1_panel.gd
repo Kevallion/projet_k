@@ -1,23 +1,26 @@
 extends Panel
-@onready var descriptionLabel =  %GadgetDescription
+@onready var button = %ShieldButton
 var crafted = false
 
-# Called when the node enters the scene tree for the first time.
+var tooltip_scene := preload("res://scenes/ui/skills_tooltip.tscn")
+var tooltip: SkillsTooltip
+
 func _ready() -> void:
-	pass # Replace with function body.
+	button.disabled = true
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
-func _on_mouse_entered() -> void:
-	descriptionLabel.text = "Le bouclier protège des chocs \net des zones de radioactivité"
+func _on_texture_button_mouse_entered() -> void:
+	var name = "Bouclier"
+	var description = "Le bouclier protège des chocs \net des zones de radioactivité"
 	if !crafted:
-		descriptionLabel.text += "\n\nNecessite :\n- Truc\n- Machin\n- Bidule\nPour être fabriqué"
+		name += " (Verrouillé)"
+		description += "\n\nFabrication :\n- Générateur\n- Convertisseur d'energie"
 		
-	
-
-func _on_mouse_exited() -> void:
-	descriptionLabel.text = ""
+	tooltip = tooltip_scene.instantiate()
+	get_tree().current_scene.find_child("Interface").get_node("CanvasLayer").add_child(tooltip)
+	tooltip.set_options(name, description)
+	tooltip.global_position = get_global_mouse_position()+Vector2(10,200)
+		
+func _on_texture_button_mouse_exited() -> void:
+	if tooltip:
+		tooltip.queue_free()
+		tooltip = null
