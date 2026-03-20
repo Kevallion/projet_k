@@ -19,15 +19,15 @@ class_name Player extends CharacterBody2D
 @export var forceDrag := 5.0
 @export var maxSpeed := 300.0
 
-#Stats
+#Stats (Valeurs de noloz_features : 3000 gas / 900 health)
 @export_group("Stats")
-@export var maxGas := 2000.0
+@export var maxGas := 3000.0
 @export var maxHealth := 1000.0
 @export var maxEnergy := 300.0
 @export var inventory: Inv
 
-var gas := 2000.0
-var health := 1000.0
+var gas := 3000.0
+var health := 900.0
 var energy := 300.0
 var gasExpense := 1.0
 var hasShield := false
@@ -154,7 +154,6 @@ func _getNearestStationPos() -> Vector2:
 	var minDist = INF
 	
 	for s in stations:
-		
 		if not s.isDiscovered:
 			continue
 		var dist = global_position.distance_to(s.global_position)
@@ -164,7 +163,6 @@ func _getNearestStationPos() -> Vector2:
 	if closest != null:
 		return closest.global_position
 	return Vector2.ZERO
-
 
 
 func take_hit(damage := 100.0):
@@ -193,3 +191,52 @@ func _on_out_of_bound_timeout() -> void:
 
 func collect(item):
 	if inventory: inventory.insert(item)
+
+# --- Fonctions du collègue (noloz_features) ---
+
+func can_repair():
+	if !health < maxHealth:
+		return false
+	for slot in inventory.slots:
+		if slot.item:
+			if slot.item.name == "fragment":
+				return true
+	return false
+	
+func repair():
+	health += 50
+	inventory.remove("fragment")
+				
+func can_craft():
+	var ingredientList = []
+	for slot in inventory.slots:
+		if slot.item:
+			if slot.item.name == "fragment":
+				ingredientList.append(true)
+			else: 
+				ingredientList.append(false)
+	return ingredientList
+	
+func find_compo(compo):
+	for slot in inventory.slots:
+		if slot.item:
+			if slot.item.name == compo:
+				return compo
+	return null
+
+func delete_compo(compo):
+	for slot in inventory.slots:
+		if slot.item:
+			if slot.item.name == compo:
+				slot.item = null
+				return true
+	return false
+	
+func unlock_skill_slot(comp):
+	match comp:
+		"shield":
+			$GadgetManager/ShieldGadget.unlock = true
+		"tractor":
+			$GadgetManager/TractorGadget.unlock = true
+		"portal":
+			$GadgetManager/PortalGadget.unlock = true
