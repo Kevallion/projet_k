@@ -13,13 +13,13 @@ class_name Player extends CharacterBody2D
 @onready var reactorFrontLeftSprite = $Sprite2D/ReactorFrontLeftSprite
 @onready var reactorFrontRightSprite = $Sprite2D/ReactorFrontRightSprite
 
-#Paramètres physiq
+
 @export_group("Physique")
 @export var mass := 1.0
 @export var forceDrag := 5.0
 @export var maxSpeed := 300.0
 
-#Stats (Valeurs de noloz_features : 3000 gas / 900 health)
+
 @export_group("Stats")
 @export var maxGas := 3000.0
 @export var maxHealth := 1000.0
@@ -192,7 +192,7 @@ func _on_out_of_bound_timeout() -> void:
 func collect(item):
 	if inventory: inventory.insert(item)
 
-# --- Fonctions du collègue (noloz_features) ---
+
 
 func can_repair():
 	if !health < maxHealth:

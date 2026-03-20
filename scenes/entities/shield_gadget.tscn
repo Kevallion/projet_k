@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://dxnop65myv3dc"]
 
 [ext_resource type="Script" uid="uid://b8pyc5r3ka0by" path="res://scripts/entities/shield_gadget.gd" id="1_5oe04"]
+[ext_resource type="AudioStream" uid="uid://dsc6u121but23" path="res://assets/audio/sfx/sfx_shieldUp.ogg" id="2_kylrx"]
 [ext_resource type="Texture2D" uid="uid://cu4gmyftykc2k" path="res://assets/sprites/icons/shield_icon.png" id="2_lrxrc"]
 [ext_resource type="Texture2D" uid="uid://chub1ax8x61r8" path="res://assets/sprites/gadgets/shield3.png" id="2_lxht2"]
+[ext_resource type="AudioStream" uid="uid://d2vkpi4kj2hml" path="res://assets/audio/sfx/sfx_shieldDown.ogg" id="3_n7iis"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mm8aj"]
 radius = 72.36098
@@ -111,6 +113,8 @@ _data = {
 
 [node name="ShieldGadget" type="Node2D" unique_id=895922563]
 script = ExtResource("1_5oe04")
+sndShieldOn = ExtResource("2_kylrx")
+sndShieldOff = ExtResource("3_n7iis")
 icon = ExtResource("2_lrxrc")
 name_label = "Bouclier"
 description = "C'est pas mal"
