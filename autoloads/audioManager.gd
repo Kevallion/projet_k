@@ -35,6 +35,13 @@ func _get_available_audio_player() -> AudioStreamPlayer:
 			return audio_player
 	return _create_new()
 
+## Arrête un son spécifique en cours de lecture
+func stop(stream: AudioStream) -> void:
+	for audio_player in audio_players:
+		if audio_player.stream == stream and audio_player.playing:
+			audio_player.stop()
+			break 
+
 func _create_new() -> AudioStreamPlayer:
 	var audio_player := AudioStreamPlayer.new()
 	add_child(audio_player)

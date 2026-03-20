@@ -26,6 +26,7 @@ var inventory_is_open = false
 #var portal_is_crafted = false
 #var laser_is_crafted = false
 
+@export var sndRepairs : Array[AudioStream] = [preload("res://assets/audio/sfx/Repair or Craft 1.ogg"),preload("res://assets/audio/sfx/Repair or Craft 2.ogg")]
 
 func _ready() -> void:
 	inv.update.connect(update_slots)
@@ -112,6 +113,7 @@ func _on_shield_button_pressed() -> void:
 		inv.remove("shield_compo1")
 		inv.remove("shield_compo2")
 		shield_button.get_parent().crafted = true
+	AudioManager.play(sndRepairs.pick_random(),&"SFX")
 	player.unlock_skill_slot("shield")
 	$CanvasLayer/Control/HBoxContainer/GadgetUI.visible = true
 	
@@ -124,6 +126,7 @@ func _on_tractor_button_pressed() -> void:
 		inv.remove("tractor_compo2")
 		tractor_button.get_parent().crafted = true
 	player.unlock_skill_slot("tractor")
+	AudioManager.play(sndRepairs.pick_random(),&"SFX")
 	$CanvasLayer/Control/HBoxContainer/GadgetUI2.visible = true
 	
 	update_slots()
@@ -134,6 +137,7 @@ func _on_portal_button_pressed() -> void:
 		inv.remove("portal_compo1")
 		inv.remove("portal_compo2")
 		portal_button.get_parent().crafted = true
+	AudioManager.play(sndRepairs.pick_random(),&"SFX")
 	player.unlock_skill_slot("portal")
 	$CanvasLayer/Control/HBoxContainer/GadgetUI3.visible = true
 	
@@ -145,6 +149,7 @@ func _on_laser_button_pressed() -> void:
 		inv.remove("laser_compo1")
 		inv.remove("laser_compo2")
 		laser_button.get_parent().crafted = true
+	AudioManager.play(sndRepairs.pick_random(),&"SFX")
 	player.unlock_skill_slot("laser")
 	$CanvasLayer/Control/HBoxContainer/GadgetUI.visible = true
 	

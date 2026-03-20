@@ -184,15 +184,9 @@ one_shot = true
 gadgetActives = [NodePath("ShieldGadget"), NodePath("TractorGadget"), NodePath("PortalGadget")]
 
 [node name="ShieldGadget" parent="GadgetManager" unique_id=895922563 instance=ExtResource("8_c5rqy")]
-name_label = ""
-description = ""
 
 [node name="TractorGadget" parent="GadgetManager" unique_id=1412567860 instance=ExtResource("12_5ki56")]
-name_label = ""
-description = ""
 
 [node name="PortalGadget" parent="GadgetManager" unique_id=448128883 instance=ExtResource("13_saib0")]
-name_label = ""
-description = ""
 
 [connection signal="timeout" from="OutOfBound" to="." method="_on_out_of_bound_timeout"]

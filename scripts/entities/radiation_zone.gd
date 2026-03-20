@@ -12,8 +12,8 @@ func _ready() -> void:
 func _apply_effect(body: Node2D, delta: float) -> void:
 	# On vérifie si l'objet a une propriété 'health'
 	if "health" in body:
-		if body.hasShield:
-			return
+		#if body.hasShield:
+			#return
 
 		# déclenche l'effet de hit visuel si disponible
 		if body.has_method("take_hit") and Engine.get_frames_drawn() % 10 == 0:

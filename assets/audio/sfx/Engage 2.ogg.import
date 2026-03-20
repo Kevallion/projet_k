@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/Engage 2.ogg-0c96ef38054380c64cb5e501389e6120
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
+loop=true
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

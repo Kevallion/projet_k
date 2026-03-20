@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://drtp4vhvrkgik"]
 
 [ext_resource type="Script" uid="uid://bi4y6isq0yjke" path="res://scripts/entities/magnetic_zone.gd" id="1_wbe47"]
-[ext_resource type="Texture2D" uid="uid://i03fcqidddxe" path="res://new_animated_texture.tres" id="2_6a5qu"]
+[ext_resource type="Texture2D" uid="uid://i03fcqidddxe" path="res://assets/sprites/particles/new_animated_texture.tres" id="2_6a5qu"]
 [ext_resource type="AudioStream" uid="uid://c4ypn82xklwa0" path="res://assets/audio/music/forceField.mp3" id="3_kqbba"]
 
 [sub_resource type="Curve" id="Curve_6a5qu"]

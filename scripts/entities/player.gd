@@ -38,6 +38,19 @@ var rotationDirection := 0.0
 var rotationForce := 0.01
 var holdingTime := 0
 var speedPower := 1.0
+var isReactorActive := false
+#sound
+@export_group("SOUND")
+@export var sndCrash : AudioStream = preload("res://assets/audio/sfx/Crash (Death).ogg")
+@export var sndHitImpacts : Array[AudioStream] = [preload("res://assets/audio/sfx/Hit Impact 1.ogg"),
+									preload("res://assets/audio/sfx/Hit Impact 2.ogg"),
+									preload("res://assets/audio/sfx/Hit Impact 3.ogg"), 
+									preload("res://assets/audio/sfx/Hit Impact 4.ogg")]
+@export var sndReactorUp : AudioStream = preload("res://assets/audio/sfx/Engage 1.ogg")
+@export var sndReactorOn : AudioStream = preload("res://assets/audio/sfx/SFX_REACTORS_IDLE_SPACESHIP(L).ogg")
+@export var sndReactorDown : AudioStream = preload("res://assets/audio/sfx/Engage 3.ogg")
+@export var sndRepairs : Array[AudioStream] = [preload("res://assets/audio/sfx/Repair or Craft 1.ogg"),preload("res://assets/audio/sfx/Repair or Craft 2.ogg")]
+@export var shieldHitsounds : Array[AudioStream] = [preload("res://assets/audio/sfx/Shield Hit 1.ogg"),preload("res://assets/audio/sfx/Shield Hit 2.ogg")]
 
 func _physics_process(delta: float) -> void:
 	externalForce = externalForce.lerp(Vector2.ZERO, forceDrag * delta)
@@ -63,6 +76,19 @@ func _handleMovements():
 	var centerActive = Input.is_action_pressed("ui_up")
 	var braking = Input.is_action_pressed("ui_down")
 	
+	#savoir si le moteur est allumé
+	var currentlyActive = leftActive or rightActive or centerActive or braking
+	
+	#gestion des sons du reacteur
+	if currentlyActive and not isReactorActive:
+		#AudioManager.play(sndReactorUp, &"SFX",-5.,0.5)
+		AudioManager.play(sndReactorOn, &"SFX",2.0,0.2)
+		isReactorActive = true
+	elif not currentlyActive and isReactorActive:
+		AudioManager.stop(sndReactorOn)
+		#AudioManager.play(sndReactorDown, &"SFX",-5.0,0.5)
+		isReactorActive = false
+		
 	var reactorPower = 0.0
 	rotationForce = 0.01
 	
@@ -121,6 +147,7 @@ func _handleMovements():
 
 func _checkVitals():
 	if health <= 0 or gas <= 0:
+		AudioManager.play(sndCrash,&"SFX")
 		triggerRespawn()
 		return
 	
@@ -169,9 +196,11 @@ func take_hit(damage := 100.0):
 	if $InvulFrames.is_stopped():
 		# Si on a un bouclier, il absorbe les dégâts
 		if hasShield:
+			AudioManager.play(shieldHitsounds.pick_random(),&"SFX")
 			return
 			
 		health -= damage
+		AudioManager.play(sndHitImpacts.pick_random(),&"SFX")
 		if mainCamera.has_method("add_shake"):
 			mainCamera.add_shake(10.0)
 		$Sprite2D/HitFrames.play("hit")
@@ -204,6 +233,7 @@ func can_repair():
 	return false
 	
 func repair():
+	AudioManager.play(sndRepairs.pick_random(),&"SFX")
 	health += 50
 	inventory.remove("fragment")
 				
