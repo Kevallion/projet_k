@@ -19,8 +19,11 @@
 [ext_resource type="PackedScene" uid="uid://bq5u5ybwm0wh4" path="res://scenes/entities/shield_compo2.tscn" id="19_v6ha0"]
 [ext_resource type="Script" uid="uid://t5m4jljqj7fq" path="res://scripts/ui/dialog_node.gd" id="20_gmpev"]
 [ext_resource type="PackedScene" uid="uid://dsjm8eonkl4sw" path="res://scenes/entities/tractor_compo1.tscn" id="20_mkypq"]
-[ext_resource type="Theme" uid="uid://odcq8lrptw30" path="res://assets/fonts/unispace_theme.tres" id="21_mkypq"]
+[ext_resource type="FontFile" uid="uid://wsgou0yhhqx4" path="res://assets/fonts/Unispace Bd.otf" id="21_7h2jl"]
 [ext_resource type="PackedScene" uid="uid://cxs8422c014ie" path="res://scenes/entities/tractor_compo2.tscn" id="21_ndtll"]
+[ext_resource type="FontFile" uid="uid://bdutksssxbkch" path="res://assets/fonts/Unispace Bd It.otf" id="22_7o3do"]
+[ext_resource type="FontFile" uid="uid://cdo7jcoc3wbi0" path="res://assets/fonts/Unispace It.otf" id="22_mqh5v"]
+[ext_resource type="FontFile" uid="uid://bu3dj4uyccynb" path="res://assets/fonts/Unispace Rg.otf" id="23_7o3do"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sk5k4"]
 atlas = ExtResource("5_6761a")
@@ -1780,18 +1783,26 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ndtll"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_mqh5v"]
 resource_local_to_scene = true
 radius = 61.765
 
+[sub_resource type="Theme" id="Theme_gmpev"]
+default_font = ExtResource("23_7o3do")
+RichTextLabel/colors/default_color = Color(0.7529412, 1, 1, 1)
+RichTextLabel/fonts/bold_font = ExtResource("21_7h2jl")
+RichTextLabel/fonts/bold_italics_font = ExtResource("22_7o3do")
+RichTextLabel/fonts/italics_font = ExtResource("22_mqh5v")
+RichTextLabel/fonts/normal_font = ExtResource("23_7o3do")
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mkypq"]
-size = Vector2(406, 136)
+size = Vector2(406, 296)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7o3do"]
-size = Vector2(1294, 100)
+size = Vector2(827, 174)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mqh5v"]
-size = Vector2(6653, 497)
+size = Vector2(4095, 662)
 
 [node name="Level1" type="Node2D" unique_id=708747007]
 
@@ -1810,11 +1821,11 @@ target_node = NodePath("../Player")
 
 [node name="ParallaxNode" type="Node2D" parent="." unique_id=1992718094]
 z_index = -1000
-position = Vector2(4919, 1527)
+position = Vector2(625, 103)
 
 [node name="Parallax2D" type="Parallax2D" parent="ParallaxNode" unique_id=214604991]
 scroll_scale = Vector2(0.1, 0.1)
-scroll_offset = Vector2(-3815, -1881)
+scroll_offset = Vector2(-552, 53)
 
 [node name="SunSprite" type="AnimatedSprite2D" parent="ParallaxNode/Parallax2D" unique_id=1055201885]
 z_index = -2
@@ -1826,71 +1837,70 @@ autoplay = "default"
 frame_progress = 0.09672816
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=327953179]
-process_mode = 3
 stream = ExtResource("4_x42e6")
 autoplay = true
 parameters/looping = true
 
 [node name="Asteroid" parent="." unique_id=595955600 instance=ExtResource("5_s8va5")]
-position = Vector2(4898, 1836)
+position = Vector2(604, 412)
 collisionRange = 30.864
 pushZoneRange = 61.765
 
 [node name="Asteroid5" parent="." unique_id=724684849 instance=ExtResource("5_s8va5")]
-position = Vector2(5121, 1272)
+position = Vector2(827, -152)
 asteroidTexture = ExtResource("9_dnkej")
 collisionRange = 77.241
 pushZoneRange = 114.374
 
 [node name="Asteroid6" parent="." unique_id=1114721045 instance=ExtResource("5_s8va5")]
-position = Vector2(6092, 2275)
+position = Vector2(1798, 851)
 asteroidTexture = ExtResource("10_mm8aj")
 collisionRange = 77.241
 pushZoneRange = 114.374
 
 [node name="Asteroid2" parent="." unique_id=2136046588 instance=ExtResource("5_s8va5")]
-position = Vector2(4873, 1514)
+position = Vector2(579, 90)
 collisionRange = 30.864
 pushZoneRange = 61.765
 
 [node name="Asteroid7" parent="." unique_id=1383447321 instance=ExtResource("5_s8va5")]
-position = Vector2(6320, 1514)
+position = Vector2(2026, 90)
 collisionRange = 30.864
 pushZoneRange = 61.765
 
 [node name="Asteroid8" parent="." unique_id=143440257 instance=ExtResource("5_s8va5")]
-position = Vector2(334, -8)
+position = Vector2(-157, 238)
 collisionRange = 30.864
 pushZoneRange = 61.765
 
 [node name="Asteroid9" parent="." unique_id=1205052231 instance=ExtResource("5_s8va5")]
-position = Vector2(118, 200)
+position = Vector2(-63, 429)
 collisionRange = 30.864
 pushZoneRange = 61.765
 
 [node name="Asteroid10" parent="." unique_id=513735706 instance=ExtResource("5_s8va5")]
-position = Vector2(-284, 118)
+position = Vector2(-351, 435)
 collisionRange = 30.864
 pushZoneRange = 61.765
 
 [node name="Asteroid3" parent="." unique_id=741875419 instance=ExtResource("5_s8va5")]
-position = Vector2(5330, 2284)
+position = Vector2(1036, 860)
 asteroidTexture = ExtResource("11_wtwp4")
 collisionRange = 30.864
 pushZoneRange = 61.765
 
 [node name="Asteroid4" parent="." unique_id=956945604 instance=ExtResource("5_s8va5")]
-position = Vector2(5093, 1915)
+position = Vector2(799, 491)
 asteroidTexture = ExtResource("6_dga24")
 collisionRange = 30.864
 pushZoneRange = 61.765
 
 [node name="CollisionShape2D" parent="Asteroid4/pushZone" parent_id_path=PackedInt32Array(956945604, 1457056112) index="0" unique_id=575047982]
-shape = SubResource("CircleShape2D_ndtll")
+shape = SubResource("CircleShape2D_mqh5v")
 
 [node name="Planet" parent="." unique_id=1040834349 groups=["planet", "radar_detection"] instance=ExtResource("9_dga24")]
 z_index = -2
-position = Vector2(5667, 1734)
+position = Vector2(1373, 310)
 attractionRange = 873.832
 
 [node name="Planet2" parent="." unique_id=1647332511 groups=["planet", "radar_detection"] instance=ExtResource("9_dga24")]
@@ -1923,7 +1933,7 @@ position = Vector2(-130, -763)
 position = Vector2(69, -958)
 
 [node name="StationSpatial Carburant" parent="." unique_id=708156702 groups=["radar_detection"] instance=ExtResource("15_iwr0g")]
-position = Vector2(6340, -2402)
+position = Vector2(250, 460)
 
 [node name="RadiationZone" parent="." unique_id=1273611784 instance=ExtResource("16_iwr0g")]
 position = Vector2(-1767, -447)
@@ -1950,7 +1960,6 @@ script = ExtResource("20_gmpev")
 [node name="CanvasLayer" type="CanvasLayer" parent="DialogNode" unique_id=964916204]
 
 [node name="Panel" type="PanelContainer" parent="DialogNode/CanvasLayer" unique_id=1146006551]
-visible = false
 custom_minimum_size = Vector2(344, 88)
 anchors_preset = 8
 anchor_left = 0.5
@@ -1966,7 +1975,7 @@ grow_vertical = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="DialogNode/CanvasLayer/Panel" unique_id=1539577291]
 layout_mode = 2
-theme = ExtResource("21_mkypq")
+theme = SubResource("Theme_gmpev")
 bbcode_enabled = true
 fit_content = true
 scroll_active = false
@@ -1976,15 +1985,14 @@ vertical_alignment = 1
 [node name="TutoArea" type="Area2D" parent="DialogNode" unique_id=1735284515]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogNode/TutoArea" unique_id=811626316]
-position = Vector2(0, -49)
 shape = SubResource("RectangleShape2D_mkypq")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="DialogNode/TutoArea" unique_id=952043014]
-position = Vector2(2, -443)
+position = Vector2(-7.5, -406)
 shape = SubResource("RectangleShape2D_7o3do")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="DialogNode/TutoArea" unique_id=2133767959]
-position = Vector2(100.5, -2242)
+position = Vector2(708.5, -2139)
 shape = SubResource("RectangleShape2D_mqh5v")
 
 [connection signal="body_entered" from="DialogNode/TutoArea" to="DialogNode" method="_on_tuto_area_body_entered"]

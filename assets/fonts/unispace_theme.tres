@@ -1,0 +1,14 @@
+[gd_resource type="Theme" format=3 uid="uid://odcq8lrptw30"]
+
+[ext_resource type="FontFile" uid="uid://wsgou0yhhqx4" path="res://assets/fonts/Unispace Bd.otf" id="1_5oh5l"]
+[ext_resource type="FontFile" uid="uid://bdutksssxbkch" path="res://assets/fonts/Unispace Bd It.otf" id="2_sj8d3"]
+[ext_resource type="FontFile" uid="uid://cdo7jcoc3wbi0" path="res://assets/fonts/Unispace It.otf" id="3_8hcmq"]
+[ext_resource type="FontFile" uid="uid://bu3dj4uyccynb" path="res://assets/fonts/Unispace Rg.otf" id="4_xt53i"]
+
+[resource]
+default_font = ExtResource("4_xt53i")
+RichTextLabel/colors/default_color = Color(0.7529412, 1, 1, 1)
+RichTextLabel/fonts/bold_font = ExtResource("1_5oh5l")
+RichTextLabel/fonts/bold_italics_font = ExtResource("2_sj8d3")
+RichTextLabel/fonts/italics_font = ExtResource("3_8hcmq")
+RichTextLabel/fonts/normal_font = ExtResource("4_xt53i")

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bna0enc0fmwhm"]
 
 [ext_resource type="Script" uid="uid://bu43uc7ehovfa" path="res://scripts/ui/skills_tooltip.gd" id="1_ryl7l"]
+[ext_resource type="Theme" uid="uid://odcq8lrptw30" path="res://assets/fonts/unispace_theme.tres" id="2_ybytx"]
 
 [node name="SkillsTooltip" type="Control" unique_id=381375819]
 z_index = 100
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_ybytx")
 script = ExtResource("1_ryl7l")
 
 [node name="Panel" type="PanelContainer" parent="." unique_id=1002695119]
@@ -47,6 +49,7 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("2_ybytx")
 theme_override_colors/default_color = Color(0.8784314, 0.95686275, 1, 1)
 bbcode_enabled = true
 fit_content = true
