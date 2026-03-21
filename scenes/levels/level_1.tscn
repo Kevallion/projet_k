@@ -1785,13 +1785,19 @@ resource_local_to_scene = true
 radius = 61.765
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mkypq"]
-size = Vector2(406, 136)
+size = Vector2(2, 2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7o3do"]
 size = Vector2(1294, 100)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ndtll"]
+size = Vector2(818, 28)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mqh5v"]
-size = Vector2(6653, 497)
+size = Vector2(6762.5, 497)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mkypq"]
+radius = 1110.2667
 
 [node name="Level1" type="Node2D" unique_id=708747007]
 
@@ -1800,10 +1806,6 @@ size = Vector2(6653, 497)
 [node name="Player" parent="." unique_id=632786190 instance=ExtResource("1_6iamk")]
 collision_mask = 5
 motion_mode = 1
-mass = null
-forceDrag = null
-maxSpeed = null
-maxEnergy = null
 
 [node name="backGround" parent="." unique_id=1670201285 node_paths=PackedStringArray("target_node") instance=ExtResource("2_dga24")]
 target_node = NodePath("../Player")
@@ -1899,28 +1901,28 @@ position = Vector2(-7230, -13268)
 attractionRange = 873.832
 
 [node name="FragmentBody" parent="." unique_id=1391390146 instance=ExtResource("15_wtwp4")]
-position = Vector2(25, -922)
+position = Vector2(21, -1687)
 
 [node name="FragmentBody2" parent="." unique_id=1652004209 instance=ExtResource("15_wtwp4")]
-position = Vector2(82, -910)
+position = Vector2(78, -1675)
 
 [node name="FragmentBody3" parent="." unique_id=1431651301 instance=ExtResource("15_wtwp4")]
-position = Vector2(264, -1054)
+position = Vector2(264, -1797)
 
 [node name="FragmentBody4" parent="." unique_id=457479652 instance=ExtResource("15_wtwp4")]
-position = Vector2(-109, -817)
+position = Vector2(-113, -1582)
 
 [node name="FragmentBody5" parent="." unique_id=953124843 instance=ExtResource("15_wtwp4")]
-position = Vector2(330, -1060)
+position = Vector2(330, -1803)
 
 [node name="FragmentBody6" parent="." unique_id=131439357 instance=ExtResource("15_wtwp4")]
-position = Vector2(-160, -813)
+position = Vector2(-164, -1578)
 
 [node name="FragmentBody7" parent="." unique_id=2069065900 instance=ExtResource("15_wtwp4")]
-position = Vector2(-130, -763)
+position = Vector2(-134, -1528)
 
 [node name="FragmentBody8" parent="." unique_id=238904414 instance=ExtResource("15_wtwp4")]
-position = Vector2(69, -958)
+position = Vector2(65, -1723)
 
 [node name="StationSpatial Carburant" parent="." unique_id=708156702 groups=["radar_detection"] instance=ExtResource("15_iwr0g")]
 position = Vector2(6340, -2402)
@@ -1950,19 +1952,15 @@ script = ExtResource("20_gmpev")
 [node name="CanvasLayer" type="CanvasLayer" parent="DialogNode" unique_id=964916204]
 
 [node name="Panel" type="PanelContainer" parent="DialogNode/CanvasLayer" unique_id=1146006551]
-visible = false
 custom_minimum_size = Vector2(344, 88)
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -259.0
-offset_top = 51.0
-offset_right = 259.0
-offset_bottom = 139.0
+offset_left = -312.0
+offset_top = 62.0
+offset_right = 312.0
+offset_bottom = 150.0
 grow_horizontal = 2
-grow_vertical = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="DialogNode/CanvasLayer/Panel" unique_id=1539577291]
 layout_mode = 2
@@ -1976,16 +1974,23 @@ vertical_alignment = 1
 [node name="TutoArea" type="Area2D" parent="DialogNode" unique_id=1735284515]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DialogNode/TutoArea" unique_id=811626316]
-position = Vector2(0, -49)
 shape = SubResource("RectangleShape2D_mkypq")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="DialogNode/TutoArea" unique_id=952043014]
-position = Vector2(2, -443)
+position = Vector2(2, -1186)
 shape = SubResource("RectangleShape2D_7o3do")
 
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="DialogNode/TutoArea" unique_id=1352906947]
+position = Vector2(0, -353)
+shape = SubResource("RectangleShape2D_ndtll")
+
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="DialogNode/TutoArea" unique_id=2133767959]
-position = Vector2(100.5, -2242)
+position = Vector2(-6.75, -2452)
 shape = SubResource("RectangleShape2D_mqh5v")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="DialogNode/TutoArea" unique_id=1631113530]
+position = Vector2(6337.533, -2397.9521)
+shape = SubResource("CircleShape2D_mkypq")
 
 [connection signal="body_entered" from="DialogNode/TutoArea" to="DialogNode" method="_on_tuto_area_body_entered"]
 

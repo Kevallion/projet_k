@@ -26,6 +26,8 @@ class_name Player extends CharacterBody2D
 @export var maxEnergy := 300.0
 @export var inventory: Inv
 
+@export var graveBody = preload("res://scenes/entities/grave_body.tscn")
+
 var gas := 3000.0
 var health := 900.0
 var energy := 300.0
@@ -66,7 +68,7 @@ func _physics_process(delta: float) -> void:
 		take_hit(50.0) # Dégât de choc
 	
 	# 5. Check Vitals
-	_checkVitals()
+	_check_vitals()
 
 func _handleMovements():
 	var forwardVector = (forward.global_position - global_position).normalized()
@@ -145,20 +147,18 @@ func _handleMovements():
 	velocity.y = clampf(velocity.y, -maxSpeed, maxSpeed)
 
 
-func _checkVitals():
-	if health <= 0 or gas <= 0:
+func _check_vitals():
+	if gas <= 0:
+		drop_stuff()
+		trigger_respawn()
+	if health <= 0:
 		AudioManager.play(sndCrash,&"SFX")
-		triggerRespawn()
+		drop_stuff()
+		trigger_respawn()
 		return
-	
-	var marge = 50
-	if position.x + marge < mainCamera.limit_left or position.x - marge > mainCamera.limit_right or \
-	   position.y - marge > mainCamera.limit_bottom or position.y + marge < mainCamera.limit_top:
-		if outOfBoundTimer.is_stopped():
-			outOfBoundTimer.start()
 
 #fonction pour appeler le respaw
-func triggerRespawn():
+func trigger_respawn():
 	var targetPos = _getNearestStationPos()
 	global_position = targetPos
 	velocity = Vector2.ZERO
@@ -215,13 +215,8 @@ func _consumeGas(spent):
 func refill_gas():
 	gas = maxGas
 
-func _on_out_of_bound_timeout() -> void:
-	triggerRespawn()
-
-func collect(item):
-	if inventory: inventory.insert(item)
-
-
+func collect(item, amount):
+	if inventory: inventory.insert(item, amount)
 
 func can_repair():
 	if !health < maxHealth:
@@ -261,6 +256,14 @@ func delete_compo(compo):
 				slot.item = null
 				return true
 	return false
+	
+func drop_stuff():
+	if !inventory.is_empty():
+		var grave = graveBody.instantiate()
+		get_tree().current_scene.find_child("Player").get_parent().add_child(grave)
+		grave.global_position = global_position
+		grave.temp_inv.insert_all(inventory.slots)
+		inventory.empty()
 	
 func unlock_skill_slot(comp):
 	match comp:

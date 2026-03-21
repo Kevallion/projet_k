@@ -34,6 +34,7 @@ func _ready() -> void:
 	close_inventory()
  
 func _physics_process(_delta: float) -> void:
+	update_slots()
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().paused = !get_tree().paused
 		if inventory_is_open:
