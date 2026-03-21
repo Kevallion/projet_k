@@ -363,10 +363,10 @@ stretch_mode = 3
 [node name="RepairButton" type="TextureButton" parent="CanvasLayer/ColorRect" unique_id=2008742752]
 custom_minimum_size = Vector2(180, 171)
 layout_mode = 0
-offset_left = 232.99998
-offset_top = 376.0
-offset_right = 433.0
-offset_bottom = 576.0
+offset_left = 223.99998
+offset_top = 315.0
+offset_right = 424.0
+offset_bottom = 515.0
 scale = Vector2(0.2, 0.2)
 texture_normal = ExtResource("8_1qavc")
 texture_pressed = ExtResource("10_3ffix")

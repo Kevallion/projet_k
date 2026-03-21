@@ -1807,6 +1807,10 @@ radius = 61.765
 position = Vector2(-1439, 1298)
 collision_mask = 5
 motion_mode = 1
+mass = null
+forceDrag = null
+maxSpeed = null
+maxEnergy = null
 
 [node name="backGround" parent="." unique_id=1670201285 node_paths=PackedStringArray("target_node") instance=ExtResource("2_dga24")]
 target_node = NodePath("../Player")

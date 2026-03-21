@@ -30,8 +30,7 @@ var currentState := State.PLACING_A
 
 
 ## Met à jour la position du placeholder pendant le placement
-@warning_ignore("unused_parameter")
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if portalPlaceholder:
 		
 		# placement du portail A devant le vaisseau

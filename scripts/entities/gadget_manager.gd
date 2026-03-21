@@ -74,7 +74,7 @@ func _unhandled_input(event: InputEvent) -> void:
 					gadget.is_active = false
 			# utilise le gadget si présent
 			if slot.gadget.unlock == true:
-				var used :=	slot.gadget.try_use(ship)
+				slot.gadget.try_use(ship)
 			break
 			
 func update_gadget_assigned(gadget):

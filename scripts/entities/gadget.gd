@@ -98,8 +98,6 @@ func try_use(ship_ref) -> bool:
 		
 		return true
 		
-	@warning_ignore("unreachable_code")
-	return false
 
 
 # --- Méthodes à surcharger dans les classes enfants ---
