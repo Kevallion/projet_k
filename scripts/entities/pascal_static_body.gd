@@ -4,8 +4,8 @@ extends StaticBody2D
 
 func spawn_converter():
 	$ShieldCompoBody2.visible = true
-	$ShieldCompoBody2.set_collision_mask_value(0, true)
-	#$ShieldCompoBody2.set_collision_layer_value(0, true)
+	$ShieldCompoBody2.set_collision_mask_value(1, true)
+	#$ShieldCompoBody2.set_collision_layer_value(1, true)
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if dialogNode.actId == 5:
