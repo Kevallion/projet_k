@@ -387,15 +387,12 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="GadgetUI" parent="CanvasLayer/Control/HBoxContainer" unique_id=1994935377 instance=ExtResource("8_7q06a")]
-visible = false
 layout_mode = 2
 
 [node name="GadgetUI2" parent="CanvasLayer/Control/HBoxContainer" unique_id=1688933694 instance=ExtResource("8_7q06a")]
-visible = false
 layout_mode = 2
 
 [node name="GadgetUI3" parent="CanvasLayer/Control/HBoxContainer" unique_id=1457087812 instance=ExtResource("8_7q06a")]
-visible = false
 layout_mode = 2
 
 [connection signal="mouse_entered" from="CanvasLayer/ColorRect/MarginContainer/NinePatchRect/GridContainer2/Skill1Panel/ShieldButton" to="CanvasLayer/ColorRect/MarginContainer/NinePatchRect/GridContainer2/Skill1Panel" method="_on_texture_button_mouse_entered"]
