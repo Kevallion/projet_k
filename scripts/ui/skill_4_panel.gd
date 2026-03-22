@@ -9,15 +9,15 @@ func _ready() -> void:
 	button.disabled = true
 	
 func _on_laser_button_mouse_entered() -> void:
-	var title = "Laser"
+	var name = "Laser"
 	var description = "Permet de détruire des roches et autres débris encombrants"
 	if !crafted:
-		title += " (Verrouillé)"
+		name += " (Verrouillé)"
 		description += "\n\nFabrication :\n- Source laser\n- Lentille"
 		
 	tooltip = tooltip_scene.instantiate()
 	get_tree().current_scene.find_child("Interface").get_node("CanvasLayer").add_child(tooltip)
-	tooltip.set_options(title, description)
+	tooltip.set_options(name, description)
 	tooltip.global_position = get_global_mouse_position()+Vector2(10,200)
 
 

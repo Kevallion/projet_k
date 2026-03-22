@@ -6,20 +6,16 @@ signal update
 
 @export var slots: Array[InvSlot]
 
-func insert(item: InvItem, amount: int):
+func insert(item: InvItem):
 	var itemSlots = slots.filter(func(slot): return slot.item == item)
 	if !itemSlots.is_empty():
-		itemSlots[0].amount += amount
+		itemSlots[0].amount += 1
 	else :
 		var emptySlots = slots.filter(func(slot): return slot.item == null)
 		if !emptySlots.is_empty():
 			emptySlots[0].item = item
-			emptySlots[0].amount = amount
+			emptySlots[0].amount = 1
 	update.emit()
-		
-func insert_all(_slots: Array[InvSlot]):
-	for slot in _slots:
-		insert(slot.item, slot.amount)
 
 func remove(itemName: String):
 	for slot in slots:
@@ -29,17 +25,3 @@ func remove(itemName: String):
 				if slot.amount == 0:
 					slot.item = null
 				return
-
-func empty():
-	for slot in slots:
-		if slot.item:
-			slot.item = null
-			slot.amount = 0
-			pass
-
-func is_empty():
-	for slot in slots:
-		if slot.item:
-			return false
-	return true
-	

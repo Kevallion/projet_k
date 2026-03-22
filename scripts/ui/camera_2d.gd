@@ -1,5 +1,5 @@
 extends Camera2D
-@onready var inventory = $"../../Interface"
+@onready var inventory = get_node_or_null("%Interface")
 var ZoomFactor := Vector2(0.15, 0.15)
 var ZoomMax := 10.0
 var ZoomMin := 0.7
@@ -64,6 +64,8 @@ func zooming_process():
 		global_position.y = limit_bottom - (Hauteur/2)
 
 func move_camera():
+	if not inventory:
+		return
 	if inventory.inventory_is_open:
 		# Mouvement manuel en pause
 		if Input.is_action_pressed("ui_down") and (global_position.y + (Hauteur/2)) < limit_bottom:

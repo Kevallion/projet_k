@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://buvhdj4s6plxm"]
+
+[ext_resource type="Texture2D" uid="uid://c3fhc0ky84mbq" path="res://assets/sprites/23ad2408-4351-4c0e-94d2-fbde5a0f9fef-cover.png" id="1_icre5"]
+
+[node name="PortailsPlaceholder" type="Sprite2D" unique_id=1315045155]
+modulate = Color(1, 1, 1, 0.35686275)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_icre5")

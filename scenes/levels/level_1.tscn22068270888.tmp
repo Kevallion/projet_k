@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://d2rbl3mtl3ie2"]
+
+[ext_resource type="PackedScene" uid="uid://dpb45y2nb8djb" path="res://scenes/entities/player.tscn" id="1_6iamk"]
+[ext_resource type="Texture2D" uid="uid://dys4vx6k52lko" path="res://assets/sprites/space_background.png" id="3_nsrm0"]
+
+[node name="Level1" type="Node2D" unique_id=708747007]
+
+[node name="Player" parent="." unique_id=632786190 instance=ExtResource("1_6iamk")]
+
+[node name="ParallaxNode" type="Node2D" parent="." unique_id=1992718094]
+z_index = -1000
+position = Vector2(640, 0)
+
+[node name="Parallax2D" type="Parallax2D" parent="ParallaxNode" unique_id=214604991]
+repeat_size = Vector2(620, 620)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxNode/Parallax2D" unique_id=1257558360]
+texture_filter = 1
+texture = ExtResource("3_nsrm0")

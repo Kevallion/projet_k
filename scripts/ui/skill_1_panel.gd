@@ -9,15 +9,15 @@ func _ready() -> void:
 	button.disabled = true
 
 func _on_texture_button_mouse_entered() -> void:
-	var title = "Bouclier"
+	var name = "Bouclier"
 	var description = "Le bouclier protège des chocs \net des zones de radioactivité"
 	if !crafted:
-		title += " (Verrouillé)"
+		name += " (Verrouillé)"
 		description += "\n\nFabrication :\n- Générateur\n- Convertisseur d'energie"
 		
 	tooltip = tooltip_scene.instantiate()
 	get_tree().current_scene.find_child("Interface").get_node("CanvasLayer").add_child(tooltip)
-	tooltip.set_options(title, description)
+	tooltip.set_options(name, description)
 	tooltip.global_position = get_global_mouse_position()+Vector2(10,200)
 		
 func _on_texture_button_mouse_exited() -> void:

@@ -21,6 +21,10 @@ var inventory_is_open = false
 @onready var tractor_button = %TractorButton
 @onready var portal_button = %PortalButton
 @onready var laser_button = %LaserButton
+#var shield_is_crafted = false
+#var tractor_is_crafted = false
+#var portal_is_crafted = false
+#var laser_is_crafted = false
 
 @export var sndRepairs : Array[AudioStream] = [preload("res://assets/audio/sfx/Repair or Craft 1.ogg"),preload("res://assets/audio/sfx/Repair or Craft 2.ogg")]
 
@@ -31,11 +35,8 @@ func _ready() -> void:
  
 func _physics_process(_delta: float) -> void:
 	update_slots()
-	if inventory_is_open:
-		get_tree().paused = true
-		
-	#get_tree().paused = !get_tree().paused
 	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().paused = !get_tree().paused
 		if inventory_is_open:
 			close_inventory()
 		else:
@@ -92,8 +93,6 @@ func set_interface_values():
 		%LaserButton.disabled = false
 	
 func close_inventory():
-	if !%DialogNode.dialogOpen:
-		get_tree().paused = false
 	$CanvasLayer/ColorRect.visible = false
 	inventory_is_open = false
 	

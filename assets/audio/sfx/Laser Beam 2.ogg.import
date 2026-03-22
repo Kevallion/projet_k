@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d3vx1782ts7uo"
+path="res://.godot/imported/Laser Beam 2.ogg-d0c327e218f80f9454ced723c0d7eb3b.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/Laser Beam 2.ogg"
+dest_files=["res://.godot/imported/Laser Beam 2.ogg-d0c327e218f80f9454ced723c0d7eb3b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

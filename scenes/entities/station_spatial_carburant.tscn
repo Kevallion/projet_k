@@ -6,11 +6,16 @@
 
 [node name="StationSpatial Carburant" unique_id=708156702 instance=ExtResource("1_y4v4s")]
 script = ExtResource("2_cqywv")
+carburantToGive = 50.0
 
 [node name="Sprite2D" parent="." index="0" unique_id=1722980194]
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_ls8sp")
 
-[node name="InteractionArea" parent="." index="2" unique_id=1882707729]
+[node name="InteractionArea" parent="." index="2" unique_id=634285613]
 collisionRange = 177.193
+
+[node name="visualShowKey" parent="InteractionArea" index="0" unique_id=1251509380]
+position = Vector2(-81, -66)
 
 [connection signal="interaction" from="InteractionArea" to="." method="_on_interaction_area_interaction"]

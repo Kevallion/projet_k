@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b0lyl40gppk68"
+path="res://.godot/imported/Bleep 3.ogg-96894216b5485d817521ab2db159302f.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/sfx/Bleep 3.ogg"
+dest_files=["res://.godot/imported/Bleep 3.ogg-96894216b5485d817521ab2db159302f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

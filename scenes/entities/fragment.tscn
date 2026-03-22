@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bc3im6otglgsc"]
+
+[ext_resource type="Script" uid="uid://b6rbgx5hxnc6q" path="res://scripts/entities/fragment.gd" id="1_a4u2v"]
+[ext_resource type="Resource" uid="uid://0bjxjr763i20" path="res://ressources/inventory/fragment.tres" id="2_eap1r"]
+[ext_resource type="Texture2D" uid="uid://crc1pa84vdpi1" path="res://assets/sprites/items/fragments_parts.png" id="3_v3cas"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eap1r"]
+radius = 33.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j3rxo"]
+size = Vector2(16, 34)
+
+[node name="FragmentBody" type="RigidBody2D" unique_id=1391390146]
+collision_layer = 2
+collision_mask = 3
+gravity_scale = 0.0
+script = ExtResource("1_a4u2v")
+item = ExtResource("2_eap1r")
+
+[node name="FragmentSprite" type="Sprite2D" parent="." unique_id=1532037081]
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_v3cas")
+region_enabled = true
+region_rect = Rect2(0, 0, 60, 75)
+
+[node name="CollectArea" type="Area2D" parent="." unique_id=1485555812]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectArea" unique_id=1630447173]
+shape = SubResource("CircleShape2D_eap1r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1382704661]
+shape = SubResource("RectangleShape2D_j3rxo")
+
+[connection signal="body_entered" from="CollectArea" to="." method="_on_collect_area_body_entered"]

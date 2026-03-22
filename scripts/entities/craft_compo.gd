@@ -18,5 +18,5 @@ func _process(_delta: float) -> void:
 
 func _on_collect_area_body_entered(body: Node2D) -> void:
 	if body.has_method("collect"):
-		body.collect(item, 1)
+		body.collect(item)
 		self.queue_free()

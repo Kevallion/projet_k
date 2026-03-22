@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bmi7girx6ojw1"]
+
+[ext_resource type="PackedScene" uid="uid://cbus4r2vum2hc" path="res://scenes/entities/DefaultSpatial_Station.tscn" id="1_8r8hx"]
+[ext_resource type="Script" uid="uid://5d6svn83ipx3" path="res://scripts/entities/station_energy.gd" id="2_1s433"]
+
+[node name="Station Energy" unique_id=708156702 instance=ExtResource("1_8r8hx")]
+script = ExtResource("2_1s433")
+EnergytToGive = 50.0

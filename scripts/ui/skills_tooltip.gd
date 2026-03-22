@@ -7,6 +7,6 @@ func set_gadget(gadget: Gadget) -> void:
 	gadget_name.text = gadget.name_label
 	rich_text_label.text = gadget.description
 	
-func set_options(itemName: String, description: String):
-	gadget_name.text = itemName
+func set_options(name: String, description: String):
+	gadget_name.text = name
 	rich_text_label.text = description
