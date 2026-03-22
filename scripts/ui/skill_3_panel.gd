@@ -9,15 +9,15 @@ func _ready() -> void:
 	button.disabled = true
 
 func _on_portal_button_mouse_entered() -> void:
-	var name = "Portal"
+	var title = "Portal"
 	var description = "Ce gadget permet de poser des portails, pour placer un portails appuyer sur espace, puis viser la zone du deuxieme portail."
 	if !crafted:
-		name += " (Verrouillé)"
+		title += " (Verrouillé)"
 		description += "\n\nFabrication :\n- Canon à particule\n- Découpeur cosmique"
 		
 	tooltip = tooltip_scene.instantiate()
 	get_tree().current_scene.find_child("Interface").get_node("CanvasLayer").add_child(tooltip)
-	tooltip.set_options(name, description)
+	tooltip.set_options(title, description)
 	tooltip.global_position = get_global_mouse_position()+Vector2(10,200)
 
 func _on_portal_button_mouse_exited() -> void:

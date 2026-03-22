@@ -19,7 +19,7 @@ const input_3 = "gadget_3"
 ## Liste des inputs disponibles pour les gadgets
 var input_names = [input_1, input_2, input_3]
 
-var i = 1
+var i = 0
 
 ## Structure représentant un slot de gadget.
 ## Associe un gadget à un input.

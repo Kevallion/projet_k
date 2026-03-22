@@ -9,15 +9,15 @@ func _ready() -> void:
 	button.disabled = true
 
 func _on_tractor_button_mouse_entered() -> void:
-	var name = "Rayon Tracteur"
+	var title = "Rayon Tracteur"
 	var description = "Un gagdget qui vous permet de vous tracter vers un objet de l'espace ou de tracter l'élément vers vous. appuyé sur espace pour changer le mode"
 	if !crafted:
-		name += " (Verrouillé)"
+		title += " (Verrouillé)"
 		description += "\n\nFabrication :\n- Canon à Ion\n- Aimant supraconducteur"
 		
 	tooltip = tooltip_scene.instantiate()
 	get_tree().current_scene.find_child("Interface").get_node("CanvasLayer").add_child(tooltip)
-	tooltip.set_options(name, description)
+	tooltip.set_options(title, description)
 	tooltip.global_position = get_global_mouse_position()+Vector2(10,200)
 	
 func _on_tractor_button_mouse_exited() -> void:

@@ -118,8 +118,7 @@ func _on_body_entered(body) -> void:
 
 
 ## Appelé lorsqu'un body quitte la zone
-@warning_ignore("unused_parameter")
-func _on_body_exited(body) -> void:
+func _on_body_exited(_body) -> void:
 	canInteract = false
 	
 	## notifier les autres systèmes

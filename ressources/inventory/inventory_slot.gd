@@ -23,11 +23,11 @@ func update(slot: InvSlot):
 			amount_text.visible = false
 
 func _on_mouse_entered() -> void:
-	tooltip = tooltip_scene.instantiate()
-	get_tree().current_scene.find_child("Interface").get_node("CanvasLayer").add_child(tooltip)
 	if item_title:
+		tooltip = tooltip_scene.instantiate()
+		get_tree().current_scene.find_child("Interface").get_node("CanvasLayer").add_child(tooltip)
 		tooltip.set_options(item_title, item_description)
-	tooltip.global_position = get_global_mouse_position()+Vector2(10,200)
+		tooltip.global_position = get_global_mouse_position()+Vector2(10,200)
 
 func _on_mouse_exited() -> void:
 	if tooltip:

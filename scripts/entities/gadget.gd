@@ -101,6 +101,8 @@ func try_use(ship_ref) -> bool:
 
 
 # --- Méthodes à surcharger dans les classes enfants ---
+
+
 ## Logique d'arrêt du gadget (ex: arrêter particules, son, effets)
 func stop_gadget() -> void:
 	pass
