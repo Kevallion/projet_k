@@ -1813,7 +1813,6 @@ ambianceMusicToPlay = ExtResource("3_7o3do")
 [node name="Interface" parent="." unique_id=1016790414 instance=ExtResource("14_mm8aj")]
 
 [node name="Player" parent="." unique_id=632786190 instance=ExtResource("1_6iamk")]
-position = Vector2(15840, -3205)
 collision_mask = 5
 motion_mode = 1
 
