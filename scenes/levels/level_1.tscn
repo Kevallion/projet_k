@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://vtaxerp088yh"]
 
 [ext_resource type="PackedScene" uid="uid://dpb45y2nb8djb" path="res://scenes/entities/player.tscn" id="1_6iamk"]
+[ext_resource type="Script" uid="uid://fxmu73x67x0u" path="res://scripts/levels/level.gd" id="1_7h2jl"]
 [ext_resource type="PackedScene" uid="uid://cadr3m84lh1ya" path="res://scenes/entities/background.tscn" id="2_dga24"]
-[ext_resource type="AudioStream" uid="uid://dcwdnnbjgxqtd" path="res://assets/audio/music/Space 1.mp3" id="4_x42e6"]
+[ext_resource type="AudioStream" uid="uid://cwctm1m6mrjml" path="res://assets/audio/music/Space MIX-consolidated.ogg" id="2_mqh5v"]
+[ext_resource type="AudioStream" uid="uid://cbfrifpoq30t" path="res://assets/audio/music/jci21-spaceship-ambient-sfx-164114.mp3" id="3_7o3do"]
 [ext_resource type="Texture2D" uid="uid://cffjnt6mm0lu4" path="res://assets/sprites/3261219552.png" id="5_6761a"]
 [ext_resource type="Texture2D" uid="uid://bq51kxwnx6jn4" path="res://assets/sprites/planets/SunSprite.png" id="5_ndtll"]
 [ext_resource type="PackedScene" uid="uid://dhpmc6rc1ento" path="res://scenes/entities/asteroid.tscn" id="5_s8va5"]
@@ -1780,7 +1782,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_mkypq"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_31oqk"]
 resource_local_to_scene = true
 radius = 61.765
 
@@ -1800,6 +1802,9 @@ size = Vector2(818, 28)
 radius = 752.58185
 
 [node name="Level1" type="Node2D" unique_id=708747007]
+script = ExtResource("1_7h2jl")
+musicToPlay = ExtResource("2_mqh5v")
+ambianceMusicToPlay = ExtResource("3_7o3do")
 
 [node name="Interface" parent="." unique_id=1016790414 instance=ExtResource("14_mm8aj")]
 
@@ -1834,12 +1839,6 @@ texture = ExtResource("5_ndtll")
 position = Vector2(-406, -774)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("5_ndtll")
-
-[node name="Music" type="AudioStreamPlayer" parent="." unique_id=327953179]
-process_mode = 3
-stream = ExtResource("4_x42e6")
-autoplay = true
-parameters/looping = true
 
 [node name="Asteroid" parent="." unique_id=595955600 instance=ExtResource("5_s8va5")]
 position = Vector2(13905, 7886)
@@ -1896,7 +1895,7 @@ collisionRange = 30.864
 pushZoneRange = 61.765
 
 [node name="CollisionShape2D" parent="Asteroid4/pushZone" parent_id_path=PackedInt32Array(956945604, 1457056112) index="0" unique_id=575047982]
-shape = SubResource("CircleShape2D_mkypq")
+shape = SubResource("CircleShape2D_31oqk")
 
 [node name="Planet" parent="." unique_id=1040834349 groups=["planet", "radar_detection"] instance=ExtResource("9_dga24")]
 z_index = -2
