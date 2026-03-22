@@ -18,10 +18,12 @@ class_name Laser extends Gadget
 @export_group("sound")
 @export var sndDeploy : AudioStream
 @export var sndContinueLaser : AudioStream
+@export var sndImpact : AudioStream
 
+@export var dps := 50.0
 
 var isCasting := false : set = set_is_casting
-
+var is_hit := false
 func set_is_casting(newValue) -> void:
 	isCasting = newValue
 	
@@ -32,19 +34,20 @@ func set_is_casting(newValue) -> void:
 		_disappear()
 	
 	set_physics_process(isCasting)
-
+	beamEffect.emitting = isCasting
+	castingEffect.emitting = isCasting
 func _ready() -> void:
 	super._ready()
 	set_physics_process(false)
 	raycast.target_position = Vector2.ZERO
 	line_2d.points[1] = Vector2.ZERO
-	unlock = true
-	
+
 func _physics_process(_delta: float) -> void:
 	if ship:
 		self.rotation = ship.sprite.rotation
 		
 	raycast.target_position = (raycast.target_position + Vector2.UP * castSpeed * _delta).limit_length(maxLength)
+	raycast.force_raycast_update()
 	_cast_beam()
 
 func _cast_beam() -> void:
@@ -54,10 +57,28 @@ func _cast_beam() -> void:
 	#verifie si y'a une collision
 	if raycast.is_colliding():
 		castPoint = to_local(raycast.get_collision_point())
+		collisionEffect.global_rotation = raycast.get_collision_normal().angle()
+		collisionEffect.position = castPoint
+		hit_damage()
+	var currently_hiting := raycast.is_colliding()
+	if currently_hiting and not is_hit:
+		is_hit = true
+		AudioManager.play(sndImpact,&"SFX")
+	elif not currently_hiting and is_hit:
+		is_hit = false
+		AudioManager.stop(sndImpact)
+		
+	collisionEffect.emitting = raycast.is_colliding()
+	line_2d.set_point_position(1, castPoint)
 	
-	line_2d.points[1] = castPoint
+	beamEffect.position = castPoint * 0.5
+	beamEffect.process_material.emission_box_extents.y = castPoint.length() * 0.5
 	
 
+func hit_damage() -> void:
+	var collider = raycast.get_collider()
+	if collider and collider.has_method("take_damage"):
+			collider.take_damage(dps * get_physics_process_delta_time())	
 
 func _appear() -> void:
 	if _tween != null:
@@ -81,5 +102,6 @@ func start_gadget() -> void:
 
 func stop_gadget() -> void:
 	AudioManager.stop(sndContinueLaser)
+	AudioManager.stop(sndImpact)
 	raycast.target_position = Vector2.ZERO
 	isCasting = false

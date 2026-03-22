@@ -44,7 +44,7 @@ func set_texture_under(new_value) -> void:
 
 ## Initialisation de l'UI
 func _ready() -> void:
-	#self.visible = false
+	hide()
 	
 	# applique la texture configurée
 	set_texture_under(texture_under)
@@ -90,10 +90,12 @@ func setup(gadget: Gadget) -> void:
 	linkedGadget = gadget
 	
 	# affiche l'icône du gadget
-	texture_progress_bar.texture_under = gadget.icon
+	if texture_progress_bar:
+		texture_progress_bar.texture_under = gadget.icon
 	
 	# déclenche l'animation lorsque le gadget est utilisé
-	gadget.used.connect(use_ability)
+	if not gadget.used.is_connected(use_ability):
+		gadget.used.connect(use_ability)
 
 
 ## Réagit lorsque le manager assigne un gadget à un slot
@@ -101,11 +103,15 @@ func _on_gadget_assigned(index: int, gadget: Gadget, key: String) -> void:
 	
 	# vérifie si le gadget correspond à ce slot
 	if index == slotIndex:
-		setup(gadget)
-		
-		# affiche la touche associée dans l'UI
-		label.text = key
-
+		if gadget != null:
+			setup(gadget)
+			
+			# affiche la touche associée dans l'UI
+			label.text = key
+			show()
+		else:
+			hide()	
+	
 func _update_tooltip_position():
 	if tooltip:
 		tooltip.global_position = get_global_mouse_position()

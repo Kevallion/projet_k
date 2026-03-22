@@ -9,9 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://ck76jflr3pr3x" path="res://assets/sprites/reactor_anim2.png" id="4_ss7kx"]
 [ext_resource type="Texture2D" uid="uid://dy1c75gh5ft5c" path="res://assets/sprites/reactor_anim3.png" id="5_dnykm"]
 [ext_resource type="PackedScene" uid="uid://bnr4usbqwwjll" path="res://scenes/entities/gadget_manager.tscn" id="7_dnykm"]
-[ext_resource type="PackedScene" uid="uid://dxnop65myv3dc" path="res://scenes/entities/shield_gadget.tscn" id="8_c5rqy"]
-[ext_resource type="PackedScene" uid="uid://22ib65jot3yn" path="res://scenes/entities/tractor_gadget.tscn" id="12_5ki56"]
-[ext_resource type="PackedScene" uid="uid://btxlutifsr8me" path="res://scenes/entities/portal_gadget.tscn" id="13_saib0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dnykm"]
 shader = ExtResource("2_ss7kx")
@@ -181,12 +178,6 @@ one_shot = true
 one_shot = true
 
 [node name="GadgetManager" parent="." unique_id=740711933 node_paths=PackedStringArray("gadgetActives") instance=ExtResource("7_dnykm")]
-gadgetActives = [NodePath("ShieldGadget"), NodePath("TractorGadget"), NodePath("PortalGadget")]
-
-[node name="ShieldGadget" parent="GadgetManager" unique_id=895922563 instance=ExtResource("8_c5rqy")]
-
-[node name="TractorGadget" parent="GadgetManager" unique_id=1412567860 instance=ExtResource("12_5ki56")]
-
-[node name="PortalGadget" parent="GadgetManager" unique_id=448128883 instance=ExtResource("13_saib0")]
+gadgetActives = [NodePath(""), NodePath(""), NodePath("")]
 
 [connection signal="timeout" from="OutOfBound" to="." method="_on_out_of_bound_timeout"]

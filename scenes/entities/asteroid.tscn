@@ -4,7 +4,7 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s8va5"]
 resource_local_to_scene = true
-radius = 0.0
+radius = 50.37
 
 [node name="Asteroid" type="CharacterBody2D" unique_id=595955600 groups=["space_object"]]
 collision_layer = 2
