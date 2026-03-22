@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://dhorjiqgvxe6i"]
-
-[ext_resource type="Script" uid="uid://567xhyifle5h" path="res://scripts/entities/environment_zone.gd" id="1_0oaku"]
-
-[node name="EnvironementZone" type="Area2D" unique_id=574314075]
-script = ExtResource("1_0oaku")
