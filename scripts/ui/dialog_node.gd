@@ -1,9 +1,8 @@
 extends Control
-#@onready var dialogPanel = $CanvasLayer/Panel
-#@onready var dialogLabel = $CanvasLayer/Panel/RichTextLabel
-#@onready var questPanel = $CanvasLayer/QuestPanel
-var questLabelReady = false
-var questLabel
+
+@onready var questLabel = %RichTextLabel
+@onready var dialogPanel = $CanvasLayer/Panel
+@onready var dialogLabel = $CanvasLayer/Panel/RichTextLabel
 
 var currentDialogArray
 var currentDialogPos = 0
@@ -11,29 +10,24 @@ var dialogOpen = false
 var actId = 0
 var chapterId = 0
 
-func _ready() -> void:
-	questLabel = %RichTextLabel
-	questLabelReady = true
-
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if dialogOpen:
 		get_tree().paused = true
 	if dialogOpen and (Input.is_action_just_pressed("switch_mode") or Input.is_action_just_pressed("left_click")):
 		continue_dialog()
-		
-	if questLabelReady:
-		update_quest()
+	
+	update_quest()
 	
 func open_dialog(_actId: int, _dialogId: int):
 	if get_dialog(_actId, _dialogId):
-		$CanvasLayer/Panel.visible = true
+		dialogPanel.visible = true
 		currentDialogPos = 0
 		update_dialog(currentDialogPos)
 		dialogOpen = true
 	
 func update_dialog(_currentDialogPos: int):
-	$CanvasLayer/Panel/RichTextLabel.text = currentDialogArray[_currentDialogPos][1]
+	dialogLabel.text = currentDialogArray[_currentDialogPos][1]
 
 func continue_dialog():
 	if currentDialogPos+1 < currentDialogArray.size():
@@ -104,7 +98,7 @@ Penses bien à garder un oeil sur le radar"]
 	return currentDialogArray
 
 func close_dialog():
-	$CanvasLayer/Panel.visible = false
+	dialogPanel.visible = false
 	get_tree().paused = false
 	dialogOpen = false
 

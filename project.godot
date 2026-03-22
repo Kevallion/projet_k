@@ -23,7 +23,6 @@ buses/default_bus_layout="uid://f5t6b5s4mhig"
 
 GameSignals="*uid://c02rx34rjk5ev"
 AudioManager="*uid://ca5lb15c3qfvh"
-DialogNode="*uid://t5m4jljqj7fq"
 
 [display]
 
