@@ -21,14 +21,15 @@ func insert_all(_slots: Array[InvSlot]):
 	for slot in _slots:
 		insert(slot.item, slot.amount)
 
-func remove(itemName: String):
+func remove(itemName: String, itemAmount: int):
 	for slot in slots:
 		if slot.item:
-			if slot.item.name == itemName:
-				slot.amount -= 1
+			if slot.item.name == itemName and slot.amount >= itemAmount:
+				slot.amount -= itemAmount
 				if slot.amount == 0:
 					slot.item = null
-				return
+				return true
+			return false
 
 func empty():
 	for slot in slots:

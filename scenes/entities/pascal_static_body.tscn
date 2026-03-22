@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://e72aihs578wb"]
+
+[ext_resource type="Script" uid="uid://g7ufg86u4b2h" path="res://scripts/entities/pascal_static_body.gd" id="1_f4kwg"]
+[ext_resource type="Texture2D" uid="uid://d3skgcdscvbjr" path="res://assets/sprites/station_spatial/station_scientifique1.png" id="3_adk7m"]
+[ext_resource type="PackedScene" uid="uid://bq5u5ybwm0wh4" path="res://scenes/entities/shield_compo2.tscn" id="4_goi62"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jq2b0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f4kwg"]
+radius = 448.8296
+
+[node name="PascalStaticBody" type="StaticBody2D" unique_id=2055547690]
+z_index = -1
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_f4kwg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2073065891]
+shape = SubResource("CircleShape2D_jq2b0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=358006266]
+z_index = -1
+texture = ExtResource("3_adk7m")
+
+[node name="ShieldCompoBody2" parent="." unique_id=1391390146 instance=ExtResource("4_goi62")]
+visible = false
+position = Vector2(-5, -5)
+collision_layer = 0
+collision_mask = 0
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1549514480]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2022837806]
+shape = SubResource("CircleShape2D_f4kwg")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
