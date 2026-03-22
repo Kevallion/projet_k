@@ -18,8 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://bq5u5ybwm0wh4" path="res://scenes/entities/shield_compo2.tscn" id="16_pdlmq"]
 [ext_resource type="PackedScene" uid="uid://dsjm8eonkl4sw" path="res://scenes/entities/tractor_compo1.tscn" id="17_527fh"]
 [ext_resource type="PackedScene" uid="uid://cxs8422c014ie" path="res://scenes/entities/tractor_compo2.tscn" id="18_ow4gm"]
-[ext_resource type="Script" uid="uid://bath2frm34aj1" path="res://scripts/ui/dialog_node.gd" id="19_fxsl8"]
-[ext_resource type="Theme" path="res://assets/fonts/unispace_theme.tres" id="20_d5vbf"]
+[ext_resource type="Script" uid="uid://t5m4jljqj7fq" path="res://scripts/ui/dialog_node.gd" id="19_fxsl8"]
+[ext_resource type="Theme" uid="uid://odcq8lrptw30" path="res://assets/fonts/unispace_theme.tres" id="20_d5vbf"]
 [ext_resource type="PackedScene" uid="uid://dpb45y2nb8djb" path="res://scenes/entities/player.tscn" id="21_fh725"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sk5k4"]
