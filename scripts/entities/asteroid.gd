@@ -17,6 +17,11 @@ class_name Asteroid extends SpaceObject
 #zone de collision pour repouser le vaisseau
 @onready var pushZone: Area2D = %pushZone
 
+@export var max_health := 100.0
+var current_health := max_health
+
+
+
 @export_range(10.0, 1000.0) var pushZoneRange := 0.0 : set = set_pushZone_range
 			
 func set_pushZone_range(new_value : float) -> void:
@@ -109,3 +114,10 @@ func _get_configuration_warnings() -> PackedStringArray:
 	update_configuration_warnings()
 	return[]
 	
+func take_damage(amount: float) -> void:
+	current_health -= amount
+	if current_health <= 0:
+		destroy()
+
+func destroy() -> void:
+	queue_free()

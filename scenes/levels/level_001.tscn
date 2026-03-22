@@ -1,3 +1,10 @@
 [gd_scene format=3 uid="uid://b7p5xykmlqxko"]
 
+[ext_resource type="PackedScene" uid="uid://cadr3m84lh1ya" path="res://scenes/entities/background.tscn" id="2_4j58l"]
+[ext_resource type="PackedScene" uid="uid://dpb45y2nb8djb" path="res://scenes/entities/player.tscn" id="3_n1788"]
+
 [node name="Level001" type="Node2D" unique_id=1751702274]
+
+[node name="backGround" parent="." unique_id=1670201285 instance=ExtResource("2_4j58l")]
+
+[node name="Player" parent="." unique_id=632786190 instance=ExtResource("3_n1788")]

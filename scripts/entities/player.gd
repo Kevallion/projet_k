@@ -27,6 +27,7 @@ class_name Player extends CharacterBody2D
 @export var inventory: Inv
 
 @export var graveBody = preload("res://scenes/entities/grave_body.tscn")
+var unlocked_gadgets : Array[String] = []
 
 var gas := 3000.0
 var health := 900.0
@@ -272,11 +273,6 @@ func drop_stuff():
 		grave.temp_inv.insert_all(inventory.slots)
 		inventory.empty()
 	
-func unlock_skill_slot(comp):
-	match comp:
-		"shield":
-			$GadgetManager/ShieldGadget.unlock = true
-		"tractor":
-			$GadgetManager/TractorGadget.unlock = true
-		"portal":
-			$GadgetManager/PortalGadget.unlock = true
+func unlock_skill_slot(comp: String) -> void:
+	if not unlocked_gadgets.has(comp):
+		unlocked_gadgets.append(comp)
