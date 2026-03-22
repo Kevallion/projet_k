@@ -6,7 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://cadr3m84lh1ya" path="res://scenes/entities/background.tscn" id="3_keln3"]
 [ext_resource type="Texture2D" uid="uid://c7mlqbmw2r765" path="res://assets/sprites/planets/planet00.png" id="4_crctu"]
 [ext_resource type="Theme" uid="uid://bikh2wiu48bjr" path="res://scripts/ui/ui_theme_general.tres" id="4_sn5u3"]
+[ext_resource type="AudioStream" uid="uid://o3kfvudypcn1" path="res://assets/audio/sfx/tick_002.ogg" id="6_cn35j"]
 [ext_resource type="Texture2D" uid="uid://dn6rai33xyy2k" path="res://assets/sprites/planets/planet02.png" id="7_cn35j"]
+[ext_resource type="PackedScene" uid="uid://8xig86fknycl" path="res://scenes/entities/sun_sprite.tscn" id="8_sn5u3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_k0a0m"]
 font_size = 121
@@ -111,6 +113,7 @@ position = Vector2(324, 195)
 
 [node name="snd_button" type="AudioStreamPlayer" parent="." unique_id=1343863265]
 unique_name_in_owner = true
+stream = ExtResource("6_cn35j")
 
 [node name="Planet00" type="Sprite2D" parent="." unique_id=96124649]
 position = Vector2(310.00003, 322.00003)
@@ -118,6 +121,9 @@ scale = Vector2(0.48906252, 0.48906252)
 texture = ExtResource("4_crctu")
 
 [node name="Planet02" type="Sprite2D" parent="." unique_id=1063196110]
-position = Vector2(971, 188)
+position = Vector2(1033, 541)
 scale = Vector2(0.18515627, 0.18695246)
 texture = ExtResource("7_cn35j")
+
+[node name="SunSprite" parent="." unique_id=1226795572 instance=ExtResource("8_sn5u3")]
+position = Vector2(721, 413)

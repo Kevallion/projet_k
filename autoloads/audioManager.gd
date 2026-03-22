@@ -26,7 +26,10 @@ func play(stream: AudioStream, bus_name: StringName = &"Master", volume_db: floa
 	
 	# Variation aléatoire
 	audio_player.pitch_scale = 1.0 + randf_range(-pitch_randomness, pitch_randomness)
-	
+	if bus_name == &"Music":
+		audio_player.process_mode = Node.PROCESS_MODE_ALWAYS
+	else:
+		audio_player.process_mode = Node.PROCESS_MODE_INHERIT
 	audio_player.play()
 
 func _get_available_audio_player() -> AudioStreamPlayer:

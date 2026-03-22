@@ -21,10 +21,12 @@ func _ready() -> void:
 	for button: Button in v_box_container.get_children():
 		button.mouse_entered.connect(func() -> void:
 			snd_button.play()
+			
 		)
 		button.pressed.connect(func() -> void:
-			_change_to_next_level()
+			AudioManager.stop(sndMenu)
 			snd_button.play()
+			_change_to_next_level()
 		)
 
 func _change_to_next_level() -> void:
