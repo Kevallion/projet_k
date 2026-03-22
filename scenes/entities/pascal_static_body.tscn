@@ -7,7 +7,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_jq2b0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f4kwg"]
-radius = 448.8296
+radius = 307.02606
 
 [node name="PascalStaticBody" type="StaticBody2D" unique_id=2055547690]
 z_index = -1
@@ -31,6 +31,7 @@ collision_mask = 0
 [node name="Area2D" type="Area2D" parent="." unique_id=1549514480]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2022837806]
+position = Vector2(-3, -148)
 shape = SubResource("CircleShape2D_f4kwg")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

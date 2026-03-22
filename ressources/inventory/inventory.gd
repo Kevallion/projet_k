@@ -29,7 +29,7 @@ func remove(itemName: String, itemAmount: int):
 				if slot.amount == 0:
 					slot.item = null
 				return true
-			return false
+	return false
 
 func empty():
 	for slot in slots:

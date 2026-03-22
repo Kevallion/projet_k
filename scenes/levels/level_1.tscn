@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://vtaxerp088yh"]
 
 [ext_resource type="PackedScene" uid="uid://dpb45y2nb8djb" path="res://scenes/entities/player.tscn" id="1_6iamk"]
-[ext_resource type="Script" uid="uid://fxmu73x67x0u" path="res://scripts/levels/level.gd" id="1_7h2jl"]
+[ext_resource type="Script" path="res://scripts/levels/level.gd" id="1_7h2jl"]
 [ext_resource type="PackedScene" uid="uid://cadr3m84lh1ya" path="res://scenes/entities/background.tscn" id="2_dga24"]
 [ext_resource type="AudioStream" uid="uid://cwctm1m6mrjml" path="res://assets/audio/music/Space MIX-consolidated.ogg" id="2_mqh5v"]
 [ext_resource type="AudioStream" uid="uid://cbfrifpoq30t" path="res://assets/audio/music/jci21-spaceship-ambient-sfx-164114.mp3" id="3_7o3do"]
@@ -1813,6 +1813,7 @@ ambianceMusicToPlay = ExtResource("3_7o3do")
 [node name="Interface" parent="." unique_id=1016790414 instance=ExtResource("14_mm8aj")]
 
 [node name="Player" parent="." unique_id=632786190 instance=ExtResource("1_6iamk")]
+position = Vector2(15840, -3205)
 collision_mask = 5
 motion_mode = 1
 
