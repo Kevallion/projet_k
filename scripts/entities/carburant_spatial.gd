@@ -8,3 +8,7 @@ func _on_interaction_area_interaction(body: Player) -> void:
 	if firstInteract:
 		dialogNode.open_dialog(1, 1)
 		firstInteract = false
+	if dialogNode.actId == 3:
+		dialogNode.open_dialog(3, 0)
+		dialogNode.actId = 4
+		dialogNode.chapterId = -1

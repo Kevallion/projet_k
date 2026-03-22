@@ -85,7 +85,7 @@ Penses bien à garder un oeil sur le radar"]
 						[2, "Eglagipouak flexindr plarp sibadi walbat !"],
 						[1, "Haha arrète tu vas me faire rougir !\nMoi aussi ça me fait plaisir de te voir\nT'aurais pas des infos croustillantes pour moi par hasard ?"],
 						[2, "Vitakrit mo pilorgalep justrij bu daxlopmeta"],
-						[1, "Ah ? Interessant, je vais aller voir ça, merci !\n A tout à l'heure sans doute"],
+						[1, "Ah ? Je vais aller voir ça, merci !\n A tout à l'heure sans doute"],
 					]
 				2:
 					currentDialogArray = [
@@ -93,6 +93,40 @@ Penses bien à garder un oeil sur le radar"]
 						[1, "... ?!"],
 						[0, "Il a dit quoi ?"],
 						[1, "Ah mais tu comprends pas le Skrolbuk ? Tu débarques d'où toi ?\n Vas y continues sur la droite et surveilles bien le radar"]
+					]
+		2:
+			match _chapterId:
+				0:
+					currentDialogArray = [
+						[1, "Oh un [color=white]Générateur[/color] de bouclier ! Le pauvre boug qui l'a perdu là aurait dû mieux s'en servir, \nmais ça sera pas perdu pour tout le monde."],
+						[0, "Le [color=white]Convertisseur d'énèrgie[/color] est endommagé, si on en trouve un autre on pourra l'installer sur le vaisseau"],
+						[1, "Retournons à la station voir si Shplok peut nous trouver ça"]
+					]
+		3:
+			match _chapterId:
+				0:
+					currentDialogArray = [
+						[1, "Nous revoila, il y a bien eu un crash, on a trouvé ça !"],
+						[2, "Krip shnok lupwelth blator ?"],
+						[1, "Non rien d'autre d'interessant, je te ferai signe si j'en vois un. Tu n'aurais pas un [color=white]Convertisseur d'énèrgie[/color] sous la main par hasard ?"],
+						[2, "Wispalak mitervistop prit, klap Pascal fouet\nBret la cirak zep"],
+						[1, "Au Nord Ouest d'ici tu dis ? Ok merci"]
+					]
+		4:
+			match _chapterId:
+				0:
+					currentDialogArray = [
+						[1, "Salut, c'est toi Pascal ? Shplok m'a dit que t'avais peut être un convertisseur sous la main ?"],
+						[3, "Osdroenae subsederat extimas partes, novum parumque aliquando temptatum commentum"],
+						[1, "Ok, je devrais pouvoir m'en accomoder. Merci"]
+					]
+		5:
+			match _chapterId:
+				0:
+					currentDialogArray = [
+						[1, "Voila ce que tu nous as demandé"],
+						[3, "Proinde concepta rabie saeviore, quam desperatio incendebat et fames,\namplificatis viribus ardore incohibili in excidium urbium matris"],
+						[1, "Merci Pascal"]
 					]
 			
 	return currentDialogArray
@@ -114,6 +148,7 @@ func _on_station_area_body_exited(_body: Node2D) -> void:
 	if actId == 1 and chapterId == 2:
 		open_dialog(actId,chapterId)
 		actId = 2
+		chapterId = -1
 	
 func update_quest():
 	if questLabel:
@@ -125,9 +160,15 @@ func get_quest_text(_actId):
 
 	match _actId:
 		1:
-			questText += "\nVa à la station"
+			questText += "\nVa à la station\nen suivant le radar"
 		2:
 			questText += "\nTrouve la planète\nà droite de la station"
+		3:
+			questText += "\nRetourne à la Station"
+		4:
+			questText += "\nTrouve Pascal\nau Nord Ouest de la station"
+		5:
+			questText += "\nRécupérer des fragments\nà gauche de Pascal\ndans le champ radioactif"
 	return questText
 
 func _on_tuto_ending_body_exited(_body: Node2D) -> void:
@@ -135,3 +176,10 @@ func _on_tuto_ending_body_exited(_body: Node2D) -> void:
 		open_dialog(0,3)
 		actId = 1
 		chapterId = -1
+
+func _on_planet_area_1_body_entered(_body: Node2D) -> void:
+	if actId == 2 and chapterId == 0:
+		open_dialog(actId,chapterId)
+		actId = 3
+		chapterId = -1
+		

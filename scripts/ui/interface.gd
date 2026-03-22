@@ -82,13 +82,13 @@ func set_interface_values():
 		repairButton.disabled = true
 	
 	## unlock Skills Craft Buttons ##
-	if player.find_compo("shield_compo1") and player.find_compo("shield_compo2"):
+	if player.find_compo("shield_compo1", 1) and player.find_compo("shield_compo2", 1):
 		%ShieldButton.disabled = false
-	if player.find_compo("tractor_compo1") and player.find_compo("tractor_compo2"):
+	if player.find_compo("tractor_compo1", 1) and player.find_compo("tractor_compo2", 1):
 		%TractorButton.disabled = false
-	if player.find_compo("portal_compo1") and player.find_compo("portal_compo2"):
+	if player.find_compo("portal_compo1", 1) and player.find_compo("portal_compo2", 1):
 		%PortalButton.disabled = false
-	if player.find_compo("laser_compo1") and player.find_compo("laser_compo2"):
+	if player.find_compo("laser_compo1", 1) and player.find_compo("laser_compo2", 1):
 		%LaserButton.disabled = false
 	
 func close_inventory():
@@ -112,8 +112,8 @@ func _on_repair_button_pressed() -> void:
 func _on_shield_button_pressed() -> void:
 	shield_button.texture_hover = null
 	if !shield_button.get_parent().crafted:
-		inv.remove("shield_compo1")
-		inv.remove("shield_compo2")
+		inv.remove("shield_compo1", 1)
+		inv.remove("shield_compo2", 1)
 		shield_button.get_parent().crafted = true
 	AudioManager.play(sndRepairs.pick_random(),&"SFX")
 	player.unlock_skill_slot("shield")
@@ -124,8 +124,8 @@ func _on_shield_button_pressed() -> void:
 func _on_tractor_button_pressed() -> void:
 	tractor_button.texture_hover = null
 	if !tractor_button.get_parent().crafted:
-		inv.remove("tractor_compo1")
-		inv.remove("tractor_compo2")
+		inv.remove("tractor_compo1", 1)
+		inv.remove("tractor_compo2", 1)
 		tractor_button.get_parent().crafted = true
 	player.unlock_skill_slot("tractor")
 	AudioManager.play(sndRepairs.pick_random(),&"SFX")
@@ -136,8 +136,8 @@ func _on_tractor_button_pressed() -> void:
 func _on_portal_button_pressed() -> void:
 	portal_button.texture_hover = null
 	if !portal_button.get_parent().crafted:
-		inv.remove("portal_compo1")
-		inv.remove("portal_compo2")
+		inv.remove("portal_compo1", 1)
+		inv.remove("portal_compo2", 1)
 		portal_button.get_parent().crafted = true
 	AudioManager.play(sndRepairs.pick_random(),&"SFX")
 	player.unlock_skill_slot("portal")
@@ -148,8 +148,8 @@ func _on_portal_button_pressed() -> void:
 func _on_laser_button_pressed() -> void:
 	laser_button.texture_hover = null
 	if !laser_button.get_parent().crafted:
-		inv.remove("laser_compo1")
-		inv.remove("laser_compo2")
+		inv.remove("laser_compo1", 1)
+		inv.remove("laser_compo2", 1)
 		laser_button.get_parent().crafted = true
 	AudioManager.play(sndRepairs.pick_random(),&"SFX")
 	player.unlock_skill_slot("laser")

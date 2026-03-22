@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://vtaxerp088yh"]
 
 [ext_resource type="PackedScene" uid="uid://dpb45y2nb8djb" path="res://scenes/entities/player.tscn" id="1_6iamk"]
-[ext_resource type="Script" uid="uid://fxmu73x67x0u" path="res://scripts/levels/level.gd" id="1_7h2jl"]
+[ext_resource type="Script" path="res://scripts/levels/level.gd" id="1_7h2jl"]
 [ext_resource type="PackedScene" uid="uid://cadr3m84lh1ya" path="res://scenes/entities/background.tscn" id="2_dga24"]
 [ext_resource type="AudioStream" uid="uid://cwctm1m6mrjml" path="res://assets/audio/music/Space MIX-consolidated.ogg" id="2_mqh5v"]
 [ext_resource type="AudioStream" uid="uid://cbfrifpoq30t" path="res://assets/audio/music/jci21-spaceship-ambient-sfx-164114.mp3" id="3_7o3do"]
@@ -15,14 +15,15 @@
 [ext_resource type="Texture2D" uid="uid://cu5ru3h6yv3ag" path="res://assets/sprites/meteors/meteorBrown_small2.png" id="11_wtwp4"]
 [ext_resource type="PackedScene" uid="uid://b6tp2j17iwkym" path="res://scenes/ui/interface.tscn" id="14_mm8aj"]
 [ext_resource type="PackedScene" uid="uid://doekmlt7u24rd" path="res://scenes/entities/station_spatial_carburant.tscn" id="15_iwr0g"]
+[ext_resource type="Texture2D" uid="uid://8c5akwu0fou4" path="res://assets/sprites/planets/planet01.png" id="15_mqh5v"]
 [ext_resource type="PackedScene" uid="uid://bc3im6otglgsc" path="res://scenes/entities/fragment.tscn" id="15_wtwp4"]
 [ext_resource type="PackedScene" uid="uid://cyb55ayfak0xx" path="res://scenes/entities/radiation_zone.tscn" id="16_iwr0g"]
 [ext_resource type="PackedScene" uid="uid://drtp4vhvrkgik" path="res://scenes/entities/magnetic_zone.tscn" id="17_bahl2"]
 [ext_resource type="PackedScene" uid="uid://ui2liquksul2" path="res://scenes/entities/shield_compo1.tscn" id="18_np2pn"]
-[ext_resource type="PackedScene" uid="uid://bq5u5ybwm0wh4" path="res://scenes/entities/shield_compo2.tscn" id="19_v6ha0"]
 [ext_resource type="PackedScene" uid="uid://dsjm8eonkl4sw" path="res://scenes/entities/tractor_compo1.tscn" id="20_mkypq"]
 [ext_resource type="PackedScene" uid="uid://cpuosgvypvw34" path="res://scenes/ui/dialog_node.tscn" id="21_mkypq"]
 [ext_resource type="PackedScene" uid="uid://cxs8422c014ie" path="res://scenes/entities/tractor_compo2.tscn" id="21_ndtll"]
+[ext_resource type="PackedScene" uid="uid://e72aihs578wb" path="res://scenes/entities/pascal_static_body.tscn" id="24_mqh5v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sk5k4"]
 atlas = ExtResource("5_6761a")
@@ -1782,7 +1783,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_31oqk"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_7o3do"]
 resource_local_to_scene = true
 radius = 61.765
 
@@ -1800,6 +1801,9 @@ size = Vector2(818, 28)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o7j4k"]
 radius = 752.58185
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mqh5v"]
+radius = 32.74659
 
 [node name="Level1" type="Node2D" unique_id=708747007]
 script = ExtResource("1_7h2jl")
@@ -1841,29 +1845,29 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("5_ndtll")
 
 [node name="Asteroid" parent="." unique_id=595955600 instance=ExtResource("5_s8va5")]
-position = Vector2(13905, 7886)
+position = Vector2(13941, -2346)
 collisionRange = 30.864
 pushZoneRange = 61.765
 
 [node name="Asteroid5" parent="." unique_id=724684849 instance=ExtResource("5_s8va5")]
-position = Vector2(14128, 7322)
+position = Vector2(14164, -2910)
 asteroidTexture = ExtResource("9_dnkej")
 collisionRange = 77.241
 pushZoneRange = 114.374
 
 [node name="Asteroid6" parent="." unique_id=1114721045 instance=ExtResource("5_s8va5")]
-position = Vector2(15099, 8325)
+position = Vector2(15135, -1907)
 asteroidTexture = ExtResource("10_mm8aj")
 collisionRange = 77.241
 pushZoneRange = 114.374
 
 [node name="Asteroid2" parent="." unique_id=2136046588 instance=ExtResource("5_s8va5")]
-position = Vector2(13880, 7564)
+position = Vector2(13916, -2668)
 collisionRange = 30.864
 pushZoneRange = 61.765
 
 [node name="Asteroid7" parent="." unique_id=1383447321 instance=ExtResource("5_s8va5")]
-position = Vector2(15327, 7564)
+position = Vector2(15363, -2668)
 collisionRange = 30.864
 pushZoneRange = 61.765
 
@@ -1883,28 +1887,29 @@ collisionRange = 30.864
 pushZoneRange = 61.765
 
 [node name="Asteroid3" parent="." unique_id=741875419 instance=ExtResource("5_s8va5")]
-position = Vector2(14337, 8334)
+position = Vector2(14373, -1898)
 asteroidTexture = ExtResource("11_wtwp4")
 collisionRange = 30.864
 pushZoneRange = 61.765
 
 [node name="Asteroid4" parent="." unique_id=956945604 instance=ExtResource("5_s8va5")]
-position = Vector2(14100, 7965)
+position = Vector2(14136, -2267)
 asteroidTexture = ExtResource("6_dga24")
 collisionRange = 30.864
 pushZoneRange = 61.765
 
 [node name="CollisionShape2D" parent="Asteroid4/pushZone" parent_id_path=PackedInt32Array(956945604, 1457056112) index="0" unique_id=575047982]
-shape = SubResource("CircleShape2D_31oqk")
+shape = SubResource("CircleShape2D_7o3do")
 
 [node name="Planet" parent="." unique_id=1040834349 groups=["planet", "radar_detection"] instance=ExtResource("9_dga24")]
 z_index = -2
-position = Vector2(14674, 7784)
+position = Vector2(14710, -2448)
 attractionRange = 873.832
 
 [node name="Planet2" parent="." unique_id=1647332511 groups=["planet", "radar_detection"] instance=ExtResource("9_dga24")]
 z_index = -2
-position = Vector2(-7230, -13268)
+position = Vector2(-2734, -12509)
+planetTexture = ExtResource("15_mqh5v")
 attractionRange = 873.832
 
 [node name="FragmentBody" parent="." unique_id=1391390146 instance=ExtResource("15_wtwp4")]
@@ -1923,34 +1928,31 @@ position = Vector2(-113, -1582)
 position = Vector2(330, -1803)
 
 [node name="FragmentBody6" parent="." unique_id=131439357 instance=ExtResource("15_wtwp4")]
-position = Vector2(-164, -1578)
+position = Vector2(14664, -2498)
 
 [node name="FragmentBody7" parent="." unique_id=2069065900 instance=ExtResource("15_wtwp4")]
-position = Vector2(-134, -1528)
+position = Vector2(14748, -2429)
 
 [node name="FragmentBody8" parent="." unique_id=238904414 instance=ExtResource("15_wtwp4")]
-position = Vector2(65, -1723)
+position = Vector2(14741, -2492)
 
 [node name="StationSpatial Carburant" parent="." unique_id=708156702 groups=["radar_detection"] instance=ExtResource("15_iwr0g")]
 position = Vector2(6340, -2402)
 
 [node name="RadiationZone" parent="." unique_id=1273611784 instance=ExtResource("16_iwr0g")]
-position = Vector2(-1767, -447)
+position = Vector2(-6997, -12520)
 
 [node name="Magnetic_zone" parent="." unique_id=611847379 instance=ExtResource("17_bahl2")]
 position = Vector2(-2139, 587)
 
 [node name="ShieldCompoBody1" parent="." unique_id=1853860111 instance=ExtResource("18_np2pn")]
-position = Vector2(-1194, 1205)
-
-[node name="ShieldCompoBody2" parent="." unique_id=466189786 instance=ExtResource("19_v6ha0")]
-position = Vector2(-1049, 1167)
+position = Vector2(14703, -2445)
 
 [node name="TractorCompoBody1" parent="." unique_id=134285700 instance=ExtResource("20_mkypq")]
-position = Vector2(-764, 921)
+position = Vector2(15651, -3736)
 
 [node name="TractorCompoBody2" parent="." unique_id=1820491364 instance=ExtResource("21_ndtll")]
-position = Vector2(-762, 1013)
+position = Vector2(15653, -3644)
 
 [node name="DialogNode" parent="." unique_id=418809529 instance=ExtResource("21_mkypq")]
 unique_name_in_owner = true
@@ -1979,9 +1981,31 @@ shape = SubResource("RectangleShape2D_mqh5v")
 position = Vector2(6337.533, -2397.9521)
 shape = SubResource("CircleShape2D_o7j4k")
 
+[node name="PlanetArea1" type="Area2D" parent="." unique_id=322744675]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlanetArea1" unique_id=234567328]
+position = Vector2(14703, -2445)
+shape = SubResource("CircleShape2D_mqh5v")
+
+[node name="PascalStaticBody" parent="." unique_id=2055547690 instance=ExtResource("24_mqh5v")]
+position = Vector2(-1831, -11577)
+
+[node name="FragmentBody9" parent="." unique_id=920372257 instance=ExtResource("15_wtwp4")]
+position = Vector2(-949.65186, -11652.552)
+
+[node name="FragmentBody10" parent="." unique_id=2086868294 instance=ExtResource("15_wtwp4")]
+position = Vector2(-949.65186, -11652.552)
+
+[node name="FragmentBody11" parent="." unique_id=1465612727 instance=ExtResource("15_wtwp4")]
+position = Vector2(-949.65186, -11652.552)
+
+[node name="FragmentBody12" parent="." unique_id=71668461 instance=ExtResource("15_wtwp4")]
+position = Vector2(-949.65186, -11652.552)
+
 [connection signal="body_exited" from="TutoEnding" to="DialogNode" method="_on_tuto_ending_body_exited"]
 [connection signal="body_entered" from="TutoArea2" to="DialogNode" method="_on_tuto_area_body_entered"]
 [connection signal="body_entered" from="StationArea2" to="DialogNode" method="_on_station_area_body_entered"]
 [connection signal="body_exited" from="StationArea2" to="DialogNode" method="_on_station_area_body_exited"]
+[connection signal="body_entered" from="PlanetArea1" to="DialogNode" method="_on_planet_area_1_body_entered"]
 
 [editable path="Asteroid4"]

@@ -230,7 +230,7 @@ func can_repair():
 func repair():
 	AudioManager.play(sndRepairs.pick_random(),&"SFX")
 	health += 50
-	inventory.remove("fragment")
+	inventory.remove("fragment", 1)
 				
 func can_craft():
 	var ingredientList = []
@@ -242,11 +242,11 @@ func can_craft():
 				ingredientList.append(false)
 	return ingredientList
 	
-func find_compo(compo):
+func find_compo(compo, amount):
 	for slot in inventory.slots:
 		if slot.item:
-			if slot.item.name == compo:
-				return compo
+			if slot.item.name == compo and slot.amount >= amount :
+				return slot.item
 	return null
 
 func delete_compo(compo):
@@ -256,6 +256,13 @@ func delete_compo(compo):
 				slot.item = null
 				return true
 	return false
+	
+func find_and_delete(compo, amount):
+	if find_compo(compo, amount):
+		print("Pouet")
+		inventory.remove(compo, amount)
+		return true
+	
 	
 func drop_stuff():
 	if !inventory.is_empty():
