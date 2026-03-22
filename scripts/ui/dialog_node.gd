@@ -3,21 +3,18 @@ extends Node2D
 var currentDialogArray
 var currentDialogPos = 0
 var dialogOpen = false
-var dialogId = 0
+var actId = 0
+var chapterId = 0
 
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if dialogOpen:
 		get_tree().paused = true
-	if dialogOpen and (Input.is_action_just_pressed("action") or Input.is_action_just_pressed("left_click")):
+	if dialogOpen and (Input.is_action_just_pressed("switch_mode") or Input.is_action_just_pressed("left_click")):
 		continue_dialog()
-
-func _on_tuto_area_body_entered(_body: Node2D) -> void:
-	open_dialog(dialogId)
-	dialogId += 1
 	
-func open_dialog(_dialogId: int):
-	if get_dialog(_dialogId):
+func open_dialog(_actId: int, _dialogId: int):
+	if get_dialog(_actId, _dialogId):
 		$CanvasLayer/Panel.visible = true
 		currentDialogPos = 0
 		update_dialog(currentDialogPos)
@@ -32,48 +29,81 @@ func continue_dialog():
 		update_dialog(currentDialogPos)
 	else:
 		close_dialog()
+		chapterId += 1
 
-func get_dialog(scriptId: int):
-	currentDialogPos += 1
+func get_dialog(_actId: int, _chapterId: int):
+	#currentDialogPos += 1
 	currentDialogArray = null
-	match scriptId:
+	match _actId:
 		0:
-			currentDialogArray = [
-				[1, "[i][b]Capitaine:[/b][/i] Bienvenue à bord du [i]Sweetgum[/i] !"],
-				[1, "Voici le poste de pilotage :
+			match _chapterId:
+				0:
+					currentDialogArray = [
+						[1, "[i][b]Capitaine:[/b][/i] Bienvenue à bord du [i]Sweetgum[/i] !"],
+						[1, "Voici le poste de pilotage :
 Les [color=white][b]flèches[/b][/color] ou [b][color=white]ZQSD[/color][/b]
 pour activer les réacteurs.
 Le levier vers le [color=white]Bas[/color] pour freiner et stabiliser le vaisseau."]
-			]
-		1:
-			currentDialogArray = [ 
-				[1, "La jauge à gauche sur le tableau de bord c'est le [color=cd7eff][b]Réservoir[/b][/color]
+					]
+				1:
+					currentDialogArray = [ 
+						[1, "La jauge à gauche sur le tableau de bord c'est le [color=cd7eff][b]Réservoir[/b][/color]
 si il se vide avant qu'on n'ait atteint la station, on va être dans une merde intersidérale, et c'est pas une figure de style donc vas y molo où je recrute un autre pilote fissa"],
 			]
-		2:
-			currentDialogArray = [
-				[1, "Fais gaffe, des [color=white]débris[/color] flottants droit devant!
+				2:
+					currentDialogArray = [
+						[1, "Fais gaffe, des [color=white]débris[/color] flottants droit devant!
 Approche toi doucement on va les ramasser"],
 				[1, "Ça nous fera des materiaux pour [color=79ff6e][b]Réparer[/b][/color] les [color=f93533]dégats[/color] sur la coque, ça sera très utile tu verras..."],
 			]
-		3:
-			currentDialogArray = [
-				[1, "Aller fini de jouer, on va faire un tour à la station"],
-				[1, "Tu vois le cadran sur ta gauche ? C'est le [color=white][b]Radar[/b][/color]
+				3:
+					currentDialogArray = [
+						[1, "Aller fini de jouer, on va faire un tour à la station"],
+						[1, "Tu vois le cadran sur ta gauche ? C'est le [color=white][b]Radar[/b][/color]
 Je te préviens c'est un vieux modèle,"],
-				[1, "Il n'indique pas la direction mais
+						[1, "Il n'indique pas la direction mais
 la [color=white]Distance[/color] de la [color=white]Station[/color] ou la [color=white]Planète[/color] la [color=white]plus proche[/color],
 Ça coute une blinde à remplacer mais on s'y habitue à la longue, t'inquiète pas"],
-				[1, "Prends vers la droite, on devrait trouver la station pas loin
+						[1, "Prends vers la droite, en direction de cette étoile, on devrait trouver la station pas loin
 Penses bien à garder un oeil sur le radar"]
 			]
-		4:
-			currentDialogArray = [
-				[1, "Voila la station, allons remplir le [color=cd7eff][b]Réservoir[/b][/color]"]
-			]
+			
+		1:
+			match _chapterId:
+				0:
+					currentDialogArray = [
+						[1, "Voila la station, allons remplir le [color=cd7eff][b]Réservoir[/b][/color]"],
+					]
+				1:
+					currentDialogArray = [
+						[1, "Salut Shplok ! Tu peux me faire le plein ?"],
+						[2, "Eglagipouak flexindr plarp sibadi walbat !"],
+						[1, "Haha arrète tu vas me faire rougir !\nMoi aussi ça me fait plaisir de te voir\nT'aurais pas des infos croustillantes pour moi par hasard ?"],
+						[2, "Vitakrit mo pilorgalep justrij bu daxlopmeta"],
+						[1, "Ah ? Interessant, je vais aller voir ça, merci !\n A tout à l'heure sans doute"],
+					]
+				2:
+					currentDialogArray = [
+						[0, "..."],
+						[1, "... ?!"],
+						[0, "Il a dit quoi ?"],
+						[1, "Ah mais tu comprends pas le Skrolbuk ? Tu débarques d'où toi ?\n Vas y continues sur la droite et surveille le radar"]
+					]
+			
 	return currentDialogArray
 
 func close_dialog():
 	$CanvasLayer/Panel.visible = false
 	get_tree().paused = false
 	dialogOpen = false
+
+func _on_tuto_area_body_entered(_body: Node2D) -> void:
+	open_dialog(actId, chapterId)
+
+func _on_station_area_body_entered(_body: Node2D) -> void:
+	actId = 1
+	chapterId = 0
+	open_dialog(actId,chapterId)
+
+func _on_station_area_body_exited(_body: Node2D) -> void:
+	open_dialog(actId,chapterId)
