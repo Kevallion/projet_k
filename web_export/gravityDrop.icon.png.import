@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnba84vng3dcy"
-path="res://.godot/imported/gravityDrop.icon.png-3bce7c628886f0f64a5395dab9ebc942.ctex"
+uid="uid://dbhl7epxw8kn2"
+path="res://.godot/imported/GravityDrop.icon.png-53fb0a98552f84475c4998c016ba5fb2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://web_export/gravityDrop.icon.png"
-dest_files=["res://.godot/imported/gravityDrop.icon.png-3bce7c628886f0f64a5395dab9ebc942.ctex"]
+source_file="res://web_export/GravityDrop.icon.png"
+dest_files=["res://.godot/imported/GravityDrop.icon.png-53fb0a98552f84475c4998c016ba5fb2.ctex"]
 
 [params]
 

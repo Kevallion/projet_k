@@ -156,7 +156,7 @@ func update_quest():
 	
 func get_quest_text(_actId):
 	var questText = "Objectif :\n"
-	questText+= "Acte : "+str(actId) + " Chapitre : " + str(chapterId)
+	#questText+= "Acte : "+str(actId) + " Chapitre : " + str(chapterId)
 
 	match _actId:
 		1:

@@ -82,23 +82,23 @@ func set_interface_values():
 		repairButton.disabled = true
 	
 	## unlock Skills Craft Buttons ##
-	if (player.find_compo("shield_compo1") and player.find_compo("shield_compo2")) or %ShieldButton.get_parent().crafted:
+	if (player.find_compo("shield_compo1",1) and player.find_compo("shield_compo2",1)) or %ShieldButton.get_parent().crafted:
 		%ShieldButton.disabled = false
-	if (player.find_compo("tractor_compo1") and player.find_compo("tractor_compo2")) or %TractorButton.get_parent().crafted:
+	if (player.find_compo("tractor_compo1",1) and player.find_compo("tractor_compo2",1)) or %TractorButton.get_parent().crafted:
 		%TractorButton.disabled = false
-	if (player.find_compo("portal_compo1") and player.find_compo("portal_compo2")) or %PortalButton.get_parent().crafted:
+	if (player.find_compo("portal_compo1",1) and player.find_compo("portal_compo2",1)) or %PortalButton.get_parent().crafted:
 		%PortalButton.disabled = false
-	if (player.find_compo("laser_compo1") and player.find_compo("laser_compo2")) or %LaserButton.get_parent().crafted:
+	if (player.find_compo("laser_compo1",1) and player.find_compo("laser_compo2",1)) or %LaserButton.get_parent().crafted:
 		%LaserButton.disabled = false
 		
 	## unlock Skills Craft Buttons ##
-	%ShieldButton.disabled = not (player.find_compo("shield_compo1") and player.find_compo("shield_compo2") and not %ShieldButton.get_parent().crafted)
+	%ShieldButton.disabled = not (player.find_compo("shield_compo1",1) and player.find_compo("shield_compo2",1) and not %ShieldButton.get_parent().crafted)
 	
-	%TractorButton.disabled = not (player.find_compo("tractor_compo1") and player.find_compo("tractor_compo2") and not %TractorButton.get_parent().crafted)
+	%TractorButton.disabled = not (player.find_compo("tractor_compo1",1) and player.find_compo("tractor_compo2",1) and not %TractorButton.get_parent().crafted)
 	
-	%PortalButton.disabled = not (player.find_compo("portal_compo1") and player.find_compo("portal_compo2") and not %PortalButton.get_parent().crafted)
+	%PortalButton.disabled = not (player.find_compo("portal_compo1",1) and player.find_compo("portal_compo2",1) and not %PortalButton.get_parent().crafted)
 	
-	%LaserButton.disabled = not (player.find_compo("laser_compo1") and player.find_compo("laser_compo2") and not %LaserButton.get_parent().crafted)
+	%LaserButton.disabled = not (player.find_compo("laser_compo1",1) and player.find_compo("laser_compo2",1) and not %LaserButton.get_parent().crafted)
 	
 func close_inventory():
 	if not %DialogNode:
@@ -123,10 +123,10 @@ func _on_repair_button_pressed() -> void:
 func _on_shield_button_pressed() -> void:
 	shield_button.texture_hover = null
 	if !shield_button.get_parent().crafted:
-		if not player.find_compo("shield_compo1") or not player.find_compo("shield_compo2"):
+		if not player.find_compo("shield_compo1",1) or not player.find_compo("shield_compo2",1):
 			return # Annule l'action s'il manque un composant
-		inv.remove("shield_compo1")
-		inv.remove("shield_compo2")
+		inv.remove("shield_compo1", 1)
+		inv.remove("shield_compo2",1)
 		shield_button.get_parent().crafted = true
 	print("compo trouvé")
 	AudioManager.play(sndRepairs.pick_random(),&"SFX")
@@ -137,10 +137,10 @@ func _on_shield_button_pressed() -> void:
 func _on_tractor_button_pressed() -> void:
 	tractor_button.texture_hover = null
 	if !tractor_button.get_parent().crafted:
-		if not player.find_compo("tractor_compo1") or not player.find_compo("tractor_compo2"):
+		if not player.find_compo("tractor_compo1",1) or not player.find_compo("tractor_compo2",1):
 			return # Annule l'action s'il manque un composant
-		inv.remove("tractor_compo1")
-		inv.remove("tractor_compo2")
+		inv.remove("tractor_compo1",1)
+		inv.remove("tractor_compo2",1)
 		tractor_button.get_parent().crafted = true
 	player.unlock_skill_slot("tractor")
 	AudioManager.play(sndRepairs.pick_random(),&"SFX")
@@ -150,10 +150,10 @@ func _on_tractor_button_pressed() -> void:
 func _on_portal_button_pressed() -> void:
 	portal_button.texture_hover = null
 	if !portal_button.get_parent().crafted:
-		if not player.find_compo("portal_compo1") or not player.find_compo("portal_compo2"):
+		if not player.find_compo("portal_compo1",1) or not player.find_compo("portal_compo2",1):
 			return # Annule l'action s'il manque un composant
-		inv.remove("portal_compo1")
-		inv.remove("portal_compo2")
+		inv.remove("portal_compo1",1)
+		inv.remove("portal_compo2",1)
 		portal_button.get_parent().crafted = true
 	AudioManager.play(sndRepairs.pick_random(),&"SFX")
 	player.unlock_skill_slot("portal")
@@ -163,11 +163,11 @@ func _on_portal_button_pressed() -> void:
 func _on_laser_button_pressed() -> void:
 	laser_button.texture_hover = null
 	if !laser_button.get_parent().crafted:
-		if not player.find_compo("laser_compo1") or not player.find_compo("laser_compo2"):
+		if not player.find_compo("laser_compo1",1) or not player.find_compo("laser_compo2",1):
 			return # Annule l'action s'il manque un 
 		
-		inv.remove("laser_compo1")
-		inv.remove("laser_compo2")
+		inv.remove("laser_compo1",1)
+		inv.remove("laser_compo2",1)
 		laser_button.get_parent().crafted = true
 	AudioManager.play(sndRepairs.pick_random(),&"SFX")
 	player.unlock_skill_slot("laser")

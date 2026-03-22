@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://vtaxerp088yh"]
 
 [ext_resource type="PackedScene" uid="uid://dpb45y2nb8djb" path="res://scenes/entities/player.tscn" id="1_6iamk"]
-[ext_resource type="Script" path="res://scripts/levels/level.gd" id="1_7h2jl"]
+[ext_resource type="Script" uid="uid://fxmu73x67x0u" path="res://scripts/levels/level.gd" id="1_7h2jl"]
 [ext_resource type="PackedScene" uid="uid://cadr3m84lh1ya" path="res://scenes/entities/background.tscn" id="2_dga24"]
 [ext_resource type="AudioStream" uid="uid://cwctm1m6mrjml" path="res://assets/audio/music/Space MIX-consolidated.ogg" id="2_mqh5v"]
 [ext_resource type="AudioStream" uid="uid://cbfrifpoq30t" path="res://assets/audio/music/jci21-spaceship-ambient-sfx-164114.mp3" id="3_7o3do"]
@@ -1991,16 +1991,16 @@ shape = SubResource("CircleShape2D_mqh5v")
 position = Vector2(-1831, -11577)
 
 [node name="FragmentBody9" parent="." unique_id=920372257 instance=ExtResource("15_wtwp4")]
-position = Vector2(-949.65186, -11652.552)
+position = Vector2(-6929, -12459)
 
 [node name="FragmentBody10" parent="." unique_id=2086868294 instance=ExtResource("15_wtwp4")]
-position = Vector2(-949.65186, -11652.552)
+position = Vector2(-6929, -12459)
 
 [node name="FragmentBody11" parent="." unique_id=1465612727 instance=ExtResource("15_wtwp4")]
-position = Vector2(-949.65186, -11652.552)
+position = Vector2(-6929, -12459)
 
 [node name="FragmentBody12" parent="." unique_id=71668461 instance=ExtResource("15_wtwp4")]
-position = Vector2(-949.65186, -11652.552)
+position = Vector2(-6929, -12459)
 
 [connection signal="body_exited" from="TutoEnding" to="DialogNode" method="_on_tuto_ending_body_exited"]
 [connection signal="body_entered" from="TutoArea2" to="DialogNode" method="_on_tuto_area_body_entered"]

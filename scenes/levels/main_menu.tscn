@@ -53,7 +53,7 @@ offset_top = -46.0
 offset_right = 284.0
 offset_bottom = -23.0
 grow_vertical = 0
-text = "MADE BY PIXEL KNGHT"
+text = "MADE BY PIXEL KNIGHT"
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control" unique_id=158109653]
 layout_mode = 1
