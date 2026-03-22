@@ -1784,6 +1784,9 @@ animations = [{
 resource_local_to_scene = true
 radius = 61.765
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ndtll"]
+radius = 3088.7485
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ndtll"]
 size = Vector2(2, 2)
 
@@ -1792,9 +1795,6 @@ size = Vector2(1294, 100)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mqh5v"]
 size = Vector2(818, 28)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7o3do"]
-size = Vector2(6762.5, 497)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o7j4k"]
 radius = 752.58185
@@ -1956,31 +1956,33 @@ position = Vector2(-762, 1013)
 [node name="DialogNode" parent="." unique_id=418809529 instance=ExtResource("21_mkypq")]
 unique_name_in_owner = true
 
-[node name="TutoArea2" type="Area2D" parent="DialogNode" unique_id=1904629860]
+[node name="TutoEnding" type="Area2D" parent="." unique_id=2085572883]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogNode/TutoArea2" unique_id=1754411536]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutoEnding" unique_id=438467218]
+shape = SubResource("CircleShape2D_ndtll")
+
+[node name="TutoArea2" type="Area2D" parent="." unique_id=143580285]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutoArea2" unique_id=1151777695]
 shape = SubResource("RectangleShape2D_ndtll")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="DialogNode/TutoArea2" unique_id=1537958084]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="TutoArea2" unique_id=1039403514]
 position = Vector2(2, -1186)
 shape = SubResource("RectangleShape2D_7h2jl")
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="DialogNode/TutoArea2" unique_id=563821764]
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="TutoArea2" unique_id=1515600122]
 position = Vector2(0, -353)
 shape = SubResource("RectangleShape2D_mqh5v")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="DialogNode/TutoArea2" unique_id=468971773]
-position = Vector2(-6.75, -2452)
-shape = SubResource("RectangleShape2D_7o3do")
+[node name="StationArea2" type="Area2D" parent="." unique_id=703353436]
 
-[node name="StationArea2" type="Area2D" parent="DialogNode" unique_id=1248942555]
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="DialogNode/StationArea2" unique_id=592798791]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StationArea2" unique_id=1774821749]
 position = Vector2(6337.533, -2397.9521)
 shape = SubResource("CircleShape2D_o7j4k")
 
-[connection signal="body_entered" from="DialogNode/TutoArea2" to="DialogNode" method="_on_tuto_area_body_entered"]
-[connection signal="body_entered" from="DialogNode/StationArea2" to="DialogNode" method="_on_station_area_body_entered"]
-[connection signal="body_exited" from="DialogNode/StationArea2" to="DialogNode" method="_on_station_area_body_exited"]
+[connection signal="body_exited" from="TutoEnding" to="DialogNode" method="_on_tuto_ending_body_exited"]
+[connection signal="body_entered" from="TutoArea2" to="DialogNode" method="_on_tuto_area_body_entered"]
+[connection signal="body_entered" from="StationArea2" to="DialogNode" method="_on_station_area_body_entered"]
+[connection signal="body_exited" from="StationArea2" to="DialogNode" method="_on_station_area_body_exited"]
 
 [editable path="Asteroid4"]

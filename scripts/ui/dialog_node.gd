@@ -1,4 +1,9 @@
-extends Node2D
+extends Control
+#@onready var dialogPanel = $CanvasLayer/Panel
+#@onready var dialogLabel = $CanvasLayer/Panel/RichTextLabel
+#@onready var questPanel = $CanvasLayer/QuestPanel
+var questLabelReady = false
+var questLabel
 
 var currentDialogArray
 var currentDialogPos = 0
@@ -6,12 +11,19 @@ var dialogOpen = false
 var actId = 0
 var chapterId = 0
 
+func _ready() -> void:
+	questLabel = %RichTextLabel
+	questLabelReady = true
+
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if dialogOpen:
 		get_tree().paused = true
 	if dialogOpen and (Input.is_action_just_pressed("switch_mode") or Input.is_action_just_pressed("left_click")):
 		continue_dialog()
+		
+	if questLabelReady:
+		update_quest()
 	
 func open_dialog(_actId: int, _dialogId: int):
 	if get_dialog(_actId, _dialogId):
@@ -32,7 +44,6 @@ func continue_dialog():
 		chapterId += 1
 
 func get_dialog(_actId: int, _chapterId: int):
-	#currentDialogPos += 1
 	currentDialogArray = null
 	match _actId:
 		0:
@@ -87,7 +98,7 @@ Penses bien à garder un oeil sur le radar"]
 						[0, "..."],
 						[1, "... ?!"],
 						[0, "Il a dit quoi ?"],
-						[1, "Ah mais tu comprends pas le Skrolbuk ? Tu débarques d'où toi ?\n Vas y continues sur la droite et surveille le radar"]
+						[1, "Ah mais tu comprends pas le Skrolbuk ? Tu débarques d'où toi ?\n Vas y continues sur la droite et surveilles bien le radar"]
 					]
 			
 	return currentDialogArray
@@ -98,12 +109,35 @@ func close_dialog():
 	dialogOpen = false
 
 func _on_tuto_area_body_entered(_body: Node2D) -> void:
-	open_dialog(actId, chapterId)
+	if actId == 0:
+		open_dialog(actId, chapterId)
 
 func _on_station_area_body_entered(_body: Node2D) -> void:
-	actId = 1
-	chapterId = 0
-	open_dialog(actId,chapterId)
+	if actId == 1 and chapterId == 0:
+		open_dialog(actId,chapterId)
 
 func _on_station_area_body_exited(_body: Node2D) -> void:
-	open_dialog(actId,chapterId)
+	if actId == 1 and chapterId == 2:
+		open_dialog(actId,chapterId)
+		actId = 2
+	
+func update_quest():
+	if questLabel:
+		questLabel.text = get_quest_text(actId)
+	
+func get_quest_text(_actId):
+	var questText = "Objectif :\n"
+	questText+= "Acte : "+str(actId) + " Chapitre : " + str(chapterId)
+
+	match _actId:
+		1:
+			questText += "\nVa à la station"
+		2:
+			questText += "\nTrouve la planète\nà droite de la station"
+	return questText
+
+func _on_tuto_ending_body_exited(_body: Node2D) -> void:
+	if actId == 0:
+		open_dialog(0,3)
+		actId = 1
+		chapterId = -1
