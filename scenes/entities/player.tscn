@@ -178,6 +178,6 @@ one_shot = true
 one_shot = true
 
 [node name="GadgetManager" parent="." unique_id=740711933 node_paths=PackedStringArray("gadgetActives") instance=ExtResource("7_dnykm")]
-gadgetActives = [NodePath(""), NodePath(""), NodePath("")]
+gadgetActives = [null, null, null]
 
 [connection signal="timeout" from="OutOfBound" to="." method="_on_out_of_bound_timeout"]

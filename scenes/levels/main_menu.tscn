@@ -1,0 +1,123 @@
+[gd_scene format=3 uid="uid://djri0h1t14fw0"]
+
+[ext_resource type="Script" uid="uid://bujibb7dce0gk" path="res://scenes/levels/main_menu.gd" id="1_geflf"]
+[ext_resource type="PackedScene" uid="uid://vtaxerp088yh" path="res://scenes/levels/level_1.tscn" id="2_fkd6t"]
+[ext_resource type="AudioStream" uid="uid://ds3edyvgafer4" path="res://assets/audio/music/Title Screen.mp3" id="3_crctu"]
+[ext_resource type="PackedScene" uid="uid://cadr3m84lh1ya" path="res://scenes/entities/background.tscn" id="3_keln3"]
+[ext_resource type="Texture2D" uid="uid://c7mlqbmw2r765" path="res://assets/sprites/planets/planet00.png" id="4_crctu"]
+[ext_resource type="Theme" uid="uid://bikh2wiu48bjr" path="res://scripts/ui/ui_theme_general.tres" id="4_sn5u3"]
+[ext_resource type="Texture2D" uid="uid://dn6rai33xyy2k" path="res://assets/sprites/planets/planet02.png" id="7_cn35j"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_k0a0m"]
+font_size = 121
+font_color = Color(0.92686427, 0.76291144, 0.599325, 1)
+outline_size = 15
+outline_color = Color(0.55984586, 0.26508573, 0.4246508, 1)
+shadow_size = 97
+shadow_color = Color(0.07353502, 0.0539, 0.11, 1)
+shadow_offset = Vector2(5.93, 1)
+stacked_shadow_count = 1
+stacked_shadow_0/offset = Vector2(-1, -1)
+stacked_shadow_0/color = Color(0.81, 0.6966, 0.7722, 0.73333335)
+stacked_shadow_0/outline_size = 15
+
+[node name="MainMenu" type="Node2D" unique_id=844210844]
+script = ExtResource("1_geflf")
+firstLevelScene = ExtResource("2_fkd6t")
+first_level_to_lauch = "<null>"
+sndMenu = ExtResource("3_crctu")
+
+[node name="backGround" parent="." unique_id=1670201285 instance=ExtResource("3_keln3")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=240130564]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=656684529]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_sn5u3")
+
+[node name="Label" type="Label" parent="CanvasLayer/Control" unique_id=387474385]
+modulate = Color(1, 1, 1, 0.5803922)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 34.0
+offset_top = -46.0
+offset_right = 284.0
+offset_bottom = -23.0
+grow_vertical = 0
+text = "MADE BY PIXEL KNGHT"
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control" unique_id=158109653]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -268.5
+offset_top = -203.0
+offset_right = 268.5
+offset_bottom = 203.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer" unique_id=1305348927]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 49
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/MarginContainer/VBoxContainer" unique_id=125710480]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Gravity Drop"
+label_settings = SubResource("LabelSettings_k0a0m")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/MarginContainer/VBoxContainer" unique_id=1708573794]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="btn_newGame" type="Button" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/VBoxContainer" unique_id=562010485]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "NEW GAME"
+
+[node name="btn_exit" type="Button" parent="CanvasLayer/Control/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1848186504]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "EXIT"
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1629401350]
+position = Vector2(320, 103)
+region_enabled = true
+region_rect = Rect2(0, 512, 128, 128)
+region_filter_clip_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1039481407]
+position = Vector2(324, 195)
+
+[node name="snd_button" type="AudioStreamPlayer" parent="." unique_id=1343863265]
+unique_name_in_owner = true
+
+[node name="Planet00" type="Sprite2D" parent="." unique_id=96124649]
+position = Vector2(310.00003, 322.00003)
+scale = Vector2(0.48906252, 0.48906252)
+texture = ExtResource("4_crctu")
+
+[node name="Planet02" type="Sprite2D" parent="." unique_id=1063196110]
+position = Vector2(971, 188)
+scale = Vector2(0.18515627, 0.18695246)
+texture = ExtResource("7_cn35j")

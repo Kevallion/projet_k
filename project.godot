@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="projet_k"
-run/main_scene="uid://vtaxerp088yh"
+run/main_scene="uid://djri0h1t14fw0"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 

@@ -6,10 +6,11 @@
 
 [node name="Respawn Station" unique_id=708156702 groups=["Station_spawn"] instance=ExtResource("1_joa0u")]
 script = ExtResource("2_ja8j4")
-isDiscovered = false
+isDiscovered = null
+carburantToGive = null
+mass = null
+bounciness = null
+forceDrag = null
 
 [node name="Sprite2D" parent="." index="0" unique_id=1722980194]
 texture = ExtResource("2_egb1w")
-
-[connection signal="area_entered" from="InteractionArea" to="." method="_on_interaction_area_area_entered"]
-[connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
