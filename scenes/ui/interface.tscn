@@ -140,6 +140,7 @@ texture_over = ExtResource("5_5eily")
 texture_progress = ExtResource("6_aywjo")
 
 [node name="EnergyBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=1099458470]
+visible = false
 modulate = Color(0.9882353, 0.9357019, 0.0010561382, 1)
 z_index = 1
 anchors_preset = 15

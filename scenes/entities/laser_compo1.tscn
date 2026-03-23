@@ -19,7 +19,6 @@ item = ExtResource("2_ofm1u")
 
 [node name="LaserCompoSprite" type="Sprite2D" parent="." unique_id=1532037081]
 texture_filter = 1
-scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_ofm1u")
 
 [node name="CollectArea" type="Area2D" parent="." unique_id=1485555812]

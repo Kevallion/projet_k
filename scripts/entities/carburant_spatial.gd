@@ -4,6 +4,7 @@ var firstInteract = true
 
 func _on_interaction_area_interaction(body: Player) -> void:
 	body.refill_gas()
+	body.recharge_energy()
 	if firstInteract:
 		dialogNode.open_dialog(1, 1)
 		dialogNode.actId = 2

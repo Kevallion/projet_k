@@ -3,9 +3,8 @@ extends Control
 @onready var fuel = $CanvasLayer/FuelBar
 @onready var life = $CanvasLayer/LifeBar
 @onready var energy_bar = $CanvasLayer/EnergyBar
-@onready var radarLabel = $CanvasLayer/RadarLabel
+@onready var radar_label = $CanvasLayer/RadarLabel
 @onready var player = get_parent().get_node("Player")
-@onready var energyBar: TextureProgressBar = $CanvasLayer/EnergyBar
 @onready var ghost = $CanvasLayer/Ghost
 
 var distance: int = 0
@@ -15,7 +14,7 @@ var distance: int = 0
 
 var inventory_is_open = false
 
-@onready var repairButton = $CanvasLayer/ColorRect/RepairButton
+@onready var repair_button = $CanvasLayer/ColorRect/RepairButton
 @onready var shield_button = %ShieldButton
 @onready var tractor_button = %TractorButton
 @onready var portal_button = %PortalButton
@@ -28,13 +27,13 @@ func _ready() -> void:
 	inv.update.connect(update_slots)
 	update_slots()
 	close_inventory()
+	energy_bar.visible = false
  	
 func _physics_process(_delta: float) -> void:
 	update_slots()
 	if inventory_is_open:
 		get_tree().paused = true
 		
-	#get_tree().paused = !get_tree().paused
 	if Input.is_action_just_pressed("ui_cancel"):
 		if inventory_is_open:
 			close_inventory()
@@ -74,12 +73,13 @@ func set_interface_values():
 	for planet in get_tree().get_nodes_in_group("radar_detection"):
 		if distance > player.global_position.distance_to(planet.global_position):
 			distance = player.global_position.distance_to(planet.global_position)
-	radarLabel.text = str(distance)
+	radar_label.text = str(distance)
 		
+	# Bouton de réparation
 	if player.can_repair():
-		repairButton.disabled = false
+		repair_button.disabled = false
 	else:
-		repairButton.disabled = true
+		repair_button.disabled = true
 	
 	## unlock Skills Craft Buttons ##
 	if (player.find_compo("shield_compo1",1) and player.find_compo("shield_compo2",1)) or %ShieldButton.get_parent().crafted:
@@ -120,45 +120,25 @@ func _on_repair_button_pressed() -> void:
 	update_slots()
 
 func _on_shield_button_pressed() -> void:
-	shield_button.texture_hover = null
-	if !shield_button.get_parent().crafted:
-		inv.remove("shield_compo1", 1)
-		inv.remove("shield_compo2",1)
-		shield_button.get_parent().crafted = true
-		AudioManager.play(sndRepairs.pick_random(),&"SFX")
-		player.unlock_skill_slot("shield")
-	GameSignals.request_equip_gadget.emit("shield")
-	update_slots()
+	equip_gadget(shield_button, "shield_compo1", "shield_compo2", "shield")
 
 func _on_tractor_button_pressed() -> void:
-	tractor_button.texture_hover = null
-	if !tractor_button.get_parent().crafted:
-		inv.remove("tractor_compo1",1)
-		inv.remove("tractor_compo2",1)
-		tractor_button.get_parent().crafted = true
-		player.unlock_skill_slot("tractor")
-		AudioManager.play(sndRepairs.pick_random(),&"SFX")
-	GameSignals.request_equip_gadget.emit("tractor")
-	update_slots()
+	equip_gadget(tractor_button, "tractor_compo1", "tractor_compo2", "tractor")
 
 func _on_portal_button_pressed() -> void:
-	portal_button.texture_hover = null
-	if !portal_button.get_parent().crafted:
-		inv.remove("portal_compo1",1)
-		inv.remove("portal_compo2",1)
-		portal_button.get_parent().crafted = true
-		AudioManager.play(sndRepairs.pick_random(),&"SFX")
-		player.unlock_skill_slot("portal")
-	GameSignals.request_equip_gadget.emit("portal")
-	update_slots()
+	equip_gadget(portal_button, "portal_compo1", "portal_compo2", "portal")
 
 func _on_laser_button_pressed() -> void:
-	laser_button.texture_hover = null
-	if !laser_button.get_parent().crafted:
-		inv.remove("laser_compo1",1)
-		inv.remove("laser_compo2",1)
-		laser_button.get_parent().crafted = true
+	equip_gadget(laser_button, "laser_compo1", "laser_compo2", "laser")
+
+func equip_gadget(gadget_button, gadget_compo1, gadget_compo2, gadget_name) -> void:
+	energy_bar.visible = true
+	gadget_button.texture_hover = null
+	if !gadget_button.get_parent().crafted:
+		inv.remove(gadget_compo1,1)
+		inv.remove(gadget_compo2,1)
+		gadget_button.get_parent().crafted = true
 		AudioManager.play(sndRepairs.pick_random(),&"SFX")
-		player.unlock_skill_slot("laser")
-	GameSignals.request_equip_gadget.emit("laser")
+		player.unlock_skill_slot(gadget_name)
+	GameSignals.request_equip_gadget.emit(gadget_name)
 	update_slots()

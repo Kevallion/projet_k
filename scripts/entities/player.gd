@@ -217,6 +217,9 @@ func _consumeGas(spent):
 
 func refill_gas():
 	gas = maxGas
+	
+func recharge_energy():
+	energy = maxEnergy
 
 func collect(item, amount):
 	if inventory: inventory.insert(item, amount)

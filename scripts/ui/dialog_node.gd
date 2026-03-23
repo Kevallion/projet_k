@@ -1,6 +1,8 @@
 extends Control
 
 @onready var questLabel = %RichTextLabel
+@onready var questPanel = $CanvasLayer/QuestPanel
+
 @onready var dialogPanel = $CanvasLayer/Panel
 @onready var dialogLabel = $CanvasLayer/Panel/RichTextLabel
 
@@ -167,6 +169,7 @@ func get_quest_text(_actId, _chapterId):
 
 	match _actId:
 		1:
+			questPanel.visible = true
 			questText += "\nVa à la station\nen suivant le radar"
 		2:
 			if chapterId == 0:
