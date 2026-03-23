@@ -1945,7 +1945,7 @@ position = Vector2(14741, -2492)
 position = Vector2(6340, -2402)
 
 [node name="RadiationZone" parent="." unique_id=1273611784 instance=ExtResource("16_iwr0g")]
-position = Vector2(-6997, -12520)
+position = Vector2(-4978, -12044)
 
 [node name="Magnetic_zone" parent="." unique_id=611847379 instance=ExtResource("17_bahl2")]
 position = Vector2(-2139, 587)
@@ -1990,42 +1990,42 @@ shape = SubResource("CircleShape2D_mqh5v")
 position = Vector2(-1831, -11577)
 
 [node name="FragmentBody9" parent="." unique_id=920372257 instance=ExtResource("15_wtwp4")]
-position = Vector2(-6929, -12459)
+position = Vector2(-4910, -11983)
 
 [node name="FragmentBody10" parent="." unique_id=2086868294 instance=ExtResource("15_wtwp4")]
-position = Vector2(-6929, -12459)
+position = Vector2(-4910, -11983)
 
 [node name="FragmentBody11" parent="." unique_id=1465612727 instance=ExtResource("15_wtwp4")]
-position = Vector2(-6929, -12459)
+position = Vector2(-4910, -11983)
 
 [node name="FragmentBody12" parent="." unique_id=71668461 instance=ExtResource("15_wtwp4")]
-position = Vector2(-6929, -12459)
+position = Vector2(-4910, -11983)
 
 [node name="ShieldCompoBody2" parent="." unique_id=1330808625 instance=ExtResource("25_7o3do")]
-position = Vector2(-3359.6094, -319.38745)
+position = Vector2(-5049.6094, -468.38745)
 collision_layer = 1
 collision_mask = 1
 
 [node name="Portalcompo1" parent="." unique_id=914629752 instance=ExtResource("26_31oqk")]
-position = Vector2(-3254, -359)
+position = Vector2(-4944, -508)
 
 [node name="PortalCompo2" parent="." unique_id=1266248090 instance=ExtResource("27_x7jkp")]
-position = Vector2(-3206, -443)
+position = Vector2(-4896, -592)
 
 [node name="ShieldCompoBody3" parent="." unique_id=1465417352 instance=ExtResource("28_0qwwm")]
-position = Vector2(-3460, -415)
+position = Vector2(-5150, -564)
 
 [node name="ShieldCompoBody4" parent="." unique_id=1812576822 instance=ExtResource("29_t4umt")]
-position = Vector2(-3451, -499)
+position = Vector2(-5141, -648)
 
 [node name="TractorCompoBody1" parent="." unique_id=134285700 instance=ExtResource("20_mkypq")]
-position = Vector2(-3340, -523)
+position = Vector2(-5030, -672)
 
 [node name="TractorCompoBody2" parent="." unique_id=1820491364 instance=ExtResource("21_ndtll")]
-position = Vector2(-3338, -431)
+position = Vector2(-5028, -580)
 
 [node name="ShieldCompoBody5" parent="." unique_id=4661033 instance=ExtResource("18_np2pn")]
-position = Vector2(-3444.1995, -338.911)
+position = Vector2(-5134.199, -487.911)
 
 [connection signal="body_exited" from="TutoEnding" to="DialogNode" method="_on_tuto_ending_body_exited"]
 [connection signal="body_entered" from="TutoArea2" to="DialogNode" method="_on_tuto_area_body_entered"]

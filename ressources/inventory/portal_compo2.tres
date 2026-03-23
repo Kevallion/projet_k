@@ -7,6 +7,6 @@
 script = ExtResource("1_icxxt")
 name = "portal_compo2"
 title = "Découpeur Cosmique"
-description = "Sert à la fabrication du Portal Gunteur"
+description = "Sert à la fabrication du Portal Gun"
 texture = ExtResource("2_icxxt")
 metadata/_custom_type_script = "uid://do2722dpinf7q"

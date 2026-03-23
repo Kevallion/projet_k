@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b44gu73g5xm3c" path="res://scripts/entities/craft_compo.gd" id="1_8dvgm"]
 [ext_resource type="Resource" uid="uid://dg62nqqji5uns" path="res://ressources/inventory/laser_compo2.tres" id="2_8dvgm"]
-[ext_resource type="Texture2D" uid="uid://xadybcawmdhl" path="res://assets/sprites/items/beam0.png" id="3_uhxwx"]
+[ext_resource type="Texture2D" uid="uid://dflxx3mq3pwdg" path="res://assets/sprites/items/turretBase_big.png" id="3_8dvgm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eap1r"]
 radius = 33.0
@@ -10,16 +10,16 @@ radius = 33.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3rxo"]
 size = Vector2(32, 28)
 
-[node name="ShieldCompoBody2" type="RigidBody2D" unique_id=1391390146]
+[node name="LaserCompoBody2" type="RigidBody2D" unique_id=1391390146]
 collision_layer = 2
 collision_mask = 3
 gravity_scale = 0.0
 script = ExtResource("1_8dvgm")
 item = ExtResource("2_8dvgm")
 
-[node name="ShieldCompoSprite" type="Sprite2D" parent="." unique_id=1532037081]
+[node name="CompoSprite" type="Sprite2D" parent="." unique_id=1532037081]
 texture_filter = 1
-texture = ExtResource("3_uhxwx")
+texture = ExtResource("3_8dvgm")
 
 [node name="CollectArea" type="Area2D" parent="." unique_id=1485555812]
 

@@ -17,7 +17,8 @@ gravity_scale = 0.0
 script = ExtResource("1_ja8gt")
 item = ExtResource("2_ja8gt")
 
-[node name="ShieldCompoSprite" type="Sprite2D" parent="." unique_id=1532037081]
+[node name="PortalCompoSprite" type="Sprite2D" parent="." unique_id=1532037081]
+unique_name_in_owner = true
 texture_filter = 1
 texture = ExtResource("3_ubxk4")
 

@@ -6,5 +6,7 @@
 [resource]
 script = ExtResource("1_l5gnm")
 name = "shield_compo1"
+title = "Générateur"
+description = "Sert à la fabrication du Bouclier"
 texture = ExtResource("2_l5gnm")
 metadata/_custom_type_script = "uid://do2722dpinf7q"

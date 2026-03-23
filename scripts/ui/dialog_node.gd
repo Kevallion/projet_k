@@ -110,7 +110,15 @@ Penses bien à garder un oeil sur le radar"]
 						[2, "Krip shnok lupwelth blator ?"],
 						[1, "Non rien d'autre d'interessant, je te ferai signe si j'en vois un. Tu n'aurais pas un [color=white]Convertisseur d'énèrgie[/color] sous la main par hasard ?"],
 						[2, "Wispalak mitervistop prit, klap Pascal fouet\nBret la cirak zep"],
-						[1, "Au Nord Ouest d'ici tu dis ? Ok merci"]
+						[1, "Ok, je lui passerai le bonjour de ta part, merci Shplok !"]
+					]
+				1:
+					currentDialogArray = [
+						[0, "..."],
+						[1, "Je vais pas te faire la traduction à chaque fois, ça va vite me gonfler\nRegarde le panneau de quête au pire"],
+						[0, "..."],
+						[0, "Comment ça au Nord Ouest ? On est dans l'espace ! Selon comme on est tourné ça change tout"],
+						[1, "Ouais bon, en haut à gauche quoi, t'as compris"]
 					]
 		4:
 			match _chapterId:
@@ -118,7 +126,7 @@ Penses bien à garder un oeil sur le radar"]
 					currentDialogArray = [
 						[1, "Salut, c'est toi Pascal ? Shplok m'a dit que t'avais peut être un convertisseur sous la main ?"],
 						[3, "Osdroenae subsederat extimas partes, novum parumque aliquando temptatum commentum"],
-						[1, "Ok, je devrais pouvoir m'en accomoder. Merci"]
+						[1, "Ok, je devrais pouvoir te trouver ça"]
 					]
 		5:
 			match _chapterId:
@@ -149,6 +157,10 @@ func _on_station_area_body_exited(_body: Node2D) -> void:
 		open_dialog(actId,chapterId)
 		actId = 2
 		chapterId = -1
+	if actId == 3:
+		open_dialog(actId, chapterId)
+		actId = 4
+		chapterId = -1
 	
 func update_quest():
 	if questLabel:
@@ -168,7 +180,7 @@ func get_quest_text(_actId):
 		4:
 			questText += "\nTrouve Pascal\nau Nord Ouest de la station"
 		5:
-			questText += "\nRécupérer des fragments\nà gauche de Pascal\ndans le champ radioactif"
+			questText += "\nRamener 10 débris\nà Pascal"
 	return questText
 
 func _on_tuto_ending_body_exited(_body: Node2D) -> void:
