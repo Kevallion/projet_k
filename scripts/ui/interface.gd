@@ -82,22 +82,16 @@ func set_interface_values():
 		repair_button.disabled = true
 	
 	## unlock Skills Craft Buttons ##
-	if (player.find_compo("shield_compo1",1) and player.find_compo("shield_compo2",1)) or %ShieldButton.get_parent().crafted:
-		%ShieldButton.disabled = false
+	set_gadget_button(shield_button, "shield_compo1", "shield_compo2", "shield")
+	set_gadget_button(tractor_button, "tractor_compo1", "tractor_compo2", "tractor")
+	set_gadget_button(portal_button, "portal_compo1", "portal_compo2", "portal")
+	set_gadget_button(laser_button, "laser_compo1", "laser_compo2", "laser")
+		
+func set_gadget_button(gadget_button, gadget_compo1, gadget_compo2, gadget_name) -> void:
+	if (player.find_compo(gadget_compo1,1) and player.find_compo(gadget_compo2,1)) or gadget_button.get_parent().crafted:
+		gadget_button.disabled = false
 	else:
-		%ShieldButton.disabled = true
-	if (player.find_compo("tractor_compo1",1) and player.find_compo("tractor_compo2",1)) or %TractorButton.get_parent().crafted:
-		%TractorButton.disabled = false
-	else:
-		%TractorButton.disabled = true
-	if (player.find_compo("portal_compo1",1) and player.find_compo("portal_compo2",1)) or %PortalButton.get_parent().crafted:
-		%PortalButton.disabled = false
-	else:
-		%PortalButton.disabled = true
-	if (player.find_compo("laser_compo1",1) and player.find_compo("laser_compo2",1)) or %LaserButton.get_parent().crafted:
-		%LaserButton.disabled = false
-	else:
-		%LaserButton.disabled = true
+		gadget_button.disabled = true
 		
 func close_inventory():
 	if not %DialogNode:

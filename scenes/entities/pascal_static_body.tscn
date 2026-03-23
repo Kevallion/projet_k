@@ -7,9 +7,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_jq2b0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f4kwg"]
-radius = 307.02606
+radius = 224.5707
 
-[node name="PascalStaticBody" type="StaticBody2D" unique_id=2055547690]
+[node name="PascalStaticBody" type="StaticBody2D" unique_id=2055547690 groups=["radar_detection"]]
 z_index = -1
 collision_layer = 0
 collision_mask = 0
@@ -20,16 +20,17 @@ shape = SubResource("CircleShape2D_jq2b0")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=358006266]
 z_index = -1
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_adk7m")
 
 [node name="ShieldCompoBody2" parent="." unique_id=1391390146 instance=ExtResource("4_goi62")]
 visible = false
-position = Vector2(-5, -5)
+position = Vector2(134, 14)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1549514480]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2022837806]
-position = Vector2(-3, -148)
+position = Vector2(1, 0)
 shape = SubResource("CircleShape2D_f4kwg")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

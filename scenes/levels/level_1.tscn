@@ -23,10 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://dsjm8eonkl4sw" path="res://scenes/entities/tractor_compo1.tscn" id="20_mkypq"]
 [ext_resource type="PackedScene" uid="uid://cpuosgvypvw34" path="res://scenes/ui/dialog_node.tscn" id="21_mkypq"]
 [ext_resource type="PackedScene" uid="uid://cxs8422c014ie" path="res://scenes/entities/tractor_compo2.tscn" id="21_ndtll"]
-[ext_resource type="Script" uid="uid://do2722dpinf7q" path="res://ressources/inventory/inventory_item.gd" id="24_4yk0h"]
 [ext_resource type="PackedScene" uid="uid://e72aihs578wb" path="res://scenes/entities/pascal_static_body.tscn" id="24_mqh5v"]
-[ext_resource type="PackedScene" uid="uid://bq5u5ybwm0wh4" path="res://scenes/entities/shield_compo2.tscn" id="25_7o3do"]
-[ext_resource type="Texture2D" uid="uid://xadybcawmdhl" path="res://assets/sprites/items/beam0.png" id="25_vmrhw"]
 [ext_resource type="PackedScene" uid="uid://c0uddhoukq2b7" path="res://scenes/entities/portal_compo1.tscn" id="26_31oqk"]
 [ext_resource type="PackedScene" uid="uid://c07iigx2pff0n" path="res://scenes/entities/portal_compo2.tscn" id="27_x7jkp"]
 [ext_resource type="PackedScene" uid="uid://b64j30po0t176" path="res://scenes/entities/laser_compo1.tscn" id="28_0qwwm"]
@@ -1790,7 +1787,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0qwwm"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_x7jkp"]
 resource_local_to_scene = true
 radius = 61.765
 
@@ -1811,14 +1808,6 @@ radius = 752.58185
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mqh5v"]
 radius = 32.74659
-
-[sub_resource type="Resource" id="Resource_cfnpk"]
-script = ExtResource("24_4yk0h")
-name = "shield_compo2"
-title = "Convertisseur d'énèrgie"
-description = "Sert à la fabricationdu générateur de bouclier"
-texture = ExtResource("25_vmrhw")
-metadata/_custom_type_script = "uid://do2722dpinf7q"
 
 [node name="Level1" type="Node2D" unique_id=708747007]
 script = ExtResource("1_7h2jl")
@@ -1914,7 +1903,7 @@ collisionRange = 30.864
 pushZoneRange = 61.765
 
 [node name="CollisionShape2D" parent="Asteroid4/pushZone" parent_id_path=PackedInt32Array(956945604, 1457056112) index="0" unique_id=575047982]
-shape = SubResource("CircleShape2D_0qwwm")
+shape = SubResource("CircleShape2D_x7jkp")
 
 [node name="Planet" parent="." unique_id=1040834349 groups=["planet", "radar_detection"] instance=ExtResource("9_dga24")]
 z_index = -2
@@ -2010,12 +1999,6 @@ position = Vector2(-4910, -11983)
 
 [node name="FragmentBody12" parent="." unique_id=71668461 instance=ExtResource("15_wtwp4")]
 position = Vector2(-4910, -11983)
-
-[node name="ShieldCompoBody2" parent="." unique_id=1330808625 instance=ExtResource("25_7o3do")]
-position = Vector2(-5049.6094, -468.38745)
-collision_layer = 1
-collision_mask = 1
-item = SubResource("Resource_cfnpk")
 
 [node name="Portalcompo1" parent="." unique_id=914629752 instance=ExtResource("26_31oqk")]
 position = Vector2(-4944, -508)
