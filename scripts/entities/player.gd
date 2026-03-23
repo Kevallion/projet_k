@@ -152,6 +152,8 @@ func _check_vitals():
 	if gas <= 0:
 		drop_stuff()
 		trigger_respawn()
+	if health > maxHealth:
+		health = maxHealth
 	if health <= 0:
 		AudioManager.play(sndCrash,&"SFX")
 		drop_stuff()

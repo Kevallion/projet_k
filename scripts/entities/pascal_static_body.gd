@@ -7,15 +7,13 @@ func spawn_converter():
 	$ShieldCompoBody2.collectable()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	spawn_converter()
 	if dialogNode.actId == 5:
 		if body.find_and_delete("fragment", 10):
-			body.inventory.remove("fragment", 10)
 			dialogNode.open_dialog(dialogNode.actId, dialogNode.chapterId)
 			spawn_converter()
 			dialogNode.actId = 6
-		dialogNode.chapterId = -1
+			dialogNode.chapterId = 0
 	if dialogNode.actId == 4:
 		dialogNode.open_dialog(dialogNode.actId, dialogNode.chapterId)
 		dialogNode.actId = 5
-		dialogNode.chapterId = -1
+		dialogNode.chapterId = 0

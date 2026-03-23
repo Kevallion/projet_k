@@ -1818,7 +1818,6 @@ ambianceMusicToPlay = ExtResource("3_7o3do")
 [node name="Interface" parent="." unique_id=1016790414 instance=ExtResource("14_mm8aj")]
 
 [node name="Player" parent="." unique_id=632786190 instance=ExtResource("1_6iamk")]
-position = Vector2(-1441.0298, -11494.199)
 collision_mask = 5
 motion_mode = 1
 
@@ -2013,10 +2012,10 @@ position = Vector2(-4944, -508)
 [node name="PortalCompo2" parent="." unique_id=1266248090 instance=ExtResource("27_x7jkp")]
 position = Vector2(-4896, -592)
 
-[node name="ShieldCompoBody3" parent="." unique_id=1465417352 instance=ExtResource("28_0qwwm")]
+[node name="LaserCompoBody3" parent="." unique_id=1465417352 instance=ExtResource("28_0qwwm")]
 position = Vector2(-5150, -564)
 
-[node name="ShieldCompoBody4" parent="." unique_id=1812576822 instance=ExtResource("29_t4umt")]
+[node name="LaserCompoBody4" parent="." unique_id=1812576822 instance=ExtResource("29_t4umt")]
 position = Vector2(-5141, -648)
 
 [node name="TractorCompoBody1" parent="." unique_id=134285700 instance=ExtResource("20_mkypq")]

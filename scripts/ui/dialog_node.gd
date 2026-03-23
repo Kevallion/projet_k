@@ -19,7 +19,10 @@ func _process(_delta: float) -> void:
 	
 	
 func open_dialog(_actId: int, _dialogId: int):
+	#chapterId += 1
+	#_dialogId+= 1
 	if get_dialog(_actId, _dialogId):
+		chapterId += 1
 		dialogPanel.visible = true
 		currentDialogPos = 0
 		update_dialog(currentDialogPos)
@@ -34,7 +37,7 @@ func continue_dialog():
 		update_dialog(currentDialogPos)
 	else:
 		close_dialog()
-		chapterId += 1
+		#chapterId += 1
 
 func get_dialog(_actId: int, _chapterId: int):
 	currentDialogArray = null
@@ -52,13 +55,13 @@ Le levier vers le [color=white]Bas[/color] pour freiner et stabiliser le vaissea
 				1:
 					currentDialogArray = [ 
 						[1, "La jauge à gauche sur le tableau de bord c'est le [color=cd7eff][b]Réservoir[/b][/color]
-si il se vide avant qu'on n'ait atteint la station, on va être dans une merde intersidérale, et c'est pas une figure de style donc vas y molo où je recrute un autre pilote fissa"],
+si il se vide avant qu'on n'ait atteint la station, on va être dans une merde intersidérale, et c'est pas une figure de style donc vas y molo ou je recrute un autre pilote fissa"],
 			]
 				2:
 					currentDialogArray = [
 						[1, "Fais gaffe, des [color=white]débris[/color] flottants droit devant!
 Approche toi doucement on va les ramasser"],
-				[1, "Ça nous fera des materiaux pour [color=79ff6e][b]Réparer[/b][/color] les [color=f93533]dégats[/color] sur la coque, ça sera très utile tu verras..."],
+				[1, "Ça nous fera des matériaux pour [color=79ff6e][b]Réparer[/b][/color] les [color=f93533]dégâts[/color] sur la coque, ça sera très utile tu verras..."],
 			]
 				3:
 					currentDialogArray = [
@@ -81,21 +84,22 @@ Penses bien à garder un oeil sur le radar"]
 				1:
 					currentDialogArray = [
 						[1, "Salut Shplok ! Tu peux me faire le plein ?"],
-						[2, "Eglagipouak flexindr plarp sibadi walbat !"],
+						[2, "Eglagipouak flexi plarp sibadi walbat !"],
 						[1, "Haha arrète tu vas me faire rougir !\nMoi aussi ça me fait plaisir de te voir\nT'aurais pas des infos croustillantes pour moi par hasard ?"],
 						[2, "Vitakrit mo pilorgalep justrij bu daxlopmeta"],
 						[1, "Ah ? Je vais aller voir ça, merci !\n A tout à l'heure sans doute"],
 					]
-				2:
+		2:
+			match _chapterId:
+				0:
 					currentDialogArray = [
 						[0, "..."],
 						[1, "... ?!"],
 						[0, "Il a dit quoi ?"],
-						[1, "Ah mais tu comprends pas le Skrolbuk ? Tu débarques d'où toi ?\n Vas y continues sur la droite et surveilles bien le radar"]
+						[1, "Ah mais tu comprends pas le Skrolbuk ? Tu débarques d'où toi ?\n Vas y continues sur la droite et surveilles bien le radar"],
+						[1, "Au moment où le chiffre se remet à descendre ça veut dire qu'on a capté un nouveau signal"]
 					]
-		2:
-			match _chapterId:
-				0:
+				1:
 					currentDialogArray = [
 						[1, "Oh un [color=white]Générateur[/color] de bouclier ! Le pauvre boug qui l'a perdu là aurait dû mieux s'en servir, \nmais ça sera pas perdu pour tout le monde."],
 						[0, "Le [color=white]Convertisseur d'énèrgie[/color] est endommagé, si on en trouve un autre on pourra l'installer sur le vaisseau"],
@@ -116,7 +120,7 @@ Penses bien à garder un oeil sur le radar"]
 				0:
 					currentDialogArray = [
 						[0, "..."],
-						[1, "Je vais pas te faire la traduction à chaque fois, ça va vite me gonfler\nRegarde le panneau de quête au pire"],
+						[1, "Je vais pas te faire la traduction à chaque fois,\nça va vite me gonfler.\nRegarde juste le panneau de quête comme tout le monde"],
 						[0, "..."]
 					]
 				1:
@@ -130,7 +134,7 @@ Penses bien à garder un oeil sur le radar"]
 				0:
 					currentDialogArray = [
 						[1, "Voila ce que tu nous as demandé"],
-						[3, "Proinde concepta rabie saeviore, quam desperatio incendebat et fames,\namplificatis viribus ardore incohibili in excidium urbium matris"],
+						[3, "Proinde concepta rabie saeviore,\nquam desperatio incendebat et fames,\namplificatis viribus ardore incohibili\nin excidium urbium matris"],
 						[1, "Merci Pascal"]
 					]
 			
@@ -151,10 +155,8 @@ func _on_station_area_body_entered(_body: Node2D) -> void:
 		open_dialog(actId,chapterId)
 
 func _on_station_area_body_exited(_body: Node2D) -> void:
-	if actId == 1 and chapterId == 2:
+	if actId == 2 and chapterId == 0:
 		open_dialog(actId,chapterId)
-		actId = 2
-		chapterId = -1
 	if actId == 4:
 		open_dialog(actId, chapterId)
 		#actId = 4
@@ -170,17 +172,16 @@ func get_quest_text(_actId, _chapterId):
 
 	match _actId:
 		1:
-			if chapterId < 1:
-				questText += "\nVa à la station\nen suivant le radar"
-			else :
-				questText += "\nSpwila krit \nner lo daxlopmeta"
+			questText += "\nVa à la station\nen suivant le radar"
 		2:
-			#if chapterId >= 0:
-			questText += "\nTrouve la planète\nà droite de la station"
+			if chapterId == 0:
+				questText += "\nSpwila krit \nner lo daxlopmeta"
+			else:
+				questText += "\nTrouve la planète\nà droite de la station"
 		3:
 			questText += "\nRetourne à la Station"
 		4:
-			if chapterId < 0:
+			if chapterId == 0:
 				questText += "\nGleps Pascal\nla cirak zep"
 			else :
 				questText += "\nTrouve Pascal\nau Nord Ouest de la station"
@@ -192,11 +193,11 @@ func _on_tuto_ending_body_exited(_body: Node2D) -> void:
 	if actId == 0:
 		open_dialog(0,3)
 		actId = 1
-		chapterId = -1
+		chapterId = 0
 
 func _on_planet_area_1_body_entered(_body: Node2D) -> void:
-	if actId == 2 and chapterId == 0:
+	if actId == 2 and chapterId == 1:
 		open_dialog(actId,chapterId)
 		actId = 3
-		chapterId = -1
+		chapterId = 0
 		
