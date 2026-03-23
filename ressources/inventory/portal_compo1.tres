@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://bj0sjv3ctl7gj"]
+
+[ext_resource type="Script" uid="uid://do2722dpinf7q" path="res://ressources/inventory/inventory_item.gd" id="1_8cpxn"]
+[ext_resource type="Texture2D" uid="uid://bdjv76mods2q2" path="res://assets/sprites/items/gun10.png" id="2_8cpxn"]
+
+[resource]
+script = ExtResource("1_8cpxn")
+name = "portal_compo1"
+title = "Canon à particule"
+description = "Sert à la fabrication du Portal Gun"
+texture = ExtResource("2_8cpxn")
+metadata/_custom_type_script = "uid://do2722dpinf7q"

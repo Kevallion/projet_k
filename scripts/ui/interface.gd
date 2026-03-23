@@ -127,7 +127,7 @@ func _on_shield_button_pressed() -> void:
 		shield_button.get_parent().crafted = true
 		AudioManager.play(sndRepairs.pick_random(),&"SFX")
 		player.unlock_skill_slot("shield")
-		GameSignals.request_equip_gadget.emit("shield")
+	GameSignals.request_equip_gadget.emit("shield")
 	update_slots()
 
 func _on_tractor_button_pressed() -> void:
@@ -138,7 +138,7 @@ func _on_tractor_button_pressed() -> void:
 		tractor_button.get_parent().crafted = true
 		player.unlock_skill_slot("tractor")
 		AudioManager.play(sndRepairs.pick_random(),&"SFX")
-		GameSignals.request_equip_gadget.emit("tractor")
+	GameSignals.request_equip_gadget.emit("tractor")
 	update_slots()
 
 func _on_portal_button_pressed() -> void:
@@ -151,7 +151,7 @@ func _on_portal_button_pressed() -> void:
 		portal_button.get_parent().crafted = true
 		AudioManager.play(sndRepairs.pick_random(),&"SFX")
 		player.unlock_skill_slot("portal")
-		GameSignals.request_equip_gadget.emit("portal")
+	GameSignals.request_equip_gadget.emit("portal")
 	update_slots()
 
 func _on_laser_button_pressed() -> void:
@@ -163,7 +163,7 @@ func _on_laser_button_pressed() -> void:
 		inv.remove("laser_compo1",1)
 		inv.remove("laser_compo2",1)
 		laser_button.get_parent().crafted = true
-	AudioManager.play(sndRepairs.pick_random(),&"SFX")
-	player.unlock_skill_slot("laser")
+		AudioManager.play(sndRepairs.pick_random(),&"SFX")
+		player.unlock_skill_slot("laser")
 	GameSignals.request_equip_gadget.emit("laser")
 	update_slots()

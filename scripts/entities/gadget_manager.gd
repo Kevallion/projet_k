@@ -7,7 +7,7 @@ class_name GadgetManager extends Node2D
 
 const input_names = ["gadget_1", "gadget_2", "gadget_3"]
 const key_slots = ["1", "2", "3"]
-
+var slotIndex = 0
 
 const LASER_GADGET = preload("res://scenes/entities/laser_gadget.tscn")
 const PORTAL_GADGET = preload("res://scenes/entities/portal_gadget.tscn")
@@ -83,6 +83,11 @@ func add_gadget_to_free_slot(new_gadget: Gadget) -> bool:
 		if slots[i].gadget == null:
 			assign_gadget_to_slot(new_gadget, i)
 			return true
+	# Si aucun slot libre, on insert dans l'ordre
+	if slotIndex > 2:
+		slotIndex = 0
+	assign_gadget_to_slot(new_gadget, slotIndex)
+	slotIndex += 1
 	return false # Retourne false si aucun slot n'est libre
 
 func _unhandled_input(event: InputEvent) -> void:

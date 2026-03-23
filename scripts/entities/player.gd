@@ -276,3 +276,6 @@ func drop_stuff():
 func unlock_skill_slot(comp: String) -> void:
 	if not unlocked_gadgets.has(comp):
 		unlocked_gadgets.append(comp)
+	#unlocked_gadgets.insert(0, comp)
+	#unlocked_gadgets.remove_at(3)
+	
