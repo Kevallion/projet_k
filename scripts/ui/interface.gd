@@ -144,8 +144,6 @@ func _on_tractor_button_pressed() -> void:
 func _on_portal_button_pressed() -> void:
 	portal_button.texture_hover = null
 	if !portal_button.get_parent().crafted:
-		if not player.find_compo("portal_compo1",1) or not player.find_compo("portal_compo2",1):
-			return # Annule l'action s'il manque un composant
 		inv.remove("portal_compo1",1)
 		inv.remove("portal_compo2",1)
 		portal_button.get_parent().crafted = true
@@ -157,9 +155,6 @@ func _on_portal_button_pressed() -> void:
 func _on_laser_button_pressed() -> void:
 	laser_button.texture_hover = null
 	if !laser_button.get_parent().crafted:
-		if not player.find_compo("laser_compo1",1) or not player.find_compo("laser_compo2",1):
-			return # Annule l'action s'il manque un 
-		
 		inv.remove("laser_compo1",1)
 		inv.remove("laser_compo2",1)
 		laser_button.get_parent().crafted = true

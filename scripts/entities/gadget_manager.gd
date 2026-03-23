@@ -50,9 +50,7 @@ func _on_request_equip(gadget_name: String) -> void:
 		"laser" : newGadget = LASER_GADGET.instantiate()
 	
 	if newGadget:
-		var equipped = add_gadget_to_free_slot(newGadget)
-		if not equipped:
-			newGadget.queue_free()
+		add_gadget_to_free_slot(newGadget)
 ## function pour assigner un gadget à un slot spécifique (0, 1 ou 2)
 func assign_gadget_to_slot(new_gadget: Gadget, slot_index: int) -> void:
 	if slot_index < 0 or slot_index >= slots.size():
@@ -77,18 +75,12 @@ func assign_gadget_to_slot(new_gadget: Gadget, slot_index: int) -> void:
 	# Mettre à jour l'UI
 	GameSignals.gadgetAssigned.emit(slot_index, new_gadget, slot.key)
 
-## Ajoute un gadget dans le premier slot libre
-func add_gadget_to_free_slot(new_gadget: Gadget) -> bool:
-	for i in range(slots.size()):
-		if slots[i].gadget == null:
-			assign_gadget_to_slot(new_gadget, i)
-			return true
-	# Si aucun slot libre, on insert dans l'ordre
+## Ajoute un gadget dans les slots de gauche à droite en boucle
+func add_gadget_to_free_slot(new_gadget: Gadget):
 	if slotIndex > 2:
 		slotIndex = 0
 	assign_gadget_to_slot(new_gadget, slotIndex)
 	slotIndex += 1
-	return false # Retourne false si aucun slot n'est libre
 
 func _unhandled_input(event: InputEvent) -> void:
 	for slot in slots:

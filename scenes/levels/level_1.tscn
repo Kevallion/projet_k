@@ -1788,7 +1788,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4yk0h"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_0qwwm"]
 resource_local_to_scene = true
 radius = 61.765
 
@@ -1818,7 +1818,6 @@ ambianceMusicToPlay = ExtResource("3_7o3do")
 [node name="Interface" parent="." unique_id=1016790414 instance=ExtResource("14_mm8aj")]
 
 [node name="Player" parent="." unique_id=632786190 instance=ExtResource("1_6iamk")]
-position = Vector2(14851.972, -2253.607)
 collision_mask = 5
 motion_mode = 1
 
@@ -1888,7 +1887,7 @@ collisionRange = 30.864
 pushZoneRange = 61.765
 
 [node name="Asteroid10" parent="." unique_id=513735706 instance=ExtResource("5_s8va5")]
-position = Vector2(-284, 118)
+position = Vector2(-273.2759, 115.190956)
 collisionRange = 30.864
 pushZoneRange = 61.765
 
@@ -1905,7 +1904,7 @@ collisionRange = 30.864
 pushZoneRange = 61.765
 
 [node name="CollisionShape2D" parent="Asteroid4/pushZone" parent_id_path=PackedInt32Array(956945604, 1457056112) index="0" unique_id=575047982]
-shape = SubResource("CircleShape2D_4yk0h")
+shape = SubResource("CircleShape2D_0qwwm")
 
 [node name="Planet" parent="." unique_id=1040834349 groups=["planet", "radar_detection"] instance=ExtResource("9_dga24")]
 z_index = -2
@@ -1953,12 +1952,6 @@ position = Vector2(-2139, 587)
 
 [node name="ShieldCompoBody1" parent="." unique_id=1853860111 instance=ExtResource("18_np2pn")]
 position = Vector2(14703, -2445)
-
-[node name="TractorCompoBody1" parent="." unique_id=134285700 instance=ExtResource("20_mkypq")]
-position = Vector2(14718, -2550)
-
-[node name="TractorCompoBody2" parent="." unique_id=1820491364 instance=ExtResource("21_ndtll")]
-position = Vector2(14720, -2458)
 
 [node name="DialogNode" parent="." unique_id=418809529 instance=ExtResource("21_mkypq")]
 unique_name_in_owner = true
@@ -2009,21 +2002,30 @@ position = Vector2(-6929, -12459)
 position = Vector2(-6929, -12459)
 
 [node name="ShieldCompoBody2" parent="." unique_id=1330808625 instance=ExtResource("25_7o3do")]
-position = Vector2(14706.391, -2368.3875)
+position = Vector2(-3359.6094, -319.38745)
 collision_layer = 1
 collision_mask = 1
 
 [node name="Portalcompo1" parent="." unique_id=914629752 instance=ExtResource("26_31oqk")]
-position = Vector2(14812, -2408)
+position = Vector2(-3254, -359)
 
 [node name="PortalCompo2" parent="." unique_id=1266248090 instance=ExtResource("27_x7jkp")]
-position = Vector2(14860, -2492)
+position = Vector2(-3206, -443)
 
 [node name="ShieldCompoBody3" parent="." unique_id=1465417352 instance=ExtResource("28_0qwwm")]
-position = Vector2(14606, -2464)
+position = Vector2(-3460, -415)
 
 [node name="ShieldCompoBody4" parent="." unique_id=1812576822 instance=ExtResource("29_t4umt")]
-position = Vector2(14615, -2548)
+position = Vector2(-3451, -499)
+
+[node name="TractorCompoBody1" parent="." unique_id=134285700 instance=ExtResource("20_mkypq")]
+position = Vector2(-3340, -523)
+
+[node name="TractorCompoBody2" parent="." unique_id=1820491364 instance=ExtResource("21_ndtll")]
+position = Vector2(-3338, -431)
+
+[node name="ShieldCompoBody5" parent="." unique_id=4661033 instance=ExtResource("18_np2pn")]
+position = Vector2(-3444.1995, -338.911)
 
 [connection signal="body_exited" from="TutoEnding" to="DialogNode" method="_on_tuto_ending_body_exited"]
 [connection signal="body_entered" from="TutoArea2" to="DialogNode" method="_on_tuto_area_body_entered"]

@@ -260,10 +260,8 @@ func delete_compo(compo):
 	
 func find_and_delete(compo, amount):
 	if find_compo(compo, amount):
-		print("Pouet")
 		inventory.remove(compo, amount)
 		return true
-	
 	
 func drop_stuff():
 	if !inventory.is_empty():
@@ -276,6 +274,4 @@ func drop_stuff():
 func unlock_skill_slot(comp: String) -> void:
 	if not unlocked_gadgets.has(comp):
 		unlocked_gadgets.append(comp)
-	#unlocked_gadgets.insert(0, comp)
-	#unlocked_gadgets.remove_at(3)
 	
