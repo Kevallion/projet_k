@@ -4,9 +4,10 @@ extends StaticBody2D
 
 func spawn_converter():
 	$ShieldCompoBody2.visible = true
-	$ShieldCompoBody2.set_collision_mask_value(1, true)
+	$ShieldCompoBody2.collectable()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
+	spawn_converter()
 	if dialogNode.actId == 5:
 		if body.find_and_delete("fragment", 10):
 			body.inventory.remove("fragment", 10)

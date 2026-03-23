@@ -19,8 +19,8 @@ radius = 33.0
 size = Vector2(32, 28)
 
 [node name="ShieldCompoBody2" type="RigidBody2D" unique_id=1391390146]
-collision_layer = 2
-collision_mask = 3
+collision_layer = 0
+collision_mask = 0
 gravity_scale = 0.0
 script = ExtResource("1_26txf")
 item = SubResource("Resource_sqjpo")
@@ -30,6 +30,8 @@ texture_filter = 1
 texture = ExtResource("4_u36ub")
 
 [node name="CollectArea" type="Area2D" parent="." unique_id=1485555812]
+collision_layer = 0
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectArea" unique_id=1630447173]
 shape = SubResource("CircleShape2D_eap1r")

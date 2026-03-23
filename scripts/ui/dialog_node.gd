@@ -17,7 +17,6 @@ func _process(_delta: float) -> void:
 	if dialogOpen and (Input.is_action_just_pressed("switch_mode") or Input.is_action_just_pressed("left_click")):
 		continue_dialog()
 	
-	update_quest()
 	
 func open_dialog(_actId: int, _dialogId: int):
 	if get_dialog(_actId, _dialogId):
@@ -112,17 +111,15 @@ Penses bien à garder un oeil sur le radar"]
 						[2, "Wispalak mitervistop prit, klap Pascal fouet\nBret la cirak zep"],
 						[1, "Ok, je lui passerai le bonjour de ta part, merci Shplok !"]
 					]
-				1:
-					currentDialogArray = [
-						[0, "..."],
-						[1, "Je vais pas te faire la traduction à chaque fois, ça va vite me gonfler\nRegarde le panneau de quête au pire"],
-						[0, "..."],
-						[0, "Comment ça au Nord Ouest ? On est dans l'espace ! Selon comme on est tourné ça change tout"],
-						[1, "Ouais bon, en haut à gauche quoi, t'as compris"]
-					]
 		4:
 			match _chapterId:
 				0:
+					currentDialogArray = [
+						[0, "..."],
+						[1, "Je vais pas te faire la traduction à chaque fois, ça va vite me gonfler\nRegarde le panneau de quête au pire"],
+						[0, "..."]
+					]
+				1:
 					currentDialogArray = [
 						[1, "Salut, c'est toi Pascal ? Shplok m'a dit que t'avais peut être un convertisseur sous la main ?"],
 						[3, "Osdroenae subsederat extimas partes, novum parumque aliquando temptatum commentum"],
@@ -143,6 +140,7 @@ func close_dialog():
 	dialogPanel.visible = false
 	get_tree().paused = false
 	dialogOpen = false
+	update_quest()
 
 func _on_tuto_area_body_entered(_body: Node2D) -> void:
 	if actId == 0:
@@ -157,28 +155,35 @@ func _on_station_area_body_exited(_body: Node2D) -> void:
 		open_dialog(actId,chapterId)
 		actId = 2
 		chapterId = -1
-	if actId == 3:
+	if actId == 4:
 		open_dialog(actId, chapterId)
-		actId = 4
-		chapterId = -1
+		#actId = 4
+		#chapterId = -1
 	
 func update_quest():
 	if questLabel:
-		questLabel.text = get_quest_text(actId)
+		questLabel.text = get_quest_text(actId, chapterId)
 	
-func get_quest_text(_actId):
+func get_quest_text(_actId, _chapterId):
 	var questText = "Objectif :\n"
-	#questText+= "Acte : "+str(actId) + " Chapitre : " + str(chapterId)
+	questText+= "Acte : "+str(actId) + " Chapitre : " + str(chapterId)
 
 	match _actId:
 		1:
-			questText += "\nVa à la station\nen suivant le radar"
+			if chapterId < 1:
+				questText += "\nVa à la station\nen suivant le radar"
+			else :
+				questText += "\nSpwila krit \nner lo daxlopmeta"
 		2:
+			#if chapterId >= 0:
 			questText += "\nTrouve la planète\nà droite de la station"
 		3:
 			questText += "\nRetourne à la Station"
 		4:
-			questText += "\nTrouve Pascal\nau Nord Ouest de la station"
+			if chapterId < 0:
+				questText += "\nGleps Pascal\nla cirak zep"
+			else :
+				questText += "\nTrouve Pascal\nau Nord Ouest de la station"
 		5:
 			questText += "\nRamener 10 débris\nà Pascal"
 	return questText

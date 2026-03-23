@@ -1,5 +1,5 @@
 extends RigidBody2D
-
+@onready var collectArea = $CollectArea
 @export var item: InvItem
 var player = null
 var rotation_force = RandomNumberGenerator.new()
@@ -15,7 +15,11 @@ func _process(_delta: float) -> void:
 		rotation += 0.015
 	else:
 		rotation += ((float(rotation_force))) / 100
+		
 func _on_collect_area_body_entered(body: Node2D) -> void:
 	if body.has_method("collect"):
 		body.collect(item, 1)
 		self.queue_free()
+
+func collectable():
+	collectArea.set_collision_mask_value(1, true)
