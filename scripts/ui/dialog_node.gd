@@ -19,8 +19,6 @@ func _process(_delta: float) -> void:
 	
 	
 func open_dialog(_actId: int, _dialogId: int):
-	#chapterId += 1
-	#_dialogId+= 1
 	if get_dialog(_actId, _dialogId):
 		chapterId += 1
 		dialogPanel.visible = true
@@ -37,7 +35,6 @@ func continue_dialog():
 		update_dialog(currentDialogPos)
 	else:
 		close_dialog()
-		#chapterId += 1
 
 func get_dialog(_actId: int, _chapterId: int):
 	currentDialogArray = null
@@ -125,7 +122,7 @@ Penses bien à garder un oeil sur le radar"]
 					]
 				1:
 					currentDialogArray = [
-						[1, "Salut, c'est toi Pascal ? Shplok m'a dit que t'avais peut être un convertisseur sous la main ?"],
+						[1, "Salut, Pascal ! Shplok m'a dit que t'avais peut être un convertisseur sous la main ?"],
 						[3, "Osdroenae subsederat extimas partes, novum parumque aliquando temptatum commentum"],
 						[1, "Ok, je devrais pouvoir te trouver ça"]
 					]
@@ -135,7 +132,7 @@ Penses bien à garder un oeil sur le radar"]
 					currentDialogArray = [
 						[1, "Voila ce que tu nous as demandé"],
 						[3, "Proinde concepta rabie saeviore,\nquam desperatio incendebat et fames,\namplificatis viribus ardore incohibili\nin excidium urbium matris"],
-						[1, "Merci Pascal"]
+						[1, "Merci Pascal, toujours un plaisir de faire affaire"]
 					]
 			
 	return currentDialogArray
@@ -159,8 +156,6 @@ func _on_station_area_body_exited(_body: Node2D) -> void:
 		open_dialog(actId,chapterId)
 	if actId == 4:
 		open_dialog(actId, chapterId)
-		#actId = 4
-		#chapterId = -1
 	
 func update_quest():
 	if questLabel:
@@ -168,7 +163,7 @@ func update_quest():
 	
 func get_quest_text(_actId, _chapterId):
 	var questText = "Objectif :\n"
-	questText+= "Acte : "+str(actId) + " Chapitre : " + str(chapterId)
+	#questText+= "Acte : "+str(actId) + " Chapitre : " + str(chapterId)
 
 	match _actId:
 		1:
