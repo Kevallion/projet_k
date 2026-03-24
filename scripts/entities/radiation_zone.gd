@@ -9,7 +9,7 @@ class_name RadiationZone extends EnvironmentZone
 func _ready() -> void:
 	super._ready()
 
-func _apply_effect(body: Node2D, delta: float) -> void:
+func _apply_effect(body: Node2D, _delta: float) -> void:
 	# On vérifie si l'objet a une propriété 'health'
 	if "health" in body:
 		#if body.hasShield:
@@ -17,4 +17,4 @@ func _apply_effect(body: Node2D, delta: float) -> void:
 
 		# déclenche l'effet de hit visuel si disponible
 		if body.has_method("take_hit") and Engine.get_frames_drawn() % 10 == 0:
-			body.take_hit(damage_per_second * delta)
+			body.take_hit(damage_per_second)

@@ -13,7 +13,6 @@ class_name Player extends CharacterBody2D
 @onready var reactorFrontLeftSprite = $Sprite2D/ReactorFrontLeftSprite
 @onready var reactorFrontRightSprite = $Sprite2D/ReactorFrontRightSprite
 
-
 @export_group("Physique")
 @export var mass := 1.0
 @export var forceDrag := 5.0
@@ -214,6 +213,7 @@ func add_force(force: Vector2) -> void:
 
 func _consumeGas(spent):
 	gas -= spent
+	energy += 0.01
 
 func refill_gas():
 	gas = maxGas

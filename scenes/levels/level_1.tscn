@@ -15,8 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://cu5ru3h6yv3ag" path="res://assets/sprites/meteors/meteorBrown_small2.png" id="11_wtwp4"]
 [ext_resource type="PackedScene" uid="uid://b6tp2j17iwkym" path="res://scenes/ui/interface.tscn" id="14_mm8aj"]
 [ext_resource type="PackedScene" uid="uid://doekmlt7u24rd" path="res://scenes/entities/station_spatial_carburant.tscn" id="15_iwr0g"]
-[ext_resource type="Texture2D" uid="uid://8c5akwu0fou4" path="res://assets/sprites/planets/planet01.png" id="15_mqh5v"]
 [ext_resource type="PackedScene" uid="uid://bc3im6otglgsc" path="res://scenes/entities/fragment.tscn" id="15_wtwp4"]
+[ext_resource type="Texture2D" uid="uid://dn6rai33xyy2k" path="res://assets/sprites/planets/planet02.png" id="15_x7jkp"]
+[ext_resource type="Texture2D" uid="uid://8c5akwu0fou4" path="res://assets/sprites/planets/planet01.png" id="16_0qwwm"]
 [ext_resource type="PackedScene" uid="uid://cyb55ayfak0xx" path="res://scenes/entities/radiation_zone.tscn" id="16_iwr0g"]
 [ext_resource type="PackedScene" uid="uid://drtp4vhvrkgik" path="res://scenes/entities/magnetic_zone.tscn" id="17_bahl2"]
 [ext_resource type="PackedScene" uid="uid://ui2liquksul2" path="res://scenes/entities/shield_compo1.tscn" id="18_np2pn"]
@@ -1787,7 +1788,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_x7jkp"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_t4umt"]
 resource_local_to_scene = true
 radius = 61.765
 
@@ -1903,7 +1904,7 @@ collisionRange = 30.864
 pushZoneRange = 61.765
 
 [node name="CollisionShape2D" parent="Asteroid4/pushZone" parent_id_path=PackedInt32Array(956945604, 1457056112) index="0" unique_id=575047982]
-shape = SubResource("CircleShape2D_x7jkp")
+shape = SubResource("CircleShape2D_t4umt")
 
 [node name="Planet" parent="." unique_id=1040834349 groups=["planet", "radar_detection"] instance=ExtResource("9_dga24")]
 z_index = -2
@@ -1912,8 +1913,14 @@ attractionRange = 873.832
 
 [node name="Planet2" parent="." unique_id=1647332511 groups=["planet", "radar_detection"] instance=ExtResource("9_dga24")]
 z_index = -2
-position = Vector2(-2734, -12509)
-planetTexture = ExtResource("15_mqh5v")
+position = Vector2(6604, 16701)
+planetTexture = ExtResource("15_x7jkp")
+attractionRange = 873.832
+
+[node name="Planet3" parent="." unique_id=361656333 groups=["planet", "radar_detection"] instance=ExtResource("9_dga24")]
+z_index = -2
+position = Vector2(-1402.2764, -9922)
+planetTexture = ExtResource("16_0qwwm")
 attractionRange = 873.832
 
 [node name="FragmentBody" parent="." unique_id=1391390146 instance=ExtResource("15_wtwp4")]
@@ -1944,7 +1951,8 @@ position = Vector2(14741, -2492)
 position = Vector2(6340, -2402)
 
 [node name="RadiationZone" parent="." unique_id=1273611784 instance=ExtResource("16_iwr0g")]
-position = Vector2(-4978, -12044)
+z_index = 1
+position = Vector2(6603, 16711)
 
 [node name="Magnetic_zone" parent="." unique_id=611847379 instance=ExtResource("17_bahl2")]
 position = Vector2(-2139, 587)
@@ -1986,19 +1994,43 @@ position = Vector2(14703, -2445)
 shape = SubResource("CircleShape2D_mqh5v")
 
 [node name="PascalStaticBody" parent="." unique_id=2055547690 instance=ExtResource("24_mqh5v")]
-position = Vector2(-1831, -11577)
+position = Vector2(-137.27637, -9159)
 
 [node name="FragmentBody9" parent="." unique_id=920372257 instance=ExtResource("15_wtwp4")]
-position = Vector2(-4910, -11983)
+position = Vector2(6661, 16755)
 
 [node name="FragmentBody10" parent="." unique_id=2086868294 instance=ExtResource("15_wtwp4")]
-position = Vector2(-4910, -11983)
+position = Vector2(6654, 16648)
 
 [node name="FragmentBody11" parent="." unique_id=1465612727 instance=ExtResource("15_wtwp4")]
-position = Vector2(-4910, -11983)
+position = Vector2(6559, 16760)
 
 [node name="FragmentBody12" parent="." unique_id=71668461 instance=ExtResource("15_wtwp4")]
-position = Vector2(-4910, -11983)
+position = Vector2(6538, 16662)
+
+[node name="FragmentBody13" parent="." unique_id=791576228 instance=ExtResource("15_wtwp4")]
+position = Vector2(-1955.2764, -9678)
+
+[node name="FragmentBody14" parent="." unique_id=846791623 instance=ExtResource("15_wtwp4")]
+position = Vector2(-1603.2764, -9160)
+
+[node name="FragmentBody15" parent="." unique_id=346721753 instance=ExtResource("15_wtwp4")]
+position = Vector2(-1310.2764, -10648)
+
+[node name="FragmentBody16" parent="." unique_id=1361879908 instance=ExtResource("15_wtwp4")]
+position = Vector2(-2036.2764, -10112)
+
+[node name="FragmentBody17" parent="." unique_id=887610712 instance=ExtResource("15_wtwp4")]
+position = Vector2(-763.27637, -10211)
+
+[node name="FragmentBody18" parent="." unique_id=1279041064 instance=ExtResource("15_wtwp4")]
+position = Vector2(-1721.2764, -10326)
+
+[node name="FragmentBody19" parent="." unique_id=2111131010 instance=ExtResource("15_wtwp4")]
+position = Vector2(-867.27637, -9844)
+
+[node name="FragmentBody20" parent="." unique_id=1797097288 instance=ExtResource("15_wtwp4")]
+position = Vector2(-1089.2764, -9390)
 
 [node name="Portalcompo1" parent="." unique_id=914629752 instance=ExtResource("26_31oqk")]
 position = Vector2(-4944, -508)
@@ -2013,13 +2045,103 @@ position = Vector2(-5150, -564)
 position = Vector2(-5141, -648)
 
 [node name="TractorCompoBody1" parent="." unique_id=134285700 instance=ExtResource("20_mkypq")]
-position = Vector2(-5030, -672)
+position = Vector2(6606.8384, 16702.898)
 
 [node name="TractorCompoBody2" parent="." unique_id=1820491364 instance=ExtResource("21_ndtll")]
-position = Vector2(-5028, -580)
+position = Vector2(-5046.7485, -587.14905)
 
 [node name="ShieldCompoBody5" parent="." unique_id=4661033 instance=ExtResource("18_np2pn")]
 position = Vector2(-5134.199, -487.911)
+
+[node name="Asteroid11" parent="." unique_id=492964117 instance=ExtResource("5_s8va5")]
+position = Vector2(-2083, -9929.447)
+collision_layer = 1
+collisionRange = 47.686
+pushZoneRange = 10.0
+
+[node name="Asteroid12" parent="." unique_id=1519574471 instance=ExtResource("5_s8va5")]
+position = Vector2(-1860, -10608.076)
+collision_layer = 1
+asteroidTexture = ExtResource("9_dnkej")
+collisionRange = 105.0
+pushZoneRange = 10.0
+
+[node name="Asteroid13" parent="." unique_id=1142276947 instance=ExtResource("5_s8va5")]
+position = Vector2(-889, -9598.156)
+collision_layer = 1
+asteroidTexture = ExtResource("10_mm8aj")
+collisionRange = 101.54
+pushZoneRange = 10.0
+
+[node name="Asteroid14" parent="." unique_id=1578856350 instance=ExtResource("5_s8va5")]
+position = Vector2(-2108, -10240.234)
+collision_layer = 1
+collisionRange = 42.079
+pushZoneRange = 10.0
+
+[node name="Asteroid15" parent="." unique_id=553370557 instance=ExtResource("5_s8va5")]
+position = Vector2(-661, -10243.973)
+collision_layer = 1
+collisionRange = 43.948
+pushZoneRange = 10.0
+
+[node name="Asteroid16" parent="." unique_id=1937412597 instance=ExtResource("5_s8va5")]
+position = Vector2(-15949, -7434.613)
+collision_layer = 1
+collisionRange = 30.864
+pushZoneRange = 10.0
+
+[node name="Asteroid17" parent="." unique_id=958216361 instance=ExtResource("5_s8va5")]
+position = Vector2(-1651, -9473.973)
+collision_layer = 1
+asteroidTexture = ExtResource("11_wtwp4")
+collisionRange = 43.948
+pushZoneRange = 10.0
+
+[node name="Asteroid18" parent="." unique_id=1302627379 instance=ExtResource("5_s8va5")]
+position = Vector2(-1556, -9776.371)
+collision_layer = 1
+collisionRange = 47.686
+pushZoneRange = 10.0
+
+[node name="Asteroid19" parent="." unique_id=129687622 instance=ExtResource("5_s8va5")]
+position = Vector2(-1333, -10455)
+collision_layer = 1
+asteroidTexture = ExtResource("9_dnkej")
+collisionRange = 105.0
+pushZoneRange = 10.0
+
+[node name="Asteroid20" parent="." unique_id=847315953 instance=ExtResource("5_s8va5")]
+position = Vector2(-1910, -9453)
+collision_layer = 1
+asteroidTexture = ExtResource("10_mm8aj")
+collisionRange = 101.54
+pushZoneRange = 10.0
+
+[node name="Asteroid21" parent="." unique_id=1179650594 instance=ExtResource("5_s8va5")]
+position = Vector2(-1581, -10087.158)
+collision_layer = 1
+collisionRange = 42.079
+pushZoneRange = 10.0
+
+[node name="Asteroid22" parent="." unique_id=361217969 instance=ExtResource("5_s8va5")]
+position = Vector2(-930, -10355)
+collision_layer = 1
+collisionRange = 43.948
+pushZoneRange = 10.0
+
+[node name="Asteroid23" parent="." unique_id=172447901 instance=ExtResource("5_s8va5")]
+position = Vector2(-15422, -7281.5366)
+collision_layer = 1
+collisionRange = 30.864
+pushZoneRange = 10.0
+
+[node name="Asteroid24" parent="." unique_id=1450541681 instance=ExtResource("5_s8va5")]
+position = Vector2(-1124, -9320.896)
+collision_layer = 1
+asteroidTexture = ExtResource("11_wtwp4")
+collisionRange = 43.948
+pushZoneRange = 10.0
 
 [connection signal="body_exited" from="TutoEnding" to="DialogNode" method="_on_tuto_ending_body_exited"]
 [connection signal="body_entered" from="TutoArea2" to="DialogNode" method="_on_tuto_area_body_entered"]

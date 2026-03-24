@@ -9,7 +9,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_f4kwg"]
 radius = 224.5707
 
-[node name="PascalStaticBody" type="StaticBody2D" unique_id=2055547690 groups=["radar_detection"]]
+[node name="PascalStaticBody" type="StaticBody2D" unique_id=2055547690]
 z_index = -1
 collision_layer = 0
 collision_mask = 0

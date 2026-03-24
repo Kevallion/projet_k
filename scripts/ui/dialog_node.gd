@@ -136,6 +136,14 @@ Penses bien à garder un oeil sur le radar"]
 						[3, "Proinde concepta rabie saeviore,\nquam desperatio incendebat et fames,\namplificatis viribus ardore incohibili\nin excidium urbium matris"],
 						[1, "Merci Pascal, toujours un plaisir de faire affaire"]
 					]
+		6:
+			match _chapterId:
+				0:
+					currentDialogArray = [
+						[1, "Parfait ! Ça va nous permettre d'aller faire un tour à Gnolbark"],
+						[1, "Le [color=white]Bouclier[/color] nous protègera des [i]radiations[/i]"],
+						[1, "Mais ça consomme aussi pas mal d'[color=yellow]Énergie[/color]\nDonc utilise le avec parcimonie"],
+					]
 			
 	return currentDialogArray
 
@@ -165,7 +173,7 @@ func update_quest():
 	
 func get_quest_text(_actId, _chapterId):
 	var questText = "Objectif :\n"
-	#questText+= "Acte : "+str(actId) + " Chapitre : " + str(chapterId)
+	questText+= "Acte : "+str(actId) + " Chapitre : " + str(chapterId)
 
 	match _actId:
 		1:
@@ -185,7 +193,15 @@ func get_quest_text(_actId, _chapterId):
 				questText += "\nTrouve Pascal\nau Nord Ouest de la station"
 		5:
 			questText += "\nRamener 10 débris\nà Pascal"
+		6:
+			questText += "\nFabriquer le Bouclier"
+		7:
+			questText += "\nExplorer Gnolbark\nau Sud de la Station"
 	return questText
+
+func finish_act():
+	actId += 1
+	chapterId = 0
 
 func _on_tuto_ending_body_exited(_body: Node2D) -> void:
 	if actId == 0:

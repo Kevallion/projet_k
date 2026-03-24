@@ -6,6 +6,7 @@ extends Control
 @onready var radar_label = $CanvasLayer/RadarLabel
 @onready var player = get_parent().get_node("Player")
 @onready var ghost = $CanvasLayer/Ghost
+@onready var dialogNode = %DialogNode
 
 var distance: int = 0
 
@@ -82,21 +83,21 @@ func set_interface_values():
 		repair_button.disabled = true
 	
 	## unlock Skills Craft Buttons ##
-	set_gadget_button(shield_button, "shield_compo1", "shield_compo2", "shield")
-	set_gadget_button(tractor_button, "tractor_compo1", "tractor_compo2", "tractor")
-	set_gadget_button(portal_button, "portal_compo1", "portal_compo2", "portal")
-	set_gadget_button(laser_button, "laser_compo1", "laser_compo2", "laser")
+	set_gadget_button(shield_button, "shield_compo1", "shield_compo2")
+	set_gadget_button(tractor_button, "tractor_compo1", "tractor_compo2")
+	set_gadget_button(portal_button, "portal_compo1", "portal_compo2")
+	set_gadget_button(laser_button, "laser_compo1", "laser_compo2")
 		
-func set_gadget_button(gadget_button, gadget_compo1, gadget_compo2, gadget_name) -> void:
+func set_gadget_button(gadget_button, gadget_compo1, gadget_compo2) -> void:
 	if (player.find_compo(gadget_compo1,1) and player.find_compo(gadget_compo2,1)) or gadget_button.get_parent().crafted:
 		gadget_button.disabled = false
 	else:
 		gadget_button.disabled = true
 		
 func close_inventory():
-	if not %DialogNode:
+	if not dialogNode:
 		return
-	if !%DialogNode.dialogOpen:
+	if !dialogNode.dialogOpen:
 		get_tree().paused = false
 	$CanvasLayer/ColorRect.visible = false
 	inventory_is_open = false
@@ -115,6 +116,9 @@ func _on_repair_button_pressed() -> void:
 
 func _on_shield_button_pressed() -> void:
 	equip_gadget(shield_button, "shield_compo1", "shield_compo2", "shield")
+	if dialogNode.actId == 6:
+		dialogNode.open_dialog(dialogNode.actId, dialogNode.chapterId)
+	dialogNode.finish_act()
 
 func _on_tractor_button_pressed() -> void:
 	equip_gadget(tractor_button, "tractor_compo1", "tractor_compo2", "tractor")
