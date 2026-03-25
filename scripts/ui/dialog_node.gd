@@ -19,7 +19,6 @@ func _process(_delta: float) -> void:
 	if dialogOpen and (Input.is_action_just_pressed("switch_mode") or Input.is_action_just_pressed("left_click")):
 		continue_dialog()
 	
-	
 func open_dialog(_actId: int, _dialogId: int):
 	if get_dialog(_actId, _dialogId):
 		chapterId += 1
@@ -110,7 +109,7 @@ Penses bien à garder un oeil sur le radar"]
 					currentDialogArray = [
 						[1, "Nous revoila, il y a bien eu un crash, on a trouvé ça !"],
 						[2, "Krip shnok lupwelth blator ?"],
-						[1, "Non rien d'autre d'interessant, je te ferai signe si j'en vois un. Tu n'aurais pas un [color=white]Convertisseur d'énèrgie[/color] sous la main par hasard ?"],
+						[1, "Non rien de ce genre, je te ferai signe si j'en trouve un.\nTu n'aurais pas un [color=white]Convertisseur d'énèrgie[/color] sous la main par hasard ?"],
 						[2, "Wispalak mitervistop prit, klap Pascal fouet\nBret la cirak zep"],
 						[1, "Ok, je lui passerai le bonjour de ta part, merci Shplok !"]
 					]
@@ -124,15 +123,15 @@ Penses bien à garder un oeil sur le radar"]
 					]
 				1:
 					currentDialogArray = [
-						[1, "Salut, Pascal ! Shplok m'a dit que t'avais peut être un convertisseur sous la main ?"],
+						[1, "Salut, Pascal ! Tu as le bonjour de Shplok !\n Il paraît que t'as un [color=white]Convertisseur d'énèrgie[/color] en sock ?"],
 						[3, "Osdroenae subsederat extimas partes, novum parumque aliquando temptatum commentum"],
-						[1, "Ok, je devrais pouvoir te trouver ça"]
+						[1, "Ok, marché conclu, on va te trouver ça"]
 					]
 		5:
 			match _chapterId:
 				0:
 					currentDialogArray = [
-						[1, "Voila ce que tu nous as demandé"],
+						[1, "Et voila, 10 pièces détachées en échange du\n[color=white]Convertisseur d'énèrgie[/color] et un demi plein !"],
 						[3, "Proinde concepta rabie saeviore,\nquam desperatio incendebat et fames,\namplificatis viribus ardore incohibili\nin excidium urbium matris"],
 						[1, "Merci Pascal, toujours un plaisir de faire affaire"]
 					]
@@ -142,7 +141,34 @@ Penses bien à garder un oeil sur le radar"]
 					currentDialogArray = [
 						[1, "Parfait ! Ça va nous permettre d'aller faire un tour à Gnolbark"],
 						[1, "Le [color=white]Bouclier[/color] nous protègera des [i]radiations[/i]"],
-						[1, "Mais ça consomme aussi pas mal d'[color=yellow]Énergie[/color]\nDonc utilise le avec parcimonie"],
+						[1, "Mais ça consomme aussi de l'[color=yellow]Énergie[/color]\nDonc utilise le avec parcimonie"],
+					]
+		7:
+			match _chapterId:
+				0:
+					currentDialogArray = [
+						[1, "Ah mais c'est pas un [color=white]Canon à Ion[/color] ce que je vois là ?"],
+						[1, "Ça pourrait interesser Shplok, retournons le voir"]
+					]
+		8:
+			match _chapterId:
+				0:
+					currentDialogArray = [
+						[1, "C'est encore nous, regarde ce que j'ai là !"],
+						[2, "Grep la blazor ! Egrikblok mes li crapouet !\nBet miskra patina gos baloup"],
+						[1, "Reçu 5/5"],
+					]
+		9:
+			match _chapterId:
+				0:
+					currentDialogArray = [
+						[1, "Plus qu'à installer ça"],
+					]
+		10:
+			match _chapterId:
+				0:
+					currentDialogArray = [
+						[1, "Super, qu'est ce qu'on fait maintenant ?"],
 					]
 			
 	return currentDialogArray
@@ -175,6 +201,7 @@ func get_quest_text(_actId, _chapterId):
 	var questText = "Objectif :\n"
 	questText+= "Acte : "+str(actId) + " Chapitre : " + str(chapterId)
 
+	questPanel.visible = true
 	match _actId:
 		1:
 			questPanel.visible = true
@@ -197,6 +224,14 @@ func get_quest_text(_actId, _chapterId):
 			questText += "\nFabriquer le Bouclier"
 		7:
 			questText += "\nExplorer Gnolbark\nau Sud de la Station"
+		8:
+			questText += "\nParler à Shplok\nà la Station"
+		9:
+			questText += "\nTrouver l'aimant\nPour fabriquer\nle Rayon Tracteur"
+		10:
+			questText += "\nFabriquer le\nRayon Tracteur"
+		11:
+			questText += "\nAutre chose"
 	return questText
 
 func finish_act():
@@ -206,12 +241,6 @@ func finish_act():
 func _on_tuto_ending_body_exited(_body: Node2D) -> void:
 	if actId == 0:
 		open_dialog(0,3)
-		actId = 1
-		chapterId = 0
+		finish_act()
 
-func _on_planet_area_1_body_entered(_body: Node2D) -> void:
-	if actId == 2 and chapterId == 1:
-		open_dialog(actId,chapterId)
-		actId = 3
-		chapterId = 0
 		

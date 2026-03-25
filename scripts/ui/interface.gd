@@ -122,6 +122,9 @@ func _on_shield_button_pressed() -> void:
 
 func _on_tractor_button_pressed() -> void:
 	equip_gadget(tractor_button, "tractor_compo1", "tractor_compo2", "tractor")
+	if dialogNode.actId == 10:
+		dialogNode.open_dialog(dialogNode.actId, dialogNode.chapterId)
+	dialogNode.finish_act()
 
 func _on_portal_button_pressed() -> void:
 	equip_gadget(portal_button, "portal_compo1", "portal_compo2", "portal")

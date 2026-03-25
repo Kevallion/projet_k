@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ck76jflr3pr3x" path="res://assets/sprites/reactor_anim2.png" id="4_ss7kx"]
 [ext_resource type="Texture2D" uid="uid://dy1c75gh5ft5c" path="res://assets/sprites/reactor_anim3.png" id="5_dnykm"]
 [ext_resource type="PackedScene" uid="uid://bnr4usbqwwjll" path="res://scenes/entities/gadget_manager.tscn" id="7_dnykm"]
+[ext_resource type="Theme" uid="uid://odcq8lrptw30" path="res://assets/fonts/unispace_theme.tres" id="10_b6tgf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dnykm"]
 shader = ExtResource("2_ss7kx")
@@ -179,5 +180,13 @@ one_shot = true
 
 [node name="GadgetManager" parent="." unique_id=740711933 node_paths=PackedStringArray("gadgetActives") instance=ExtResource("7_dnykm")]
 gadgetActives = [null, null, null]
+
+[node name="RespawnLabel" type="RichTextLabel" parent="." unique_id=1506050669]
+visible = false
+offset_left = 46.0
+offset_top = -40.0
+offset_right = 163.0
+theme = ExtResource("10_b6tgf")
+text = "[R] pour Respawn"
 
 [connection signal="timeout" from="OutOfBound" to="." method="_on_out_of_bound_timeout"]

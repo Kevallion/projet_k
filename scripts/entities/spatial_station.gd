@@ -6,4 +6,4 @@ class_name SpatialStation extends SpaceObject
 
 
 func _on_interaction_area_interaction(body: Player) -> void:
-	body.refill_gas()
+	body.refill_gas(carburantToGive)

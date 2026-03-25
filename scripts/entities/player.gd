@@ -28,7 +28,7 @@ class_name Player extends CharacterBody2D
 @export var graveBody = preload("res://scenes/entities/grave_body.tscn")
 var unlocked_gadgets : Array[String] = []
 
-var gas := 3000.0
+var gas := 2000.0
 var health := 900.0
 var energy := 300.0
 var gasExpense := 1.0
@@ -72,11 +72,15 @@ func _physics_process(delta: float) -> void:
 
 func _handleMovements():
 	var forwardVector = (forward.global_position - global_position).normalized()
-	
-	var leftActive = Input.is_action_pressed("ui_left")
-	var rightActive = Input.is_action_pressed("ui_right")
-	var centerActive = Input.is_action_pressed("ui_up")
-	var braking = Input.is_action_pressed("ui_down")
+	var leftActive = false
+	var rightActive = false
+	var centerActive = false
+	var braking = false
+	if gas > 0:
+		leftActive = Input.is_action_pressed("ui_left")
+		rightActive = Input.is_action_pressed("ui_right")
+		centerActive = Input.is_action_pressed("ui_up")
+		braking = Input.is_action_pressed("ui_down")
 	
 	#savoir si le moteur est allumé
 	var currentlyActive = leftActive or rightActive or centerActive or braking
@@ -146,11 +150,19 @@ func _handleMovements():
 	velocity.x = clampf(velocity.x, -maxSpeed, maxSpeed)
 	velocity.y = clampf(velocity.y, -maxSpeed, maxSpeed)
 
-
 func _check_vitals():
-	if gas <= 0:
-		drop_stuff()
-		trigger_respawn()
+	## Carburant ##
+	if gas > maxGas:
+		gas = maxGas
+	elif gas <= 0:
+		$RespawnLabel.visible = true
+		if Input.is_action_just_pressed("respawn"):
+			drop_stuff()
+			trigger_respawn()
+	else:
+		$RespawnLabel.visible = false
+		
+	## Santé ##
 	if health > maxHealth:
 		health = maxHealth
 	if health <= 0:
@@ -213,10 +225,10 @@ func add_force(force: Vector2) -> void:
 
 func _consumeGas(spent):
 	gas -= spent
-	energy += 0.01
+	energy += 0.1
 
-func refill_gas():
-	gas = maxGas
+func refill_gas(gas_quantity):
+	gas += gas_quantity
 	
 func recharge_energy():
 	energy = maxEnergy
@@ -237,16 +249,6 @@ func repair():
 	AudioManager.play(sndRepairs.pick_random(),&"SFX")
 	health += 50
 	inventory.remove("fragment", 1)
-				
-func can_craft():
-	var ingredientList = []
-	for slot in inventory.slots:
-		if slot.item:
-			if slot.item.name == "fragment":
-				ingredientList.append(true)
-			else: 
-				ingredientList.append(false)
-	return ingredientList
 	
 func find_compo(compo, amount):
 	for slot in inventory.slots:

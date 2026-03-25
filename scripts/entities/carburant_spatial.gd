@@ -1,16 +1,18 @@
 extends SpatialStation
 @onready var dialogNode = %DialogNode
-var firstInteract = true
+@onready var player = $"../Player"
+var isDiscovered = false
 
 func _on_interaction_area_interaction(body: Player) -> void:
-	body.refill_gas()
-	body.recharge_energy()
-	if firstInteract:
+	isDiscovered = true
+	body.refill_gas(body.maxGas)
+	#body.recharge_energy()
+	if dialogNode.actId == 1:
 		dialogNode.open_dialog(1, 1)
-		dialogNode.actId = 2
-		dialogNode.chapterId = 0
-		firstInteract = false
-	if dialogNode.actId == 3:
+		dialogNode.finish_act()
+	if dialogNode.actId == 3 and player.find_compo("shield_compo1", 1):
 		dialogNode.open_dialog(3, 0)
-		dialogNode.actId = 4
-		dialogNode.chapterId = 0
+		dialogNode.finish_act()
+	if dialogNode.actId == 8 and player.find_compo("tractor_compo1", 1) :
+		dialogNode.open_dialog(8, 0)
+		dialogNode.finish_act()

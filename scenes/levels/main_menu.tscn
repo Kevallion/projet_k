@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://djri0h1t14fw0"]
 
-[ext_resource type="Script" uid="uid://bujibb7dce0gk" path="res://scenes/levels/main_menu.gd" id="1_geflf"]
+[ext_resource type="Script" path="res://scenes/levels/main_menu.gd" id="1_geflf"]
 [ext_resource type="PackedScene" uid="uid://vtaxerp088yh" path="res://scenes/levels/level_1.tscn" id="2_fkd6t"]
-[ext_resource type="AudioStream" uid="uid://ds3edyvgafer4" path="res://assets/audio/music/Title Screen.mp3" id="3_crctu"]
+[ext_resource type="AudioStream" uid="uid://feutm4c78h6w" path="res://assets/audio/music/Title Screen 2 Final.ogg" id="3_cn35j"]
 [ext_resource type="PackedScene" uid="uid://cadr3m84lh1ya" path="res://scenes/entities/background.tscn" id="3_keln3"]
 [ext_resource type="Texture2D" uid="uid://c7mlqbmw2r765" path="res://assets/sprites/planets/planet00.png" id="4_crctu"]
 [ext_resource type="Theme" uid="uid://bikh2wiu48bjr" path="res://scripts/ui/ui_theme_general.tres" id="4_sn5u3"]
@@ -27,7 +27,7 @@ stacked_shadow_0/outline_size = 15
 script = ExtResource("1_geflf")
 firstLevelScene = ExtResource("2_fkd6t")
 first_level_to_lauch = "<null>"
-sndMenu = ExtResource("3_crctu")
+sndMenu = ExtResource("3_cn35j")
 
 [node name="backGround" parent="." unique_id=1670201285 instance=ExtResource("3_keln3")]
 
