@@ -1789,7 +1789,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0qwwm"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_t4umt"]
 resource_local_to_scene = true
 radius = 61.765
 
@@ -1902,7 +1902,7 @@ collisionRange = 30.864
 pushZoneRange = 61.765
 
 [node name="CollisionShape2D" parent="Asteroid4/pushZone" parent_id_path=PackedInt32Array(956945604, 1457056112) index="0" unique_id=575047982]
-shape = SubResource("CircleShape2D_0qwwm")
+shape = SubResource("CircleShape2D_t4umt")
 
 [node name="Planet" parent="." unique_id=1040834349 groups=["planet", "radar_detection"] instance=ExtResource("9_dga24")]
 z_index = -2

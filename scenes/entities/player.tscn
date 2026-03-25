@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dy1c75gh5ft5c" path="res://assets/sprites/reactor_anim3.png" id="5_dnykm"]
 [ext_resource type="PackedScene" uid="uid://bnr4usbqwwjll" path="res://scenes/entities/gadget_manager.tscn" id="7_dnykm"]
 [ext_resource type="Theme" uid="uid://odcq8lrptw30" path="res://assets/fonts/unispace_theme.tres" id="10_b6tgf"]
+[ext_resource type="PackedScene" uid="uid://dbkml7p3un0tm" path="res://scenes/entities/trail.tscn" id="11_73kkf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dnykm"]
 shader = ExtResource("2_ss7kx")
@@ -188,5 +189,7 @@ offset_top = -40.0
 offset_right = 163.0
 theme = ExtResource("10_b6tgf")
 text = "[R] pour Respawn"
+
+[node name="Trail2D" parent="." unique_id=2088890352 instance=ExtResource("11_73kkf")]
 
 [connection signal="timeout" from="OutOfBound" to="." method="_on_out_of_bound_timeout"]
