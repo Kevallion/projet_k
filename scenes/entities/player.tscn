@@ -168,8 +168,7 @@ shape = SubResource("CircleShape2D_6761a")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1364328052]
 process_mode = 3
-limit_smoothed = true
-position_smoothing_enabled = true
+limit_enabled = false
 script = ExtResource("3_1ie0h")
 
 [node name="OutOfBound" type="Timer" parent="." unique_id=1972936815]

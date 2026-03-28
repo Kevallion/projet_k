@@ -22,11 +22,11 @@ func _on_level_completed() -> void:
 	
 func script_progression():
 	if dialogNode.actId == 2 and dialogNode.chapterId == 1 and player.find_compo("shield_compo1", 1):
-		dialogNode.open_dialog(dialogNode.actId , dialogNode.chapterId)
+		dialogNode.open_current_dialog()
 		dialogNode.finish_act()
 	if dialogNode.actId == 7 and dialogNode.chapterId == 0 and player.find_compo("tractor_compo1", 1):
-		dialogNode.open_dialog(dialogNode.actId , dialogNode.chapterId)
+		dialogNode.open_current_dialog()
 		dialogNode.finish_act()
 	if dialogNode.actId == 9 and dialogNode.chapterId == 0 and player.find_compo("tractor_compo1", 1) and player.find_compo("tractor_compo2", 1):
-		dialogNode.open_dialog(dialogNode.actId , dialogNode.chapterId)
+		dialogNode.open_current_dialog()
 		dialogNode.finish_act()

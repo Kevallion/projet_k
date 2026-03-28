@@ -19,14 +19,21 @@ func _process(_delta: float) -> void:
 	if dialogOpen and (Input.is_action_just_pressed("switch_mode") or Input.is_action_just_pressed("left_click")):
 		continue_dialog()
 	
-func open_dialog(_actId: int, _dialogId: int):
-	if get_dialog(_actId, _dialogId):
+func open_current_dialog():
+	if get_dialog(actId, chapterId):
 		chapterId += 1
 		dialogPanel.visible = true
 		currentDialogPos = 0
 		update_dialog(currentDialogPos)
 		dialogOpen = true
-	
+
+func open_specific_dialog(_actId, _dialogId):
+	if get_dialog(_actId, _dialogId):
+		dialogPanel.visible = true
+		currentDialogPos = 0
+		update_dialog(currentDialogPos)
+		dialogOpen = true
+
 func update_dialog(_currentDialogPos: int):
 	dialogLabel.text = currentDialogArray[_currentDialogPos][1]
 
@@ -63,14 +70,15 @@ Approche toi doucement on va les ramasser"],
 			]
 				3:
 					currentDialogArray = [
-						[1, "Aller fini de jouer, on va faire un tour à la station"],
+						[1, "Aller fini de jouer, on va faire un tour à la [color=white]Station[/color]"],
 						[1, "Tu vois le cadran sur ta gauche ? C'est le [color=white][b]Radar[/b][/color]
 Je te préviens c'est un vieux modèle,"],
 						[1, "Il n'indique pas la direction mais
 la [color=white]Distance[/color] de la [color=white]Station[/color] ou la [color=white]Planète[/color] la [color=white]plus proche[/color],
 Ça coute une blinde à remplacer mais on s'y habitue à la longue, t'inquiète pas"],
 						[1, "Prends vers la droite, en direction de cette étoile, on devrait trouver la station pas loin
-Penses bien à garder un oeil sur le radar"]
+Penses bien à garder un oeil sur le radar"],
+						[1, "Le chiffre apparait en bleu tant qu'on est en approche"],
 			]
 			
 		1:
@@ -181,17 +189,17 @@ func close_dialog():
 
 func _on_tuto_area_body_entered(_body: Node2D) -> void:
 	if actId == 0:
-		open_dialog(actId, chapterId)
+		open_current_dialog()
 
 func _on_station_area_body_entered(_body: Node2D) -> void:
 	if actId == 1 and chapterId == 0:
-		open_dialog(actId,chapterId)
+		open_current_dialog()
 
 func _on_station_area_body_exited(_body: Node2D) -> void:
 	if actId == 2 and chapterId == 0:
-		open_dialog(actId,chapterId)
-	if actId == 4:
-		open_dialog(actId, chapterId)
+		open_current_dialog()
+	if actId == 4 and chapterId == 0:
+		open_current_dialog()
 	
 func update_quest():
 	if questLabel:
@@ -201,7 +209,7 @@ func get_quest_text(_actId, _chapterId):
 	var questText = "Objectif :\n"
 	questText+= "Acte : "+str(actId) + " Chapitre : " + str(chapterId)
 
-	questPanel.visible = true
+	#questPanel.visible = true
 	match _actId:
 		1:
 			questPanel.visible = true
@@ -240,7 +248,7 @@ func finish_act():
 
 func _on_tuto_ending_body_exited(_body: Node2D) -> void:
 	if actId == 0:
-		open_dialog(0,3)
+		open_specific_dialog(0,3)
 		finish_act()
 
 		

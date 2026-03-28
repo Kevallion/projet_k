@@ -225,7 +225,8 @@ func add_force(force: Vector2) -> void:
 
 func _consumeGas(spent):
 	gas -= spent
-	energy += 0.1
+	## Amélioration du vaisseau : Alternateur
+	#energy += 0.1
 
 func refill_gas(gas_quantity):
 	gas += gas_quantity

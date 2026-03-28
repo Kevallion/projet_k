@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://fjxhjjn0e1ix"]
 
-[ext_resource type="Script" uid="uid://cnv07dolcg7bo" path="res://laser.gd" id="1_4l4xt"]
+[ext_resource type="Script" uid="uid://cnv07dolcg7bo" path="res://scripts/entities/laser.gd" id="1_4l4xt"]
 [ext_resource type="AudioStream" uid="uid://b0lyl40gppk68" path="res://assets/audio/sfx/Bleep 3.ogg" id="2_yo3kt"]
 [ext_resource type="AudioStream" uid="uid://dw77b63yybr31" path="res://assets/audio/sfx/Laser Beam 3.ogg" id="3_pw0sq"]
 [ext_resource type="AudioStream" uid="uid://6wcp1wton784" path="res://assets/audio/sfx/Lazer Impact 1 Lower.ogg" id="4_02jf6"]
@@ -83,16 +83,17 @@ scale_curve = SubResource("CurveTexture_u2s01")
 [node name="Laser" type="Node2D" unique_id=2059303060]
 z_index = 1
 z_as_relative = false
+texture_filter = 1
 script = ExtResource("1_4l4xt")
-castSpeed = 400.0
-maxLength = 600.0
+castSpeed = 500.0
+maxLength = 1000.0
 growthTime = 0.5
 sndDeploy = ExtResource("2_yo3kt")
 sndContinueLaser = ExtResource("3_pw0sq")
 sndImpact = ExtResource("4_02jf6")
 icon = ExtResource("5_yo3kt")
 name_label = "Laser"
-description = "Le laser permet de détruire les astéroid"
+description = "Le laser permet de détruire les astéroïdes"
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=543239978]
 unique_name_in_owner = true

@@ -1,19 +1,19 @@
 [gd_scene format=3 uid="uid://dbkml7p3un0tm"]
 
+[ext_resource type="Gradient" uid="uid://ce1a8vl36hy67" path="res://ressources/trail_gradient.tres" id="1_215ga"]
+[ext_resource type="Texture2D" uid="uid://bw8tdyk71n71a" path="res://assets/sprites/particles/trail_texture2.png" id="1_f3ixv"]
 [ext_resource type="Script" uid="uid://cdhro3h4u3nwr" path="res://scripts/entities/trail.gd" id="1_qopgi"]
 
 [sub_resource type="Curve" id="Curve_qopgi"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.14655614, 0.14655614, 0, 0]
 point_count = 2
-
-[sub_resource type="Gradient" id="Gradient_qopgi"]
-offsets = PackedFloat32Array(0.25925925, 0.3888889, 0.6481481, 0.9197531, 0.9876543)
-colors = PackedColorArray(1, 1, 1, 0, 0.52372247, 0.99999946, 0.99634284, 0, 0.44735163, 0.9999998, 0.9984948, 0.05882353, 1.6749502e-05, 0.98144454, 0.9814443, 0, 1, 1, 1, 0)
 
 [node name="Trail2D" type="Line2D" unique_id=2088890352]
 show_behind_parent = true
 width = 12.0
 width_curve = SubResource("Curve_qopgi")
-gradient = SubResource("Gradient_qopgi")
+gradient = ExtResource("1_215ga")
+texture = ExtResource("1_f3ixv")
+texture_mode = 2
 script = ExtResource("1_qopgi")
-MAX_LENGTH = 50
+MAX_LENGTH = 30

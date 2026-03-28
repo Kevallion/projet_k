@@ -4,7 +4,7 @@ var queue : Array
 @export var MAX_LENGTH : int
 var point = Vector2()
  
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	global_position = Vector2.ZERO
 	global_rotation = 0
 	

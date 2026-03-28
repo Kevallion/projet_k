@@ -1831,11 +1831,11 @@ scroll_scale = Vector2(0.05, 0.02)
 
 [node name="SunSprite" type="AnimatedSprite2D" parent="ParallaxNode/Parallax2D" unique_id=1055201885]
 z_index = -2
-texture_filter = 1
-scale = Vector2(0.5, 0.5)
+position = Vector2(0.99999994, 78.99999)
+scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_r601b")
 autoplay = "default"
-frame_progress = 0.09672816
+frame_progress = 0.67220736
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxNode/Parallax2D" unique_id=190183849]
 position = Vector2(-3003, -4088.0005)

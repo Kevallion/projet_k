@@ -9,6 +9,7 @@ extends Control
 @onready var dialogNode = %DialogNode
 
 var distance: int = 0
+var previous_distance = 999999999999
 
 @onready var inv: Inv = preload("res://ressources/inventory/player_inventory.tres")
 @onready var slots: Array = $CanvasLayer/ColorRect/MarginContainer/NinePatchRect/GridContainer.get_children()
@@ -23,6 +24,7 @@ var inventory_is_open = false
 
 @export var sndRepairs : Array[AudioStream] = [preload("res://assets/audio/sfx/Repair or Craft 1.ogg"),preload("res://assets/audio/sfx/Repair or Craft 2.ogg")]
 
+var color_text = 99.0
 
 func _ready() -> void:
 	inv.update.connect(update_slots)
@@ -35,7 +37,7 @@ func _physics_process(_delta: float) -> void:
 	if inventory_is_open:
 		get_tree().paused = true
 		
-	if Input.is_action_just_pressed("ui_cancel"):
+	if Input.is_action_just_pressed("menu"):
 		if inventory_is_open:
 			close_inventory()
 		else:
@@ -74,8 +76,22 @@ func set_interface_values():
 	for planet in get_tree().get_nodes_in_group("radar_detection"):
 		if distance > player.global_position.distance_to(planet.global_position):
 			distance = player.global_position.distance_to(planet.global_position)
-	radar_label.text = str(distance)
+	## coloration du text du radar
+	var max_color = 99
+	var min_color = 50
+	var gradiant = 1
+	if distance < previous_distance:
+		color_text -= gradiant
+	else:
+		color_text += gradiant
 		
+	if color_text > max_color:
+		color_text = max_color
+	elif color_text < min_color:
+		color_text = min_color
+	radar_label.clear()
+	radar_label.append_text("[color=#"+str(int(color_text))+"dddd]"+str(distance)+"[/color]")
+	
 	# Bouton de réparation
 	if player.can_repair():
 		repair_button.disabled = false
@@ -87,6 +103,8 @@ func set_interface_values():
 	set_gadget_button(tractor_button, "tractor_compo1", "tractor_compo2")
 	set_gadget_button(portal_button, "portal_compo1", "portal_compo2")
 	set_gadget_button(laser_button, "laser_compo1", "laser_compo2")
+	
+	previous_distance = distance
 		
 func set_gadget_button(gadget_button, gadget_compo1, gadget_compo2) -> void:
 	if (player.find_compo(gadget_compo1,1) and player.find_compo(gadget_compo2,1)) or gadget_button.get_parent().crafted:
@@ -117,14 +135,14 @@ func _on_repair_button_pressed() -> void:
 func _on_shield_button_pressed() -> void:
 	equip_gadget(shield_button, "shield_compo1", "shield_compo2", "shield")
 	if dialogNode.actId == 6:
-		dialogNode.open_dialog(dialogNode.actId, dialogNode.chapterId)
-	dialogNode.finish_act()
+		dialogNode.open_current_dialog()
+		dialogNode.finish_act()
 
 func _on_tractor_button_pressed() -> void:
 	equip_gadget(tractor_button, "tractor_compo1", "tractor_compo2", "tractor")
 	if dialogNode.actId == 10:
-		dialogNode.open_dialog(dialogNode.actId, dialogNode.chapterId)
-	dialogNode.finish_act()
+		dialogNode.open_current_dialog()
+		dialogNode.finish_act()
 
 func _on_portal_button_pressed() -> void:
 	equip_gadget(portal_button, "portal_compo1", "portal_compo2", "portal")
